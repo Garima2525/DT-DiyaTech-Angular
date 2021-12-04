@@ -1,0 +1,238 @@
+<app-header></app-header>
+ <app-sidenav></app-sidenav>
+ <div id="content" class="app-content"  role="main">
+  <div class="app-content-body ">
+ <div class="top">
+  <div class="row t-main">
+    <div class="col-sm-6 col-xs-12 t-main-1">
+      <h4 class="m-n  t-main1">Leads View List</h4>
+    </div>
+    <div class="col-sm-6 text-right poppins">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb t-main">
+          <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Dashboard</li>
+          <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Leads</li>
+          <!-- <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Leads View List</li>  -->
+          <!-- <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;"> Account View List</li> -->
+          <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;">Leads View List</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+     
+</div>
+ <kendo-grid
+    [kendoGridBinding]="gridView"
+    kendoGridSelectBy="id"
+    [selectedKeys]="mySelection"
+    [pageSize]="20"
+    [pageable]="true"
+    [sortable]="true"
+    [reorderable]="true"
+    [resizable]="true"
+    [height]="500"
+    [columnMenu]="{ filter: true }"
+  >
+    <ng-template kendoGridToolbarTemplate>
+      <input
+        placeholder="Search in all columns..."
+        kendoTextBox
+        (input)="onFilter($event)"
+        />
+          <!-- <div class="filter-btn" (click)="sortData('lead_id')">
+          <i class="fa fa-sort"></i> <span>sort</span>
+          </div> -->
+        <kendo-grid-spacer></kendo-grid-spacer>
+        <button class=" button" style="background-color: #7266BA;border:1px solid #7266BA;"> <a routerLink="/lead-view"><i _ngcontent-suu-c437="" class="fa fa-bars"></i> T- view</a></button>
+      <button *ngIf="this.userPermission?.leadcreate" class="button" > <a routerLink="/create-lead">Create New Lead</a></button>
+      <!-- <button kendoGridPDFCommand icon="file-pdf">Export to PDF</button> -->
+      <!-- <button kendoGridExcelCommand type="button" icon="file-excel">
+        Export to Excel
+      </button> -->
+    </ng-template>
+    <!-- <kendo-grid-checkbox-column
+      [width]="45"
+      [headerClass]="{ 'text-center': true }"
+      [class]="{ 'text-center': true }"
+      [resizable]="false"
+      [columnMenu]="false"
+      [showSelectAll]="true"
+    ></kendo-grid-checkbox-column> -->
+    <kendo-grid-column field="lead_id" title="ID" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="customer-name" style="color: red;">{{ dataItem.lead_id }}</div>
+        <div class="customer-name" ><i class="fa fa-calendar-check-o" style="color:green;" aria-hidden="true"></i> : {{ dataItem.created_date_time }}</div>
+        <div class="customer-name" ><i class="fa fa-calendar-plus-o" style="color:red;" aria-hidden="true"></i> : {{ dataItem.modified_date_time }}</div>
+        <div class="customer-name" >Aging :{{ dataItem.aging }}</div>
+      </ng-template>
+    </kendo-grid-column>
+
+
+    <kendo-grid-column field="company_name" title="Account" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="customer-name" style="color: red;">{{dataItem.company_name}}</div>
+        <div class="customer-name" >{{ dataItem.contact }}</div>
+        <!-- <div class="customer-name" >Last Modified :{{ dataItem.owner }}</div>
+        <div class="customer-name" >Aging :{{ dataItem.owner }}</div> -->
+      </ng-template>
+    </kendo-grid-column>
+
+    <kendo-grid-column field="lead_title" title="Lead Title" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="customer-name" >{{ dataItem.lead_title }}</div>
+      </ng-template>
+    </kendo-grid-column>
+
+      <kendo-grid-column field="lead_owner" title="Lead Owner" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+ <div class="customer-name">{{ dataItem.lead_owner[0].username }}</div>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="lead_type" title=" Lead Value" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div class="customer-name" >Type : {{ dataItem.lead_type }}</div>
+          <div class="customer-name" >Industry:{{ dataItem.industry}}</div>
+                 </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column
+        field="lead_status_stage"
+        title="Lead Status "
+        [width]="100"
+        [class]="{ 'text-center': true }"
+        [resizable]="false"
+      > 
+      </kendo-grid-column>
+
+
+      <!-- <kendo-grid-column  title="Open Activities" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+ <div class="customer-name" >Task - </div>
+ <div class="customer-name" >Call - </div>
+ <div class="customer-name" >Metting - </div>
+        </ng-template>
+      </kendo-grid-column> -->
+    
+      <kendo-grid-column
+        title="Action"
+        [width]="100"
+        [class]="{ 'text-center': true }"
+        [resizable]="false"
+        [filterable]="false"
+        
+      >
+        <ng-template kendoGridCellTemplate let-lead>
+          <kendo-menu >
+            <kendo-menu-item  icon="gear">
+
+              <kendo-menu-item  *ngIf="this.userPermission?.leadedit" url="/edit-lead/{{lead.lead_id}}"  text="Edit" > </kendo-menu-item>
+              
+              
+              <kendo-menu-item *ngIf="this.userPermission?.convertleadtoquote" url="/edit-lead/{{lead.lead_id}}"  text="Convert to Quote">
+                <!-- <ng-template kendoMenuItemTemplate >
+                  <div type="hidden" data-toggle="modal" d       ata-target="#exampleModal3" >
+                    Convert to Quote
+                  </div>
+                </ng-template> -->
+              </kendo-menu-item>
+
+              <!-- <kendo-menu-item >
+                <ng-template kendoMenuItemTemplate >
+                  <div (click)="handleDelete(lead._id)">
+                    Delete
+                  </div>
+                </ng-template>  
+              </kendo-menu-item> -->
+
+
+              <!-- <kendo-menu-item   url="" text="Clone"> </kendo-menu-item> -->
+              <!-- <kendo-menu-item   url="" text="Status" > </kendo-menu-item> -->
+              <!-- <kendo-menu-item   url="" text="Download Excel" > </kendo-menu-item> -->
+              <!-- <kendo-menu-item   url="" text="Print" > </kendo-menu-item> -->
+              <!-- <kendo-menu-item  (select)="handleDelete(account.account_id)" text="Delete" icon="delete"></kendo-menu-item> -->
+            </kendo-menu-item>
+          </kendo-menu>
+
+
+          <!-- <i class="fa fa-cog"></i> -->
+          <!-- <button (click)="handleEdit(account.account_id)">Edit</button>{{" "}}
+          <button (click)="handleDelete(account.account_id)">Delete</button> -->
+        </ng-template>
+      </kendo-grid-column>
+
+
+
+
+
+
+
+   
+    <!-- <kendo-grid-column-group title="Performance" [columnMenu]="false">
+      <kendo-grid-column
+        field="rating"
+        title="Rating"
+        [width]="110"
+        [resizable]="false"
+        filter="numeric"
+      >
+        <!-- <ng-template kendoGridCellTemplate let-dataItem>
+          <kendo-rating [value]="dataItem.rating" [max]="5"></kendo-rating>
+        </ng-template> 
+      </kendo-grid-column>
+      <kendo-grid-column
+        field="target"
+        title="Engagement"
+        [width]="230"
+        [resizable]="false"
+        filter="numeric"
+      >
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <kendo-sparkline
+            type="bar"
+            [data]="dataItem.target"
+            [tooltip]="{ visible: false }"
+            [transitions]="true"
+            [seriesDefaults]="{
+              labels: { background: 'none', visible: true, format: '{0}%' }
+            }"
+          >
+            <kendo-chart-area [opacity]="0" [width]="200"></kendo-chart-area>
+            <!-- <kendo-chart-value-axis>
+              <kendo-chart-value-axis-item [min]="0" [max]="130">
+              </kendo-chart-value-axis-item>
+            </kendo-chart-value-axis> 
+          </kendo-sparkline>
+        </ng-template>
+      </kendo-grid-column>
+      <kendo-grid-column
+        field="budget"
+        title="Budget"
+        [width]="100"
+        filter="numeric"
+      >
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <span [ngClass]="{ 'red text-bold': dataItem.budget < 0 }">{{
+            dataItem.budget | currency
+          }}</span>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid-column-group>
+    <kendo-grid-column-group title="Contacts" [columnMenu]="false">
+      <kendo-grid-column field="phone" title="Phone" [width]="130">
+      </kendo-grid-column>
+      <kendo-grid-column field="address" title="Address" [width]="200">
+      </kendo-grid-column>
+    </kendo-grid-column-group> -->
+
+    <!-- <kendo-grid-pdf
+      fileName="Employees.pdf"
+      [repeatHeaders]="true"
+    ></kendo-grid-pdf>
+    <kendo-grid-excel fileName="Employees.xlsx"></kendo-grid-excel> -->
+  </kendo-grid>
+
+
+
+  </div>
+  </div>

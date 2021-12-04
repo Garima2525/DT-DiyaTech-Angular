@@ -1,0 +1,824 @@
+<!-- <html>
+  <head>
+    <title>Omshakti</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css" type="text/css" />
+    <style>
+      body{
+        color: black !important;
+      }
+     .table-cls tr td{
+        padding: 5px;
+        font-weight: bold !important;
+
+      }
+      .table-cls-IR img{
+        width: 100%;
+      }
+      .table-cls-xs tr td{
+        padding: 3px;
+      }
+      td {
+        font-size: 11px;
+      }
+      
+      
+      
+      @media print {
+            .pagebreak {
+                page-break-before: always;
+            }
+
+            * {
+                color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+
+                hr {
+                    border-top: 1px solid;
+                    border-color: #aba6a6;
+                    border-width: 1px;
+                    margin-bottom: 43px;
+                }
+
+                .print-btn-none {
+                    display: none !important;
+                }
+
+                body {
+                    font-size: 18px !important;
+                }
+
+                #spacer {
+                    height: 18em;
+                }
+
+               
+                #footer {
+                    position: fixed;
+                    bottom: 0;
+                    width: 100%;
+                    /* border: 1px solid #f5f5f5;*/
+                    padding: 5px;
+                }
+
+                .table-bordered>tbody>tr>td,
+                .table-bordered>thead>tr>th {
+                    border: 1px solid #000 !important;
+                }
+
+                p.head-contact {
+                    font-size: 10px;
+                }
+
+                td.rupees-word {
+                    font-size: 10px !important;
+                    color: #ffffff !important;
+                }
+
+                td.price-gst {
+                    font-size: 10px !important;
+                }
+
+                td.computer-generated {
+                    font-size: 10px !important;
+                }
+
+                table>tbody>tr>td {
+                    font-size: 15px !important;
+                }
+
+                #footer2 {
+                    position: fixed;
+                    bottom: 0;
+                    width: 100%;
+                    /*border: 1px solid #f5f5f5;*/
+                    padding: 5px;
+                }
+
+                .no-print {
+                    display: none;
+                }
+
+                #wrapper {
+                    max-width: 800px;
+                    width: 100%;
+                    min-width: 200px;
+                    margin: 0 auto;
+                    border: none;
+                }
+
+                .no-border {
+                    border: none !important;
+                }
+
+                .border-bottom {
+                    border-bottom: 1px solid #eee !important;
+                }
+
+                .table>tbody>tr>td {
+                    border: none;
+                }
+
+                .spacer-print-40 {
+                    height: 40px;
+                }
+
+            }
+
+            @media print {
+                .print-btn-none {
+                    display: none !important;
+                }
+            }
+    </style>
+    
+  </head>
+  
+<body>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 2px solid black; margin: 0px auto;">
+    <tr style="display: flex;justify-content: space-between;">
+        <td><button onclick="window.print();" class="btn btn-primary no-print print-btn-none"><i class="fa fa-print"
+                    aria-hidden="true"></i> Print</button>
+        </td>
+
+        <td><button [routerLink]="['/quote']" class="btn btn-danger  no-print print-btn-none">Back</button></td>
+
+    </tr>
+  <tr>
+    <td colspan="9" style="width: 100%;"><img src="assets/img/DIYA.PNG"/></td>
+   </tr>
+   <tr>
+    <td colspan="1" style="width: 10%;">Address:</td>
+    <td colspan="1" style="width: 50%;">SHOP NO. A‐019, Capital Galleria, Adjacent Capital Mall, Bhiwadi,
+      Alwar, Rajasthan, 301019</td>
+      <td colspan="7" style="width: 40%;  border: 2px solid black;  font-weight: bold; background-color: #bfbfbf;">Contact person for this Offer:</td>
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 10%;">E-Mail:</td>
+    <td colspan="1" style="width: 50%;">info@diyatechnologies.co.in</td>
+    <td colspan="1" style="width: 10%; border-left: 2px solid black; border-right: 2px solid red;">Name</td>
+    <td colspan="6" style="width: 30%;  border: 2px solid black; border-bottom: none;  ">Jitendra Singh Bisht</td>
+   
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 10%;">GSTN:</td>
+    <td colspan="1" style="width: 50%;">08ADXPK7078E1ZW</td>
+    <td colspan="1" style="width: 10%; border-left: 2px solid black; border-right: 2px solid red;">Mail-ID</td>
+    <td colspan="6" style="width: 30%;   ">Sales.rup@divyatechnologies.co.in</td>
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 10%;">Website:</td>
+    <td colspan="1" style="width: 50%;">www.diyatechnologies.in</td>
+    <td colspan="1" style="width: 10%; border-left: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid red;">Mobile.no</td>
+    <td colspan="6" style="width: 30%;  border-bottom: 2px solid black; ">+91 74170 40880</td>
+  </tr>
+ </table>
+ <table class="table table-bordered table-cls-xs" style="width: 650px; border: 2px solid black; margin: 0px auto; border-top: none;">
+   <tr>
+    <td colspan="4" style="width: 100%; height: 20px;"></td>
+   </tr>
+   <tr>
+    <td colspan="4" style="width: 100%; text-align: center; font-weight: bold; border-top: 2px solid black; border-bottom: 2px solid black; background-color: #bfbfbf;">QUOTATION</td>
+  
+  </tr>
+  <tr>
+    <td colspan="4" style="width: 100%; height: 20px;"></td>
+  
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 30%; font-weight: bold; border-right: 2px solid red; border-top:1px solid ;">Quotation Reference No.</td>
+    <td colspan="1" style="width: 35%; font-weight: bold; border-top:1px solid black; border-right:2px solid black">{{this.quoteData?.quote_id}}</td>
+    <td colspan="1" style="width: 20%; font-weight: bold;  border-top:1px solid black; border-right: 2px solid black;">Quotation Date:</td>
+    <td colspan="1" style="width: 15%; font-weight: bold; border-top:1px solid black;">{{this.quoteDate}}</td>
+  
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 20%; font-weight: bold; border-right: 2px solid red; border-top:1px solid black">Customer Name:</td>
+    <td colspan="3" style="width: 80%;  border-top:1px solid black; border-right:2px solid black">{{this.companyData?.company_name}}</td>
+    
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 20%; font-weight: bold; border-right: 2px solid red; border-top:1px solid black">Customer Address: </td>
+    <td colspan="3" style="width: 80%;  border-top:1px solid black; border-right:2px solid black">{{this.companyData?.address1}} {{this.companyData?.address2}} {{this.companyData?.address3}} {{this.companyData?.company_city}} {{this.companyData?.company_state}} {{this.companyData?.company_country}}</td>
+    
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 20%; font-weight: bold; border-right: 2px solid red; border-top:1px solid black">Buyer Name:</td>
+    <td colspan="1" style="width: 50%;  border-top:1px solid black; border-right:2px solid black">{{this.contactData?.contact_name}}</td>
+    <td colspan="1" style="width: 15%; font-weight: bold;  border-top:1px solid black; border-right: 2px solid black;">Contact No.:</td>
+    <td colspan="1" style="width: 15%; border-top:1px solid black;">(+91) {{this.contactData?.mobile_no}}</td>
+  
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 30%; font-weight: bold; border-right: 2px solid red; border-top:1px solid black">Application / Project:    </td>
+    <td colspan="3" style="width: 70%;  border-top:1px solid black; border-right:2px solid black">{{this.quoteData?.quote_title}}</td>
+    
+  </tr>
+  <tr>
+    <td colspan="4" style="width: 100%; height: 20px; border-top: 1px solid black" ></td>
+    
+    
+  </tr>
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 2px solid black; margin: 0px auto; border-top: none;">
+  <tr>
+    <td colspan="1" style="width: 5%; border:2px solid black; border-top: none; background-color: #bfbfbf; padding: 5px;">Sr No</td>
+    <td colspan="1" style="width: 25%; border:2px solid black; border-top: none; background-color: #bfbfbf;">Product Description</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; background-color: #bfbfbf;">GST Rate %</td>
+   <td colspan="1" style="width: 5%; border:2px solid black; border-top: none; background-color: #bfbfbf;">Qty</td>
+ 
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; background-color: #bfbfbf;">UOM</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; background-color: #bfbfbf;">Unit Rate</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; background-color: #bfbfbf;">Disc</td>
+   <td colspan="1" style="width: 15%; border:2px solid black; border-top: none; background-color: #bfbfbf;">Net Unit Rate</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; background-color: #bfbfbf;">Amount</td>
+  </tr>
+  <tr *ngFor="let product of this.quoteData?.product_services;index as i">
+    <td colspan="1" style="width: 5%; border:2px solid black; border-top: none;  padding: 5px; text-align: center;">{{i+1}}</td>
+    <td colspan="1" style="width: 25%; border:2px solid black; border-top: none; ">{{product?.productname}}
+        <br>
+      (2235TiMAX)
+      <br>
+      HSN Code.: {{product?.HSNCode}}</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; ">{{product?.GST}}</td>
+   <td colspan="1" style="width: 5%; border:2px solid black; border-top: none;">{{product?.quantity}}</td>
+ 
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; ">{{product?.UOM}}</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; "> {{product?.UnitPrice}}</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; ">{{product?.discount?product?.discount:0}}%</td>
+   <td colspan="1" style="width: 15%; border:2px solid black; border-top: none; ">{{product?.UnitPrice}}</td>
+   <td colspan="1" style="width: 10%; border:2px solid black; border-top: none; text-align: right; "> {{product?.amount}}</td>
+  </tr>
+
+
+
+  <tr>
+    <td colspan="4" style="width: 100%; height: 20px; border-top: 1px solid black" ></td>
+    
+  </tr>
+
+
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 2px solid black; margin: 0px auto; border-top: none;">
+  <tr>
+    <td colspan="5" style="width: 60%;   border-right: 2px solid black;" ></td>
+    <td colspan="3" style="width: 30%;   border-right: 2px solid black; font-weight: bold; color: black; text-align: right;" >Total Taxable Amount</td>
+    <td colspan="1" style="width: 10%;   font-weight: bold; color: black;" > {{this.totalAmount}}</td>
+    
+    
+  </tr>
+  <!-- <tr>
+    <td colspan="5" style="width: 70%;  border-right: 2px solid black;" ></td>
+    <td colspan="3" style="width: 20%;  border-top: 1px solid black; border-right: 2px solid black; font-weight: bold; color: black; text-align: right;" ></td>
+    <td colspan="1" style="width: 10%;  border-top: 1px solid black; font-weight: bold; color: black; text-align: right;" >  10,692.00</td>
+    
+    
+  </tr> -->
+  <!-- <tr>
+    <td colspan="5" style="width: 70%; border-right: 2px solid black;" ></td>
+    <td colspan="3" style="width: 20%;  border-top: 1px solid black; border-right: 2px solid black; font-weight: bold; color: black; border-bottom: 2px solid black; text-align: right;" >Total</td>
+    <td colspan="1" style="width: 10%;  border-top: 1px solid black; font-weight: bold; color: black; border-bottom: 2px solid black; text-align: right;" > 70,092.00</td>
+    
+    
+  </tr> 
+  <tr>
+    <td colspan="9" style="width: 100%; height: 20px;" ></td>
+   
+    
+  </tr>
+
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 2px solid black; margin: 0px auto; border-top: none;">
+   <tr>
+     <td colspan="3" style="width: 100%; background-color: #bfbfbf; border-bottom: 2px solid black;">Terms & Conditions</td>
+   </tr>
+  <tr>
+     <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >1</td>
+     <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >INCO Terms:</td>
+     <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" ><p *ngFor="let inco of this.quoteData?.inco_terms">{{inco.value}}</p></td>
+   </tr>
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >2</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Payment Terms:</td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" ><p *ngFor="let pmt of this.quoteData?.payment_terms">{{pmt.value}}</p></td>
+   </tr> 
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >3</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >P&F:         </td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >   {{this.quoteData?.p_f}}</td>
+   </tr> 
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >4</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Freight: </td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >    {{this.quoteData?.freight}}</td>
+   </tr> 
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >5</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Other Charges: </td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >   {{this.quoteData?.other_charges}}</td>
+   </tr> 
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >6</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Delivery Period:</td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >{{this.quoteData?.deal_validity}}</td>
+   </tr> 
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >7</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Warranty: </td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >{{this.quoteData?.warrenty}}</td>
+   </tr> 
+
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >8</td>
+    <td colspan="1" style="width:35%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Quote Validity (days)</td>
+    <td colspan="1" style="width:60%; border: 2px solid black; border-top: none;" >{{this.quoteData?.deal_validity}}</td>
+   </tr>
+   
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >9</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Not Valid After: </td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >{{this.validDate}}</td>
+   </tr>
+   <tr>
+    <td colspan="1" style="width:5%; border: 2px solid black; border-top: none; text-align: center;" >10</td>
+    <td colspan="1" style="width:20%; border: 2px solid black; border-top: none; border-right: 2px solid red;" >Other Remarks:  </td>
+    <td colspan="1" style="width:75%; border: 2px solid black; border-top: none;" >{{this.quoteData?.remark}}</td>
+   </tr>
+
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 2px solid black; margin: 0px auto; border-top: none;">
+  <tr>
+    <td colspan="9" style="width: 100%; height: 50px; border-top: none; border-right: 2px solid black;" ></td>
+   
+ 
+  </tr>
+  <tr>
+    <td colspan="9" style="width: 100%; font-weight: bold; border-top: none;" >E&OE</td>
+   
+ 
+  </tr>
+  <tr>
+    <td colspan="9" style="width: 100%; font-weight: bold;" >Deliveries subject to Force Maejure.</td>
+   
+ 
+  </tr>
+  <tr>
+    <td colspan="9" style="width: 100%; font-weight: bold; border-top: 2px solid black; border-bottom:1px solid black; text-align: center; padding: 5px;" >Note: This is a computer generated quotation and does not require any signature</td>
+   
+ 
+  </tr>
+ 
+  
+
+ </table>
+  
+ <table class="table table-bordered table-cls-IR" style="width: 650px; border: 2px solid black; margin: 0px auto; border-top: none;">
+   <tr>
+    <td colspan="3" style="width: 100%; font-weight: bold; text-align: left; " >Authorized Dealers:</td>
+   
+ 
+  </tr> 
+  <tr>
+    <td ><img src="assets/img/IR.PNG"/></td>
+    <td ><img src="assets/img/URYU.PNG"/></td>
+    <td ><img src="assets/img/TOH.PNG"/></td>
+   
+ 
+  </tr>
+ </table>
+</body>
+</html> -->
+
+
+
+
+
+<html>
+  <head>
+    <style>
+      body{
+        color: black !important;
+      }
+      .table-cls tr td{
+        padding: 5px;
+        font-weight: bold !important;
+        
+      }
+      .table-cls-IR img{
+        width: 100%;
+      }
+      .table-cls-xs tr td{
+        padding: 3px;
+      }
+      td {
+        font-size: 11px;
+      }
+      .custom-name td{
+      	font-weight: bold
+      }
+	  .pnumatic-impact td{
+	    border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		border-left: 1px solid black;
+	  }
+	  .terms-conditions td{
+	    border: none;
+		border-bottom: 1px solid black;
+	  }
+
+    @media print {
+            .pagebreak {
+                page-break-before: always;
+            }
+
+            * {
+                color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+
+                hr {
+                    border-top: 1px solid;
+                    border-color: #0000
+                    border-width: 1px;
+                    margin-bottom: 43px;
+                }
+
+                .print-btn-none {
+                    display: none !important;
+                }
+
+                body {
+                    font-size: 18px !important;
+                }
+
+                #spacer {
+                    height: 18em;
+                }
+
+               
+                #footer {
+                    position: fixed;
+                    bottom: 0;
+                    width: 100%;
+                    /* border: 1px solid #f5f5f5;*/
+                    padding: 5px;
+                }
+
+                .table-bordered>tbody>tr>td,
+                .table-bordered>thead>tr>th {
+                    border: 1px solid #000 !important;
+                }
+
+                p.head-contact {
+                    font-size: 10px;
+                }
+
+                td.rupees-word {
+                    font-size: 10px !important;
+                    color: #ffffff !important;
+                }
+
+                td.price-gst {
+                    font-size: 10px !important;
+                }
+
+                td.computer-generated {
+                    font-size: 10px !important;
+                }
+
+                table>tbody>tr>td {
+                    font-size: 15px !important;
+                }
+
+                #footer2 {
+                    position: fixed;
+                    bottom: 0;
+                    width: 100%;
+                    /*border: 1px solid #f5f5f5;*/
+                    padding: 5px;
+                }
+
+                .no-print {
+                    display: none;
+                }
+
+                #wrapper {
+                    max-width: 800px;
+                    width: 100%;
+                    min-width: 200px;
+                    margin: 0 auto;
+                    border: none;
+                }
+
+                .no-border {
+                    border: none !important;
+                }
+
+                .border-bottom {
+                    border-bottom: 1px solid #eee !important;
+                }
+
+                .table>tbody>tr>td {
+                    border: none;
+                }
+
+                .spacer-print-40 {
+                    height: 40px;
+                }
+
+            }
+
+            @media print {
+                .print-btn-none {
+                    display: none !important;
+                }
+            }
+	  
+    </style>
+    
+  </head>
+  
+<body>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto;">
+  <tr style="display: flex;justify-content: space-between;">
+    <td><button onclick="window.print();" class="btn btn-primary no-print print-btn-none"><i class="fa fa-print"
+                aria-hidden="true"></i> Print</button>
+    </td>
+
+    <td><button [routerLink]="['/quote']" class="btn btn-danger  no-print print-btn-none">Back</button></td>
+
+</tr>
+  <tr>
+    <td colspan="9" style="width: 100%;"><img src="assets/img/DIYA.PNG"/></td>
+   </tr>
+   <tr>
+   <td colspan="1" style="width: 10%; color: black;">Bill From:</td>
+    <td colspan="7" style="width: 50%; color: black;">{{this.branchData?.branch_name}}</td>
+     
+   </tr>
+   <tr>
+
+    <td colspan="1" style="width: 10%; color: black;">Address:</td>
+    <td colspan="1" style="width: 50%; color: black;">{{this.branchData?.address1}} {{this.branchData?.address2}} {{this.branchData?.address3}} {{this.branchData?.state}} {{this.branchData?.country}} {{this.branchData?.zipcode}}</td>
+      <td colspan="6" style="width: 40%;  border: 1px solid black;  font-weight: bold; background-color: #bfbfbf; color: black; border-right: none;" >Contact person for this Offer:</td>
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 10%;">E-Mail:</td>
+    <td colspan="1" style="width: 50%;">info@diyatechnologies.co.in</td>
+    <td colspan="1" style="width: 10%; border-left: 1px solid black; border-right: 1px solid red;">Name</td>
+    <td colspan="6" style="width: 30%; border-bottom: none;  ">{{this.salesPersonData?.username}}</td>
+   
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 10%;">GSTN:</td>
+    <td colspan="1" style="width: 50%;">{{this.branchData?.branch_gst}}</td>
+    <td colspan="1" style="width: 10%; border-left: 1px solid black; border-right: 1px solid red;">Mail-ID</td>
+    <td colspan="6" style="width: 30%;   ">{{this.salesPersonData?.email}}</td>
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 10%;">Website:</td>
+    <td colspan="1" style="width: 50%;">www.diyatechnologies.in</td>
+    <td colspan="1" style="width: 10%; border-left: 1px solid black;  border-right: 1px solid red;">Mobile.no</td>
+    <td colspan="6" style="width: 30%;   ">{{this.salesPersonData?.mobile}}</td>
+  </tr>
+ </table>
+ <table class="table table-bordered table-cls-xs" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+   <tr>
+    <td colspan="4" style="width: 100%; height: 20px;"></td>
+   </tr>
+   <tr>
+    <td colspan="4" style="width: 100%; text-align: center; font-weight: bold; border-top: 1px solid black; border-bottom: 1px solid black; background-color: #bfbfbf;">QUOTATION</td>
+  
+  </tr>
+  <tr>
+    <td colspan="4" style="width: 100%; height: 20px;"></td>
+  
+  </tr>
+  <tr>
+    <td colspan="1" style="width: 30%; font-weight: bold; border-right: 1px solid red; border-top:1px solid ;">Quotation Reference No.</td>
+    <td colspan="1" style="width: 35%; font-weight: bold; border-top:1px solid black; border-right:1px solid black">{{this.quoteData?.quote_id}}</td>
+    <td colspan="1" style="width: 20%; font-weight: bold;  border-top:1px solid black; border-right: 1px solid black;">Quotation Date:</td>
+    <td colspan="1" style="width: 15%; font-weight: bold; border-top:1px solid black;">{{this.quoteDate}}</td>
+  
+  </tr>
+  <tr class="custom-name">
+    <td colspan="1" style="width: 20%; font-weight: bold; border-right: 1px solid red; border-top:1px solid black">Customer Name:</td>
+    <td colspan="3" style="width: 80%;  border-top:1px solid black; ">{{this.companyData?.company_name}}</td>
+    
+  </tr>
+  <tr class="custom-name">
+    <td colspan="1" style="width: 20%; font-weight: bold; border-right: 1px solid red; border-top:1px solid black">Customer Address: </td>
+    <td colspan="3" style="width: 80%;  border-top:1px solid black; ">{{this.companyData?.address1}} {{this.companyData?.address2}} {{this.companyData?.address3}} {{this.companyData?.country}} {{this.companyData?.zip_code}} </td>
+    
+  </tr>
+  <tr class="custom-name">
+    <td colspan="1" style="width: 20%; font-weight: bold; border-right: 1px solid red; border-top:1px solid black">Buyer Name:</td>
+    <td colspan="1" style="width: 50%;  border-top:1px solid black; border-right:1px solid black">{{this.contactData?.contact_name}}</td>
+    <td colspan="1" style="width: 15%; font-weight: bold;  border-top:1px solid black; border-right: 1px solid black;">Contact No.:</td>
+    <td colspan="1" style="width: 15%; border-top:1px solid black;">{{this.contactData?.mobile_no}}</td>
+  
+  </tr>
+  <tr class="custom-name">
+    <td colspan="1" style="width: 30%; font-weight: bold; border-right: 1px solid red; border-top:1px solid black">Application / Project:    </td>
+    <td colspan="3" style="width: 70%;  border-top:1px solid black;">{{this.quoteData?.quote_title}}</td> 
+  </tr>
+  <tr>
+    <td colspan="4" style="width: 100%; height: 20px; border-top: 1px solid black" ></td>
+    
+    
+  </tr>
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+  <tr>
+    <td colspan="1" style="width: 5%; border-top: none; background-color: #bfbfbf; padding: 5px; border-bottom: 1px solid black;">Sr No</td>
+    <td colspan="1" style="width: 25%;border-top: none; border-left:1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Product Description</td>
+   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">GST %</td>
+   <td colspan="1" style="width: 5%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf;border-bottom: 1px solid black;">Qty</td>
+ 
+   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">UOM</td>
+   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Unit Rate</td>
+   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Disc</td>
+   <td colspan="1" style="width: 15%;  border-top: none;  border-left: 1px solid black;background-color: #bfbfbf;border-bottom: 1px solid black;">Net Unit Rate</td>
+   <td colspan="1" style="width: 10%;  border-top: none;  border-left: 1px solid black;background-color: #bfbfbf; border-bottom: 1px solid black;">Amount</td>
+  </tr>
+  <tr *ngFor="let prod of this.quoteData?.product_services,index as i" class="pnumatic-impact">
+    <td colspan="1" style="width: 5%;  border: none;  padding: 5px; text-align: center; border-bottom: 1px solid black;">{{i+1}}</td>
+    <td colspan="1" style="width: 25%; border-top: none; "> 
+      <p>{{prod.productname}}</p>
+      <!-- <p>{{prod.productname}}</p> -->
+      <p>HSN Code.: {{prod.HSNCode}}</p>
+      <!-- (2235TiMAX) -->
+      <!-- HSN Code.: 84671190</td> -->
+   <td colspan="1" style="width: 10%;  border-top: none; ">{{prod.GST}}</td>
+   <td colspan="1" style="width: 5%;  border-top: none;">{{prod.quantity}}</td>
+ 
+   <td colspan="1" style="width: 10%; border-top: none; ">{{prod.UOM}}</td>
+   <td colspan="1" style="width: 10%;  border-top: none; "> {{prod.UnitPrice}}</td>
+   <td colspan="1" style="width: 10%; border-top: none; ">{{prod.discount}}%</td>
+   <td colspan="1" style="width: 15%;  border-top: none; ">{{prod.UnitPrice}}</td>
+   <td colspan="1" style="width: 10%;  border-top: none; text-align: right; ">{{prod.amount}}</td>
+  </tr>
+
+
+  <tr class="pnumatic-impact">
+    <td colspan="1" style="width: 5%;  border: none;  padding: 5px; border-bottom:1px solid black;"></td>
+    <td colspan="1" style="width: 25%;  border-top: none; text-align: right; font-weight: bold; border-bottom:1px solid black;">TOTAL</td>
+   <td colspan="1" style="width: 10%;  border-top: none; border-bottom:1px solid black;"></td>
+   <td colspan="1" style="width: 5%;  border-top: none; border-bottom:1px solid black;">{{this.quantity}}</td>
+ 
+   <td colspan="1" style="width: 10%;  border-top: none; "></td>
+   <td colspan="1" style="width: 10%;  border-top: none; "> </td>
+   <td colspan="1" style="width: 10%;  border-top: none; "></td>
+   <td colspan="1" style="width: 15%;  border-top: none; "> </td>
+   <td colspan="1" style="width: 10%;  border-top: none; text-align: right; ">  {{this.totalAmount}}</td>
+  </tr>
+  <tr>
+    <td colspan="4" style="width: 100%; height: 20px; " ></td>
+    
+  </tr>
+
+
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+  <tr>
+    <td colspan="5" style="width: 60%;   border-right: 1px solid black;" ></td>
+    <td colspan="3" style="width: 30%;   border-right: 1px solid black; font-weight: bold; color: black; text-align: right;" >Total Taxable Amount</td>
+    <td colspan="1" style="width: 10%;   font-weight: bold; color: black;" > {{this.totalAmount}}</td>
+    
+    
+  </tr>
+  <!-- <tr>
+    <td colspan="5" style="width: 70%;  border-right: 1px solid black;" ></td>
+    <td colspan="3" style="width: 20%;  border-top: 1px solid black; border-right: 1px solid black; font-weight: bold; color: black; text-align: right;" >GST Tax</td>
+    <td colspan="1" style="width: 10%;  border-top: 1px solid black; font-weight: bold; color: black; text-align: right;" >  10,692.00</td>
+    
+    
+  </tr> -->
+  <!-- <tr>
+    <td colspan="5" style="width: 70%; border-right: 1px solid black;" ></td>
+    <td colspan="3" style="width: 20%;  border-top: 1px solid black; border-right: 1px solid black; font-weight: bold; color: black; border-bottom: 1px solid black; text-align: right;" >Total</td>
+    <td colspan="1" style="width: 10%;  border-top: 1px solid black; font-weight: bold; color: black; border-bottom: 1px solid black; text-align: right;" > 70,092.00</td>
+    
+    
+  </tr> -->
+  <tr>
+    <td colspan="9" style="width: 100%; height: 20px;" ></td>
+   
+    
+  </tr>
+
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+   <tr>
+     <td colspan="3" style="width: 100%; background-color: #bfbfbf; border-bottom: 1px solid black;">Terms & Conditions</td>
+   </tr>
+  <tr class="terms-conditions">
+     <td colspan="1" style="width:5%;  border-top: none; text-align: center; border-right: 1px solid black;" >1</td>
+     <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red; " >INCO Terms:</td>
+     <td colspan="1" style="width:75%; border-top: none; " ><p *ngFor="let inco of this.quoteData?.inco_terms">{{inco.value}}</p></td>
+   </tr>
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%; border-top: none; text-align: center; border-right: 1px solid black;" >2</td>
+    <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red;" >Payment Terms:</td>
+    <td colspan="1" style="width:75%;  border-top: none;" ><p *ngFor="let pmt of this.quoteData?.payment_terms">{{pmt.value}}</p></td>
+   </tr> 
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%; border-top: none; text-align: center; border-right: 1px solid black;" >3</td>
+    <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red;" >P&F:         </td>
+    <td colspan="1" style="width:75%; border-top: none;" >   {{this.quoteData?.p_f}}</td>
+   </tr> 
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%;  border-top: none; text-align: center;border-right: 1px solid black;" >4</td>
+    <td colspan="1" style="width:20%; border-top: none; border-right: 1px solid red;" >Freight: </td>
+    <td colspan="1" style="width:75%; border-top: none;" >    {{this.quoteData?.freight}}</td>
+   </tr> 
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%; border-top: none; text-align: center; border-right: 1px solid black;" >5</td>
+    <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red;" >Other Charges: </td>
+    <td colspan="1" style="width:75%;  border-top: none;" >   {{this.quoteData?.other_charges}}</td>
+   </tr> 
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%;  border-top: none; text-align: center; border-right: 1px solid black;" >6</td>
+    <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red;" >Delivery Period:</td>
+    <td colspan="1" style="width:75%;  border-top: none;" > {{this.quoteData?.delivery}}</td>
+   </tr> 
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%;  border-top: none; text-align: center; border-right: 1px solid black;" >7</td>
+    <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red;" >Warranty: </td>
+    <td colspan="1" style="width:75%;  border-top: none;" >{{this.quoteData?.warrenty}}</td>
+   </tr> 
+
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%; border-top: none; text-align: center; border-right: 1px solid black;" >8</td>
+    <td colspan="1" style="width:35%; border-top: none; border-right: 1px solid red;" >Quote Validity (days)</td>
+    <td colspan="1" style="width:60%;  border-top: none;" >{{this.quoteData?.deal_validity}}</td>
+   </tr>
+   
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%;  border-top: none; text-align: center; border-right: 1px solid black;" >9</td>
+    <td colspan="1" style="width:20%;  border-top: none; border-right: 1px solid red;" >Not Valid After: </td>
+    <td colspan="1" style="width:75%; border-top: none;" >{{this.validDate}}</td>
+   </tr>
+   <tr class="terms-conditions">
+    <td colspan="1" style="width:5%;  border-top: none; text-align: center; border-right: 1px solid black; border-bottom: none;" >10</td>
+    <td colspan="1" style="width:20%; border-bottom: none; border-top: none; border-right: 1px solid red;" >Other Remarks:  </td>
+    <td colspan="1" style="width:75%;  border-top: none; border-bottom: none;" >{{this.quoteData?.remark}}</td>
+   </tr>
+
+ </table>
+ <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+  <tr>
+    <td colspan="9" style="width: 100%; height: 50px; border-top: none;" ></td>
+   
+ 
+  </tr>
+  <tr>
+    <td colspan="9" style="width: 100%; font-weight: bold; border-top: none;" >E&OE</td>
+   
+ 
+  </tr>
+  <tr>
+    <td colspan="9" style="width: 100%; font-weight: bold;" >Deliveries subject to Force Maejure.</td>
+   
+ 
+  </tr>
+  <tr>
+    <td colspan="9" style="width: 100%; font-weight: bold; border-top: 1px solid black; 
+	text-align: center; padding: 5px;" >Note: This is a computer generated quotation and does not require any signature</td>
+   
+ 
+  </tr>
+ 
+  
+
+ </table>
+  
+ <table class="table table-bordered table-cls-IR" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+   <tr>
+    <td colspan="3" style="width: 100%; font-weight: bold; text-align: left; " >Authorized Dealers:</td>
+   
+ 
+  </tr> 
+  <tr>
+    <td ><img src="assets/img/IR.PNG"/></td>
+    <td ><img src="assets/img/URYU.PNG"/></td>
+    <td ><img src="assets/img/TOH.PNG"/></td>
+   
+ 
+  </tr>
+ </table>
+</body>
+</html>
