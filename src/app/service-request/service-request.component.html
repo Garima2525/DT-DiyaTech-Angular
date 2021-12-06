@@ -25,7 +25,7 @@
 
 
     <div class="wrapper-md" ng-controller="FormDemoCtr5">
-        <form  [formGroup]="serviceForm" (ngSubmit)="onFormSubmit()">
+        <form  [formGroup]="ServiceForm" (ngSubmit)="onFormSubmit()">
      
     
             <div class="row">
@@ -36,12 +36,12 @@
                    
                         <div class="col-md-4 form-group">  
                         <label >Service ID  </label> 
-                        <input type="text" class="form-control" formControlName="serice_id"  value={{this.serviceId}} [attr.disabled]=true>
+                        <input type="text" class="form-control" formControlName="service_id"  value={{this.serviceId}} [attr.disabled]=true>
                         </div>
 
                         <div class="col-md-4 form-group">  
                         <label >Service Type</label> 
-                        <select class="form-control" formControlName="serice_type" >
+                        <select class="form-control" formControlName="service_type" >
                             <option value="AMC">AMC</option>
                             <option value="FOC">FOC</option>
                             <option value="Paid">Paid</option>
@@ -51,7 +51,7 @@
         
                         <div class="col-md-4 form-group">  
                         <label >Service Location</label> 
-                        <select class="form-control" formControlName="serice_location">
+                        <select class="form-control" formControlName="service_location">
                                 <option value="On site">On site</option>
                                 <option value="Off site">Off site</option>
                         </select>
@@ -78,40 +78,45 @@
                             </select>
                             </div>
                      
+         <div class="form-group  col-md-4 ">
+          <label >Account </label>
+            <div class="input-group">
+              <span class="input-group-addon  " style="color:gray;font-size:20px;background:white; border-right:0px;"><i class="fa fa-building"></i></span>
+              <ng-multiselect-dropdown
+              [placeholder]="''"
+              [settings]="dropdownSettings"
+              [data]="accountData"
+              
+              (onSelect)="onItemSelect($event)"
+              >
+              </ng-multiselect-dropdown>
+          </div>
+          </div>
+
+          <div class="clearfix"></div>
+      
+        <div class="form-group  col-md-4 ">
+          <label>Contact  </label>
         
-                            
-                            
-        
-                                <div class="col-md-4 form-group">  
-                                    <label >Account </label> 
-                                    <select class="form-control" formControlName="account">
-                                      <option disabled>Select Comapny Name </option>
-                                      <option *ngFor="let objtrans of accountData" value={{objtrans._id}}> {{objtrans.company_name}} </option>
-                                          
-                                            
-                                    </select>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-4 form-group">  
-                                        <label >Account Info  <span class="text-danger">*</span></label> 
-                                        <select class="form-control" formControlName="account_info">
-                                            <option ></option>                              
-                                        </select>
-                                        </div>
-        
-                                        <!-- <div class="col-md-4 form-group">  
-                                            <label >Name </label> 
-                                            <input type="text" class="form-control" formControlName="Name">
-                                            </div>
-                                        <div class="clearfix"></div> -->
-                                        
-                                        <div class="col-md-4 form-group">  
+            <div class="input-group">
+              <span class="input-group-addon  " style="color:gray;font-size:20px;background:white;border-radius: 0px; border-right:0px;"><i class="fa fa-user"></i></span>
+              <ng-multiselect-dropdown
+              [placeholder]="''"
+              [settings]="contactDropdownSettings"
+              [data]="contactTempData"
+              formControlName="account_info"
+              (onSelect)="onContactSelect($event)"
+              [(ngModel)]="selectedCompany"
+              >
+              </ng-multiselect-dropdown>
+             
+          </div>
+          </div>
+           
+         <div class="col-md-4 form-group">  
                                             <label >Contact Person Name <span class="text-danger">*</span></label> 
                                             <input type="text" class="form-control" formControlName="person_name">
-                                            </div>
-        
-        
-                                           
+      </div>
         
                                               <div class="clearfix"> </div> 
         
@@ -121,7 +126,7 @@
                                                     <label>Add Service</label>
                                                   <div *ngFor="let service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group"  >
                                     
-                                                    <input  (blur)="handleBlurservice($event,i)"   value={{service.value}} type="text" class="form-control"  >
+                                                    <input  (blur)="handleBlurservice($event,i)"   value={{service.value}} type="text" class="form-control" formControlName="add_service"  >
                                                     <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                                   </div>
                                                 </div>
@@ -156,50 +161,51 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12">
-                  <div class="panel panel-default">
-                  
-                    <div class="panel-body">
-                      <div class="col-md-12">
-                        <div class="col-md-10 ">
-                       <b> Attachment</b>
-                       </div>
-                       <div  style="text-align: right;padding-right:18px;">
-                        <b onclick="$('#file').click()" style="cursor: pointer;">Attach <i class="fa fa-paperclip " aria-hidden="true"></i></b>
-                            <input accept="application/pdf,image/*" type="file"  formControlName="attachments" style="font-size:12px; border-right:0px;display: none;" >
-                        </div>
-                       </div>
-                      <br>
-                      <br>
-                      <div class="row">
-                      <div class="col-md-12"  style="padding:0px;">   
-                       <table class="table">
-                       <thead>
-                                        <tr style="background:#FFE5E5; ">
-                                            <th>File Name</th>
-                                            <th>Attach By </th>
-                                            <th>Date added</th>
-                                            <th>Size</th>
-                                            <th></th>
-                                         
-                                        </tr>
-                                        <tr><th>
-                                          <!-- <a href="" style="color:blue">{{file.name}}</a></th> -->
-                                          <p  style="color:blue"></p></th> 
-                                          <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th><i class="fa fa-pencil-square-o " aria-hidden="true"></i>
-                                            <i  class="fa fa-trash"  aria-hidden="true"></i></th>
-                                            </tr>
-                                    </thead>
-                       </table>
-                      </div>
-                      </div>
-                      </div>
-            </div>
-            </div>
+              <div class="col-sm-12">
+                <div class="panel panel-default">
+                
+                  <div class="panel-body">
+                    <div class="col-md-12">
+                      <div class="col-md-10 ">
+                     <b> Attachment</b>
+                     </div>
+                     <div  style="text-align: right;padding-right:18px;">
+                      <!--  <input type="file" style="display: inline;">  -->
+                      <b onclick="$('#file').click()" style="cursor: pointer;">Attach <i class="fa fa-paperclip " aria-hidden="true"></i></b>
+                      <input accept="application/pdf,image/*" type="file" (change)="handleUpload($event)" multiple encType="multipart/form-data" class="form-control " placeholder="Uplode your Company Logo" id="file" formControlName="attach_file" style="font-size:12px; border-right:0px;display: none;" >
+                      <!-- <span class="input-group-addon " style="border:0px;color: #58666e; font-size:15px;background:white;"><a onclick="$('#file').click()" style="color:blue;text-decoration: underline;">Attach <i class="fa fa-paperclip " aria-hidden="true"></i></a></span> -->
+                    </div>
+                     </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                    <div class="col-md-12"  style="padding:0px;">   
+                     <table class="table">
+                     <thead>
+                                      <tr style="background:#FFE5E5; ">
+                                          <th>File Name</th>
+                                          <th>Attached By </th>
+                                          <th>Date added</th>
+                                          <th>Size</th>
+                                          <th>Action</th>
+                                       
+                                      </tr>
+                                      <tr *ngFor=" let file of files_url,index as i"><th >
+                                        <p  style="color:blue">{{file.name}}</p></th>
+                                          <th>{{file.attached_by}}</th>
+                                          <th>{{file.upload_date}}</th>
+                                          <th>{{file.size}}</th>
+                                          <th>
+                                          <i (click)="removeAttachment(i)" style="cursor:pointer;" class="fa fa-trash"  aria-hidden="true"></i></th>
+                                          </tr>
+                                  </thead>
+                     </table>
+                    </div>
+                    </div>
+                    </div>
           </div>
+          </div>
+        </div>
 
           <div class="row">
             <div class="col-sm-12">

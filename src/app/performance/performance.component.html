@@ -1,0 +1,164 @@
+<app-header ></app-header>
+<app-sidenav ></app-sidenav>
+<div id="content" class="app-content" role="main">
+    <div class="app-content-body ">
+      <div class="top">
+      
+        <div class="row t-main">
+    <div class="col-sm-6 col-xs-12 t-main-1">
+      <h4 class="m-n  t-main1">Performance</h4>
+    </div>
+    <div class="col-sm-6 text-right poppins">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb t-main">
+            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Dashboard</li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Performance</li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Performance View List</li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;">Create New Performance </li>
+          </ol>
+        </nav>
+      </div>
+  </div>
+  </div>
+     
+
+
+
+    <div class="wrapper-md" ng-controller="FormDemoCtr5">
+        <form [formGroup]="Perform" (ngSubmit)="onFormSubmit()">
+     
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Performance</div> 
+                    <div class="panel-body">
+                   
+                        <div class="col-md-4 form-group">  
+                        <label >Create Goal ID </label> 
+                        <input type="text" class="form-control" formControlName="goal_id"  value={{this.performanceId}} [attr.disabled]=true>
+                        </div>
+
+                        <div class="col-md-4 form-group">  
+                            <label >Industry </label> 
+                            <input type="text" class="form-control" formControlName="industry"  >
+                            </div>
+        
+                            <div class="col-md-4 form-group">  
+                                <label >Employee </label> 
+                                <input type="text" class="form-control" formControlName="employee"  >
+                                </div>
+            
+         <div class="clearfix"></div>
+
+
+         <div class="col-md-4 form-group">  
+            <label >Goal Type </label> 
+            <select class="form-control" formControlName="goal_type">
+                <option value="" disabled> Select Goal Type</option>
+                <option value="Revenue">Revenue</option>
+                <option value="Learning">Learning</option>
+            </select>
+            </div>
+                      
+            <div class="col-md-4 form-group">  
+                <label >Goal Name </label> 
+                <input type="text" class="form-control" formControlName="goal_name"  >
+                </div>
+
+                <div class="col-md-4 form-group">  
+                    <label >Weightage</label> 
+                    <input type="text" class="form-control" formControlName="weightage"  >
+                    </div>
+
+                <div class="clearfix"></div>
+    
+                <div class="col-md-4 form-group">  
+                    <label >Duration</label> 
+                    <select class="form-control" formControlName="duration">
+                        <option value="" disabled> Select Duration</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="Yearly">Yearly</option>
+                        <option value="Custom">Custom</option>
+                    </select>
+                    </div>
+
+                                                
+                                            
+                             
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Lead</div> 
+                    <div class="panel-body">
+                   
+                        <div class="col-md-6 form-group">  
+                        <label >Lead Quantity</label> 
+                        <input type="text" class="form-control" formControlName="lead_quantity">
+                        </div>
+
+                        <div class="col-md-6 form-group">  
+                            <label >Lead Value</label> 
+                            <input type="text" class="form-control" formControlName="lead_value">
+                            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading font-bold">Quote</div> 
+                  <div class="panel-body">
+                 
+                      <div class="col-md-6 form-group">  
+                      <label >Quote Quantity</label> 
+                      <input type="text" class="form-control" formControlName="quote_quantity">
+                      </div>
+
+                      <div class="col-md-6 form-group">  
+                          <label >Quote Value</label> 
+                          <input type="text" class="form-control" formControlName="quote_value">
+                          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-default">
+                <div class="panel-heading font-bold">Deal</div> 
+                <div class="panel-body">
+               
+                    <div class="col-md-6 form-group">  
+                    <label >Deal Quantity</label> 
+                    <input type="text" class="form-control" formControlName="deal_quantity">
+                    </div>
+
+                    <div class="col-md-6 form-group">  
+                        <label >Quote Value</label> 
+                        <input type="text" class="form-control" formControlName="deal_value">
+                        </div>
+        </div>
+        </div>
+        </div>
+        </div>  
+
+          <div  style="text-align: right; margin:10px 0px;margin-right:16px;" >
+            <button class="btn btn-dark" ><a >Cancel</a></button>
+            <button type="submit"  class="btn btn-danger" [disabled]="isValidbutton" (click)="saveform('save')">Save</button>
+           
+            </div>
+        </form>
+        
+          <!-- End content3 -->
+    </div>
+    </div>

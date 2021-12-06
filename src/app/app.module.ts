@@ -67,6 +67,9 @@ import { ProductsListComponent } from './listview/products-list/products-list.co
 import { NewProductsListComponent } from './listview/new-products-list/new-products-list.component';
 import { NewGroupListComponent } from './listview/new-group-list/new-group-list.component';
 import { ServiceRequestComponent } from './service-request/service-request.component';
+import { ServiceRequestListComponent } from './listview/service-request-list/service-request-list.component';
+import { PerformanceComponent } from './performance/performance.component';
+import { PerformanceListComponent } from './listview/performance-list/performance-list.component';
 
 
 @NgModule({
@@ -109,7 +112,10 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
     ProductsListComponent,
     NewProductsListComponent,
     NewGroupListComponent,
-    ServiceRequestComponent
+    ServiceRequestComponent,
+    ServiceRequestListComponent,
+    PerformanceComponent,
+    PerformanceListComponent
   ],
   imports: [
     DataTablesModule,
