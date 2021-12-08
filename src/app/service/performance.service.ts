@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceRequestService {
+export class PerformanceService {
 
+  base_url: any = 'http://localhost:3159/dt/performance';
   constructor(private http: HttpClient) {}
-  base_url = 'http://localhost:3159/dt';
 
   submitForm(data: any) {
-    let api_url = this.base_url + '/service';
+    let api_url = this.base_url;
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json;charset=UTF-8',
@@ -18,8 +18,9 @@ export class ServiceRequestService {
     };
     return this.http.post(api_url, data, httpOptions);
   }
-  getallservice() {
-    let api_url = this.base_url + '/service/getallservice';
+
+  getall() {
+    let api_url = this.base_url + '/getall';
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json;charset=UTF-8',
@@ -28,4 +29,6 @@ export class ServiceRequestService {
     };
     return this.http.get(api_url, httpOptions);
   }
+
 }
+

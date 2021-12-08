@@ -42,6 +42,7 @@
                         <div class="col-md-4 form-group">  
                         <label >Service Type</label> 
                         <select class="form-control" formControlName="service_type" >
+                          <option value="" disabled> Service Type</option>
                             <option value="AMC">AMC</option>
                             <option value="FOC">FOC</option>
                             <option value="Paid">Paid</option>
@@ -52,6 +53,7 @@
                         <div class="col-md-4 form-group">  
                         <label >Service Location</label> 
                         <select class="form-control" formControlName="service_location">
+                          <option value="" disabled>Select Service Location</option>
                                 <option value="On site">On site</option>
                                 <option value="Off site">Off site</option>
                         </select>
@@ -61,7 +63,7 @@
                      <div class="col-md-4 form-group">  
                         <label >Priority</label> 
                         <select class="form-control" formControlName="priority">
-                                <option value="Low" selected>Low</option>
+                          <option value="Low" disabled> Low</option>
                                 <option value="Medium">Medium</option>
                                 <option value="High">High</option>
                                 <option value="Urgent">Urgent</option>
@@ -71,6 +73,7 @@
                         <div class="col-md-4 form-group">  
                             <label >Source Type</label> 
                             <select class="form-control" formControlName="source_type">
+                              <option value="" disabled>Select Source Type</option>
                                     <option >Call</option>
                                     <option>E Mail</option>
                                     <option >Message</option>

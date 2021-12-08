@@ -183,7 +183,7 @@
 
           <kendo-menu>
             <kendo-menu-item icon="gear">
-              <kendo-menu-item *ngIf="userPermission?.quoteedit">
+              <kendo-menu-item icon="edit" *ngIf="userPermission?.quoteedit">
                 <ng-template  kendoMenuItemTemplate >
                   <div  [routerLink]="['/edit-quote',quote.quote_id]" style="width: 100%;"  >
                     Edit
@@ -191,7 +191,7 @@
                 </ng-template>
               </kendo-menu-item>
 
-              <kendo-menu-item *ngIf="userPermission?.quoteverifier && !quote.verified">
+              <kendo-menu-item icon="check" *ngIf="userPermission?.quoteverifier && !quote.verified">
                 <ng-template  kendoMenuItemTemplate >
                   <div  style="width: 100%;" (click)="handleVerify(quote._id)">
                     Verify
@@ -200,7 +200,7 @@
               </kendo-menu-item>
 
 
-              <kendo-menu-item *ngIf="userPermission?.quoteapprover && !quote.aprroved">
+              <kendo-menu-item icon="track-changes-accept-all" *ngIf="userPermission?.quoteapprover && !quote.aprroved">
                 <ng-template  kendoMenuItemTemplate >
                   <div  style="width: 100%;" (click)="handleApprove(quote._id)" >
                     Approve
@@ -225,7 +225,7 @@
                   </div>
                 </ng-template>
               </kendo-menu-item> -->
-              <kendo-menu-item *ngIf="quote.aprroved && userPermission?.convertquotetodeal" >
+              <kendo-menu-item icon="change-manually" *ngIf="quote.aprroved && userPermission?.convertquotetodeal" >
                 <ng-template kendoMenuItemTemplate >
                   <div style="width: 100%;" [routerLink]="['/edit-quote',quote.quote_id]">
                     Convert to Deal
@@ -240,7 +240,7 @@
                 </ng-template>
               </kendo-menu-item> -->
               <!-- <kendo-menu-item   url="" text="Download Excel" > </kendo-menu-item> -->
-              <kendo-menu-item *ngIf="userPermission?.quoteview && quote.aprroved">
+              <kendo-menu-item icon="preview" *ngIf="userPermission?.quoteview && quote.aprroved">
                 <ng-template  kendoMenuItemTemplate >
                   <div   >
                     <a href="/view-quote/{{quote.quote_id}}" target="_blank">View Quote</a>

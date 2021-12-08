@@ -140,8 +140,8 @@
                     <div class="col-md-6">
                       <label class="control-label font-weight-600">&nbsp;</label>
                       <div class="form-group">
-                          <button type="button"  class="btn btn-default" id="closemodal" data-dismiss="modal">Cancel</button>
-                          <button type="submit" class="btn btn-sm m-b-xs w-xs btn-danger"  style="margin-right:1.5%"  *ngIf="buttondisabled">Save</button>
+                          <button type="button"  class="btn btn-dark"  id="closemodal" data-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-danger"  style="margin-left:1.5%"  *ngIf="buttondisabled">Save</button>
                        
                       </div>
                     </div>
@@ -178,8 +178,8 @@
         (input)="onFilter($event)"
         />
       <kendo-grid-spacer></kendo-grid-spacer>
-      <button *ngIf="this.userPermission.usercreate" class="btn m-b-xs btn-sm text-10 btn-danger btn-3d add-user-model" data-toggle="modal"
-          data-target="#exampleModalCenter" style="cursor: pointer;"><i class="fa fa-plus"></i> Add User</button>
+      <button *ngIf="this.userPermission.usercreate" class="button" data-toggle="modal"
+          data-target="#exampleModalCenter" style="cursor: pointer;"> Add User</button>
       <!-- <button kendoGridPDFCommand icon="file-pdf">Export to PDF</button> -->
       <!-- <button kendoGridExcelCommand type="button" icon="file-excel">
         Export to Excel

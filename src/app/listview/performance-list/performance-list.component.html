@@ -40,25 +40,38 @@
     </ng-template>
     
     
-      <kendo-grid-column field="service_type" title="Service Type" [width]="100">
-        <ng-template kendoGridCellTemplate let-dataItem>
-         
-          <div class="customer-name"># {{dataItem.disposal_id}}</div>
-         
-        </ng-template>
-      </kendo-grid-column>
-      <kendo-grid-column field="
-      service_location" title=" 
-      Service Location" [width]="100">
-      </kendo-grid-column>
- 
-      <kendo-grid-column field="priority" title="Priority " [width]="100">
-     </kendo-grid-column>
- 
-     <kendo-grid-column field="source_type" title="Source Type" [width]="100">
+    <kendo-grid-column  title="ID" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="customer-name" style="color: red;">{{ dataItem.goal_id }}</div>
+        <div class="customer-name" ><i class="fa fa-calendar-check-o" style="color:green;" aria-hidden="true"></i> : {{ dataItem.created_at|date:'dd-MM-yyyy' }}</div>
+        <!-- <div class="customer-name" ><i class="fa fa-calendar-plus-o" style="color:red;" aria-hidden="true"></i> : {{ dataItem.updated_at |date:'dd-MM-yyyy' }}</div> -->
+        
+      </ng-template>
+    </kendo-grid-column>
+     
+    <kendo-grid-column field="industry" title="Industry " [width]="100">
     </kendo-grid-column>
  
-     <kendo-grid-column
+    <kendo-grid-column field="employee" title="Employee " [width]="100">
+    </kendo-grid-column>
+
+    <kendo-grid-column  title="Goal Details" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="customer-name" >Type : {{ dataItem.goal_type }}</div>
+        
+        <div class="customer-name" >Name : {{ dataItem.goal_name }}</div>
+        
+      </ng-template>
+    </kendo-grid-column>
+
+
+    <kendo-grid-column field="weightage" title="Weightage" [width]="100">
+    </kendo-grid-column>
+
+    <kendo-grid-column field="duration" title="Duration" [width]="100">
+    </kendo-grid-column>
+ 
+     <!-- <kendo-grid-column
      title="Controls"
      [width]="100"
      [class]="{ 'text-center': true }"
@@ -74,7 +87,7 @@
        
       </kendo-menu>
      </ng-template>
-   </kendo-grid-column>
+   </kendo-grid-column> -->
   </kendo-grid>
   </div>
   </div>

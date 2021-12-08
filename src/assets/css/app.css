@@ -2051,15 +2051,15 @@ fieldset[disabled] .btn-danger.active {
   color: #8A8A8A;
 }
 
-.btn-dark:hover,
+/* .btn-dark:hover,
 .btn-dark:focus,
 .btn-dark:active,
 .btn-dark.active,
 .open .dropdown-toggle.btn-dark {
   color: #ffffff !important;
   background-color: #2f3342;
-  border-color: #292d39;
-}
+  border-color: #292d39; */
+/* } */
 
 .btn-dark:active,
 .btn-dark.active,

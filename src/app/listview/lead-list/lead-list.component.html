@@ -126,10 +126,10 @@
           <kendo-menu >
             <kendo-menu-item  icon="gear">
 
-              <kendo-menu-item  *ngIf="this.userPermission?.leadedit" url="/edit-lead/{{lead.lead_id}}"  text="Edit" > </kendo-menu-item>
+              <kendo-menu-item icon="edit" *ngIf="this.userPermission?.leadedit" url="/edit-lead/{{lead.lead_id}}"  text="Edit" > </kendo-menu-item>
               
               
-              <kendo-menu-item *ngIf="this.userPermission?.convertleadtoquote" url="/edit-lead/{{lead.lead_id}}"  text="Convert to Quote">
+              <kendo-menu-item icon="change-manually" *ngIf="this.userPermission?.convertleadtoquote" url="/edit-lead/{{lead.lead_id}}"  text="Convert to Quote">
                 <!-- <ng-template kendoMenuItemTemplate >
                   <div type="hidden" data-toggle="modal" d       ata-target="#exampleModal3" >
                     Convert to Quote

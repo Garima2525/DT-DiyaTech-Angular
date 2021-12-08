@@ -162,7 +162,7 @@
           </div> -->
           <kendo-menu>
             <kendo-menu-item icon="gear">
-              <kendo-menu-item  *ngIf="userPermission?.dealedit">
+              <kendo-menu-item icon="edit" *ngIf="userPermission?.dealedit">
                 <ng-template kendoMenuItemTemplate >
                   <div [routerLink]="['/edit-deal',quote.deal_id]" style="width: 100%;">
                     Edit
@@ -170,7 +170,7 @@
                 </ng-template>
               </kendo-menu-item>
 
-              <kendo-menu-item *ngIf="userPermission?.dealverifier && !quote.verified" >
+              <kendo-menu-item icon="check" *ngIf="userPermission?.dealverifier && !quote.verified" >
                 <ng-template kendoMenuItemTemplate >
                   <div (click)="handleVerify(quote._id)" style="width: 100%;">
                     Verify
@@ -179,7 +179,7 @@
               </kendo-menu-item>
 
               
-              <kendo-menu-item *ngIf="userPermission?.dealapprover && !quote.aprroved">
+              <kendo-menu-item  icon="track-changes-accept-all" *ngIf="userPermission?.dealapprover && !quote.aprroved">
                 <ng-template kendoMenuItemTemplate >
                   <div  (click)="handleApprove(quote._id)" style="width: 100%;">
                     Approve
@@ -217,7 +217,7 @@
               </kendo-menu-item> -->
               <!-- <kendo-menu-item   url="" text="Download Excel" > </kendo-menu-item> -->
              
-              <kendo-menu-item *ngIf="userPermission?.dealview && quote.aprroved"> 
+              <kendo-menu-item  icon="eye" *ngIf="userPermission?.dealview && quote.aprroved"> 
                 <ng-template kendoMenuItemTemplate >
                   <div >
                     <a [routerLink]="['/view-deal',quote.deal_id]" target="_blank">

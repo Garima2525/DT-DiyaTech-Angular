@@ -359,12 +359,12 @@ export class ServiceRequestComponent implements OnInit {
       this.serviceS.submitForm(this.ServiceForm.value).subscribe((data) => {
         console.log(data);
         this.Toaster.showSuccess(
-          'Congratulation!'
+          'Congratulation!, Service has been created.'
         );
         if (this.saveas == 'save') {
           console.log(this.saveas);
           setTimeout(() => {
-           
+            this.Route.navigate(['/service-request-list']);
           }, 5000);
         } else {
           console.log(this.saveas);

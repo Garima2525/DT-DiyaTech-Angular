@@ -222,7 +222,15 @@ li.multiselect-item-checkbox div {
     font-weight: unset !important;
     font-size: 13px;
 }
-
+/* .btn:hover {
+    color: #8A8A8A !important;
+    text-decoration: none;
+} */
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+    color: #ffffff !important;
+    background-color: #6254b2 !important;
+    border-color: #5a4daa !important;
+}
 .add-group{
     border: 1px solid red;
     color: red;

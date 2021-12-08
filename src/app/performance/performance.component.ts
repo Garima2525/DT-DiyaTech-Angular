@@ -5,7 +5,8 @@ import { TosterService } from '../service/toster.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import Swal from 'sweetalert2';
-
+import { AccountService } from '../service/account.service';
+import { PerformanceService } from '../service/performance.service';
 @Component({
   selector: 'app-performance',
   templateUrl: './performance.component.html',
@@ -19,12 +20,15 @@ export class PerformanceComponent implements OnInit {
   Perform!: FormGroup;
   saveas: any = true;
   isValidbutton: any;
+  industrydata:any;
   isValidFormSubmitted: any;
   constructor(
     private form: FormBuilder,
     private Toaster: TosterService,
     private Route: Router,
-    private Auth:AuthService
+    private Auth:AuthService,
+    private industry:AccountService,
+    private Performance:PerformanceService
   ) { }
 
 
@@ -35,7 +39,11 @@ export class PerformanceComponent implements OnInit {
       console.log(logindata);
       this.login_id=logindata.result._id
     })
-
+    this.industry.getAllAccount().subscribe((data:any)=>{
+      this.industrydata=data
+      console.log(data)
+    })
+    
     let number = Math.random() // 0.9394456857981651
     number.toString(36); // '0.xtis06h6'
     var id = number.toString(36).substr(2, 9);
@@ -82,23 +90,23 @@ onFormSubmit() {
     this.isValidbutton = true;
     this.Perform.value.user_id = this.login_id;
     
-    // this.serviceS.submitForm(this.ServiceForm.value).subscribe((data) => {
-      // console.log(data);
-      // this.Toaster.showSuccess(
-      //   'Congratulation!'
-      // );
-      // if (this.saveas == 'save') {
+    this.Performance.submitForm(this.Perform.value).subscribe((data) => {
+      console.log(data);
+      this.Toaster.showSuccess(
+        'Congratulation!, Performance has been created.'
+      );
+      if (this.saveas == 'save') {
         console.log(this.saveas);
         setTimeout(() => {
-         
+          this.Route.navigate(['/performance-list']);
+        }, 1000);
+      } else {
+        console.log(this.saveas);
+        setTimeout(() => {
+          window.location.reload();
         }, 5000);
-    //   } else {
-    //     console.log(this.saveas);
-    //     setTimeout(() => {
-    //       window.location.reload();
-    //     }, 5000);
-    //   }
-    // });
+      }
+    });
   }
 }
 }
