@@ -1077,6 +1077,7 @@ return data
       inco_terms:'',
       payment_terms:'',
       p_f:this.dealData?.p_f?this.dealData?.p_f:'',
+      p_t:this.dealData?.p_t?this.dealData?.p_t:'',
       freight:this.dealData?.freight?this.dealData?.freight:'',
       taxes:this.dealData?.taxes?this.dealData?.taxes:'',
       other_charges:this.dealData?.other_charges?this.dealData?.other_charges:'',

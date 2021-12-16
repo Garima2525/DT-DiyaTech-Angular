@@ -1081,6 +1081,7 @@ return data
       inco_terms:'',
       payment_terms:'',
       p_f:'',
+      p_t:'',
       freight:'',
       taxes:'',
       other_charges:'',

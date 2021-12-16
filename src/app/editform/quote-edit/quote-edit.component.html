@@ -692,29 +692,38 @@
     <!--end -->        
   
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading font-bold">INCO Terms</div> 
-        <div class="panel-body">
-      
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading font-bold">INCO Terms</div> 
+          <div class="panel-body">
+        
+            <!-- <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
+                <div class="col-md-12" >
+                  <div *ngFor="let term of incoTerm; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
   
-          <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
-              <div class="col-md-12" >
-                <div *ngFor="let term of incoTerm; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
-
-                  <input  (blur)="handleBlurIncoTerm($event,i)"  value={{term.value}} type="text" class="form-control" placeholder="Input Term" >
-                  <span (click)="handleDeleteIncoTerm(i)" style="cursor: pointer;" class="input-group-addon">X</span>
+                    <input  (blur)="handleBlurIncoTerm($event,i)"  value={{term.value}} type="text" class="form-control" placeholder="Input Term" >
+                    <span (click)="handleDeleteIncoTerm(i)" style="cursor: pointer;" class="input-group-addon">X</span>
+                  </div>
                 </div>
-              </div>
-              <div class="input-group-addon "  (click)="handleAddIncoTerm()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer;">+</div>
-            </div>
-          </div>    
-  
-            
-  </div>
-  </div>
-  </div>
+                <div class="input-group-addon "  (click)="handleAddIncoTerm()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer;">+</div>
+              </div> -->
+              <div class="col-md-12 form-group">  
+              
+                <select formControlName="p_f" id="p_f" class="form-control"  >
+                  <option value="" selected disabled>Select INCO TERMS   </option>
+                  <option value="DOD - Door delivery to your plant">DOD - Door delivery to your plant</option>
+                  <option value="FOB Lucknow">FOB Lucknow</option>
+                  <option value="FOB Rudrapur">FOB Rudrapur</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div> 
+            </div>    
+    
+              
+    </div>
+    </div>
+    </div>
   <!-- End content11-->
                    
   <!------end content12-->
@@ -733,7 +742,7 @@
             <div (click)="handleAddPmtTerm()" style="cursor: pointer; color:red;font-size:20px;background:white;border-radius: 0px;">+</div>
             </div> -->
             
-            <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
+            <!-- <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
               <div class="col-md-12" >
                 <div *ngFor="let term of pmtTerm; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
 
@@ -742,12 +751,21 @@
                 </div>
               </div>
               <div class="input-group-addon "  (click)="handleAddPmtTerm()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer;">+</div>
-            </div>
+            </div> -->
+            <div class="col-md-12 form-group">  
+            
+              <select formControlName="p_t" id="p_t" class="form-control"  >
+                <option value="" selected disabled>Select Payment Terms    </option>
 
+                <option value="Cash">Cash</option>
+                <option value="Online">Online</option>
+               
+              </select>
+            </div> 
+          </div>   
 
           </div>  
             
-  </div>
   </div>
   </div>
   <!-- End content12-->

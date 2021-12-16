@@ -29,24 +29,52 @@
                     <div class="panel-heading font-bold">Performance</div> 
                     <div class="panel-body">
                    
-                        <div class="col-md-4 form-group">  
+                        <div class="col-md-4 form-group ">  
                         <label >Create Goal ID </label> 
                         <input type="text" class="form-control" formControlName="goal_id"  value={{this.performanceId}} [attr.disabled]=true>
                         </div>
 
-                        <div class="col-md-4 form-group">  
+                        <div class="col-md-4 form-group mSelectD">  
                             <label >Industry </label> 
-                            <!-- <input type="text" class="form-control" formControlName="industry"  > -->
-                           <select class="form-control" formControlName="industry" >
-                            <option value="" disabled> Select Industry</option>
-                             <option *ngFor="let objIndustry of industrydata" value={{objIndustry._id}}> {{objIndustry.industry}} </option>
-                           </select>
-                           
+              <!-- <ng-select
+              [items]="industrydata"
+              bindLabel="industry"
+              placeholder="Select Industry"
+              [multiple]="true">
+            </ng-select> -->
+            <ng-multiselect-dropdown
+            [placeholder]="'Select Your Item'"
+            [settings]="dropdownSettings1"
+            [data]="industrydata"
+           
+            formControlName="industry">
+        </ng-multiselect-dropdown>
                           </div>
         
-                            <div class="col-md-4 form-group">  
+                            <div class="col-md-4 form-group mSelectD">  
                                 <label >Employee </label> 
-                                <input type="text" class="form-control" formControlName="employee"  >
+                                <!-- <input type="text" class="form-control" formControlName="employee"  > -->
+
+                                <!-- <ng-select
+              [items]="userdata"
+              bindLabel="username"
+              placeholder="Select User"
+              [multiple]="true"
+              >
+            </ng-select>  -->
+            <!-- <select formControlName="transporter_name" class="form-control" >
+              <option value="" selected >Select Transporter Name </option>
+              <option *ngFor="let objtrans of userdata" value={{objtrans._id}}> {{objtrans.username}} </option>
+            </select> -->
+            <ng-multiselect-dropdown
+            [placeholder]="'Select Your Item'"
+            [settings]="dropdownSettings"
+            [data]="userdata"
+           
+            formControlName="employee">
+        </ng-multiselect-dropdown>
+            
+           
                                 </div>
             
          <div class="clearfix"></div>

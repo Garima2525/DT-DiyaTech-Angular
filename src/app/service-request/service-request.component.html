@@ -121,21 +121,10 @@
                                             <input type="text" class="form-control" formControlName="person_name">
       </div>
         
-                                              <div class="clearfix"> </div> 
+                                             
         
 
-                                              <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
-                                                <div class="col-md-12" style="padding: 0px;"  >
-                                                    <label>Add Service</label>
-                                                  <div *ngFor="let service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group"  >
-                                    
-                                                    <input  (blur)="handleBlurservice($event,i)"   value={{service.value}} type="text" class="form-control" formControlName="add_service"  >
-                                                    <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                                                  </div>
-                                                </div>
-                                                <div class="input-group-addon "  (click)="handleAddservice()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer; margin-left: 12px;
-                                            ">+</div>
-                                              </div>
+                                            
 
 
 
@@ -144,7 +133,7 @@
                                                 <label >Assign To</label> 
                                                 <input type="text" class="form-control" formControlName="assign_to">
                                                 </div>     
-                                                
+                                                  <div class="clearfix"> </div>
                                                 <div class="col-md-4 form-group">  
                                                     <label >Visit Schedule</label> 
                                                     <input type="datetime-local" class="form-control" formControlName="visit_schedule">
@@ -154,14 +143,45 @@
                                                         <label >Stages /
                                                             Service Status</label> 
                                                         <!-- <input type="text" class="form-control" formControlName="Name"> -->
-                                                        <select class="form-control" formControlName="states">
-                                                            <option></option>
+                                                        <select class="form-control" formControlName="stages">
+                                                            <option value="Completed">Completed</option>
+                                                            <option value="Pending">Pending</option>
+                                                            <option value="Open">Open</option>
+                                                            <option value="Repair">Repair</option>
+                                                            <option value="Estimate Prepare">Estimate Prepare</option>
                                                         </select>
                                                         </div>
             </div>
             </div>
             </div>
             </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading font-bold">Add Service </div> 
+                  <div class="panel-body">
+                 
+                    <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
+                      <div class="col-md-12" style="padding: 0px;"  >
+                          
+                        <div *ngFor="let service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group"  >
+          
+                          <input  (blur)="handleBlurservice($event,i)"   value={{service.value}} type="text" class="form-control" formControlName="add_service"  >
+                          <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                        </div>
+                      </div>
+                      <div class="input-group-addon "  (click)="handleAddservice()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer; margin-left: 12px;
+                  ">+</div>
+                    </div>
+                    </div>   
+                      
+            </div>
+            </div>
+            </div>
+  
+
+
 
             <div class="row">
               <div class="col-sm-12">

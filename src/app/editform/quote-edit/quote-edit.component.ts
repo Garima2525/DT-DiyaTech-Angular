@@ -1169,7 +1169,9 @@ return data
       close_activity:this.quoteData?.close_activity?this.quoteData?.close_activity:'',
       inco_terms:'',
       payment_terms:'',
+      
       p_f:this.quoteData?.p_f?this.quoteData?.p_f:'',
+      p_t:this.quoteData?.p_t?this.quoteData?.p_t:'',
       freight:this.quoteData?.freight?this.quoteData?.freight:'',
       taxes:this.quoteData?.taxes?this.quoteData?.taxes:'',
       other_charges:this.quoteData?.other_charges?this.quoteData?.other_charges:'',

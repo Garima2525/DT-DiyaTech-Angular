@@ -327,7 +327,7 @@ export class ServiceRequestComponent implements OnInit {
       assign_to:'',
       visit_schedule:'',
       attachments:[],
-      states:'',
+      stages:'',
       remark:''
       
     });

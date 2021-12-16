@@ -70,7 +70,8 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
 import { ServiceRequestListComponent } from './listview/service-request-list/service-request-list.component';
 import { PerformanceComponent } from './performance/performance.component';
 import { PerformanceListComponent } from './listview/performance-list/performance-list.component';
-
+import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,9 @@ import { PerformanceListComponent } from './listview/performance-list/performanc
     PopupModule,
     AutoCompleteModule,
     NgMultiSelectDropDownModule.forRoot(),
-    CommonModule
+    CommonModule,
+    FormsModule,
+    NgSelectModule,
 
   ],
   providers: [

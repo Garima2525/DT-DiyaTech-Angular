@@ -42,24 +42,44 @@
     
     <kendo-grid-column  title="ID" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="customer-name" style="color: red;">{{ dataItem.goal_id }}</div>
-        <div class="customer-name" ><i class="fa fa-calendar-check-o" style="color:green;" aria-hidden="true"></i> : {{ dataItem.created_at|date:'dd-MM-yyyy' }}</div>
-        <!-- <div class="customer-name" ><i class="fa fa-calendar-plus-o" style="color:red;" aria-hidden="true"></i> : {{ dataItem.updated_at |date:'dd-MM-yyyy' }}</div> -->
+        <div class="service-request" style="color: red;">{{ dataItem.goal_id }}</div>
+        <div class="service-request" ><i class="fa fa-calendar-check-o" style="color:green;" aria-hidden="true"></i> : {{ dataItem.created_at|date:'dd-MM-yyyy' }}</div>
+      
         
       </ng-template>
     </kendo-grid-column>
      
-    <kendo-grid-column field="industry" title="Industry " [width]="100">
+  
+    <kendo-grid-column field="industry" title="Industry" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        
+        <div class="service-request" >
+          <ul>
+            <li *ngFor="let ind of dataItem.industry">{{ind.industry}}</li>
+          </ul>
+        </div>
+       
+      </ng-template>
     </kendo-grid-column>
- 
-    <kendo-grid-column field="employee" title="Employee " [width]="100">
+
+    <kendo-grid-column field="employee" title="Employee" [width]="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        
+        <div class="service-request" >
+          <ul>
+            <li *ngFor="let emp of dataItem.employee">{{emp.username}}</li>
+          </ul>
+        </div>
+       
+      </ng-template>
     </kendo-grid-column>
+
 
     <kendo-grid-column  title="Goal Details" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="customer-name" >Type : {{ dataItem.goal_type }}</div>
+        <div class="" >Type : {{ dataItem.goal_type }}</div>
         
-        <div class="customer-name" >Name : {{ dataItem.goal_name }}</div>
+        <div class="" >Name : {{ dataItem.goal_name }}</div>
         
       </ng-template>
     </kendo-grid-column>

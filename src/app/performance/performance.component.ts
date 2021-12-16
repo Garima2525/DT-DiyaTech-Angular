@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { TosterService } from '../service/toster.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import Swal from 'sweetalert2';
 import { AccountService } from '../service/account.service';
 import { PerformanceService } from '../service/performance.service';
+import { UserService } from '../service/user.service';
 @Component({
   selector: 'app-performance',
   templateUrl: './performance.component.html',
@@ -14,7 +15,10 @@ import { PerformanceService } from '../service/performance.service';
 })
 export class PerformanceComponent implements OnInit {
 
-
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+  dropdownSettings1 = {};
   login_id: any;
   performanceId:any;
   Perform!: FormGroup;
@@ -22,13 +26,15 @@ export class PerformanceComponent implements OnInit {
   isValidbutton: any;
   industrydata:any;
   isValidFormSubmitted: any;
+  userdata:any = [];
   constructor(
     private form: FormBuilder,
     private Toaster: TosterService,
     private Route: Router,
     private Auth:AuthService,
     private industry:AccountService,
-    private Performance:PerformanceService
+    private Performance:PerformanceService,
+    private user:UserService
   ) { }
 
 
@@ -43,12 +49,31 @@ export class PerformanceComponent implements OnInit {
       this.industrydata=data
       console.log(data)
     })
-    
+    this.user.getAllUsers().subscribe((data:any)=>{
+      this.userdata=data.result
+      console.log(data)
+    });
+   
+
+    this.dropdownSettings= {
+      singleSelection:false,
+      idField: '_id',
+      textField: 'username',
+      allowSearchFilter: true,
+     
+    };
+    this.dropdownSettings1= {
+      singleSelection: false,
+      idField: '_id',
+      textField: 'industry',
+      allowSearchFilter: true
+    };
     let number = Math.random() // 0.9394456857981651
     number.toString(36); // '0.xtis06h6'
     var id = number.toString(36).substr(2, 9);
     this.performanceId=id.toUpperCase()
     this.forminit(this.performanceId);
+    
   }
 
   forminit(uni: any) {

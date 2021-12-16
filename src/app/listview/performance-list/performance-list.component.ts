@@ -29,6 +29,7 @@ getall() {
       this.gridData = data.result;
       this.gridView = data.result;
       console.log(data);
+      
     });
   }
   public onFilter(e: any): void {

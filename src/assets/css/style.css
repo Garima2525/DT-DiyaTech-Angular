@@ -197,6 +197,36 @@ li.multiselect-item-checkbox div {
 .dropdown-list .filter-textbox input {
     padding:0 0 0 10px !important;
 }
+
+
+
+
+.mSelectD li.multiselect-item-checkbox div:before, li.multiselect-item-checkbox div:after {
+    display:block;
+}
+.mSelectD li.multiselect-item-checkbox div {
+    padding-left: 2rem !important;
+}
+.mSelectD .multiselect-dropdown .dropdown-btn .selected-item {
+    border: 1px solid #337ab7 !important;
+    margin-right: 4px;
+    background: #337ab7 !important;
+    padding: 0 5px;
+    color: #fff !important;
+    border-radius: 0px; 
+    float: left;
+    display: flex !important;
+    max-width: 100px !important;
+}
+.mSelectD .multiselect-dropdown .dropdown-btn .selected-item:hover {
+    box-shadow:none !important;
+}
+.mSelectD .dropdown-list .filter-textbox input {
+    padding:0 0 0 10px !important;
+}
+
+
+
 .kendo-menu-item{
     border: 1px solid gray !important;
 }

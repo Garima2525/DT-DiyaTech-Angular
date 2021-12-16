@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class PerformanceService {
 
-  base_url: any = 'http://localhost:3159/dt/performance';
+  base_url: any = 'https://epr.troology.com/dt/performance';
   constructor(private http: HttpClient) {}
 
   submitForm(data: any) {
@@ -13,7 +13,7 @@ export class PerformanceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json;charset=UTF-8',
-        apikey: 'NVPBV2F-ZSA405E-J3EE3WE-QAJ0QNE',
+        apikey: '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
       }),
     };
     return this.http.post(api_url, data, httpOptions);
@@ -24,7 +24,7 @@ export class PerformanceService {
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json;charset=UTF-8',
-        apikey: 'NVPBV2F-ZSA405E-J3EE3WE-QAJ0QNE',
+        apikey: '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
       }),
     };
     return this.http.get(api_url, httpOptions);

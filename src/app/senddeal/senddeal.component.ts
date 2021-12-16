@@ -23,6 +23,8 @@ export class SenddealComponent implements OnInit {
   totalAmount:any=0
   quantity:any=0
   salesPersonData:any
+  totalAmountTax: any = 0;
+  totalGST: any=0;
 
 
   constructor( private _Activatedroute:ActivatedRoute,
@@ -45,8 +47,11 @@ export class SenddealComponent implements OnInit {
       this.validDate=date?.toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric'})
       this.quoteData.product_services.map((item:any)=>{
         this.totalAmount+=item.amount
+        this.totalGST+=item.amount*(parseFloat(item.GST)/100)
+        this.totalAmountTax+=(item.UnitPrice)*100/(100+parseFloat(item.GST));
+        // this.totalAmountTax+=((item.UnitPrice*100)/(100+parseFloat(item.GST)));
         this.quantity+=item.quantity
-
+        this.totalAmountTax+=item.UnitPrice
       })
       
       this.account.getAccountData(data[0].account_id).subscribe((data:any)=>{
@@ -74,6 +79,10 @@ export class SenddealComponent implements OnInit {
     })
   }
 
+  decimalFormat(num:any){
+    return num.toFixed(2)
+  }
+  
    addDays(date:any, days:any) {
      if(days){
 
