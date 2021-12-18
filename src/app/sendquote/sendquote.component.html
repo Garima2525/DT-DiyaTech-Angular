@@ -3,6 +3,7 @@
     <title>Omshakti</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css" type="text/css" />
+  
     <style>
       body{
         color: black !important;
@@ -402,9 +403,81 @@
 
 <html>
   <head>
-    <style>
+    <!-- <link rel = "stylesheet" type = "text/css" media = "print" href = ""> -->
+    <style >
+      @media print {
+        p {
+          margin: 0 0 0px;
+        }
+        .table-cls tr td {
+          padding: 2px !important;
+        }
+        tr td {
+          border: 1px solid #000 !important;
+        }
+        /* .border-new {
+          border-bottom: none !important;
+        }
+        .border-none {
+          border-top: none !important;
+        } */
+        .quation {
+          background: rgb(180, 180, 180) !important;
+          border-top: none !important;
+        }
+        .bg-C {
+          background: rgb(180, 180, 180) !important;
+          border: 1px solid #000 !important;
+        }
+        .Logo-Img {
+          height: 50px;
+          width: 200px;
+          /* border: 1px solid #000; */
+          border-left: 1px solid #000 !important;
+          border-right: none !important;
+          border-bottom: 1px solid #000 !important;
+          border-top: 1px solid #000 !important;
+        }
+        .Logo-Img-1 {
+         border-right: none !important;
+         border-bottom: none !important;
+        }
+        .Logo-Img-2 {
+         border-left: none !important;
+         border-right: none !important;
+         border-bottom: none !important;
+        }
+        .Logo-Img-3 {
+         border-left: none !important;
+         border-right: 1px solid #000 !important;
+         border-bottom: none !important;
+        }
+        .Bill-From  {
+         border: 1px solid rgb(185, 26, 26) !important;
+        }
+        .contact-person {
+          border: 1px solid #000 !important;
+        }
+        .mail-id {
+          border: 1px solid #000;
+        }
+        .name-border {
+          border: 1px solid #000;
+        }
+        .contact-border {
+          border: 1px solid #000 !important;
+        }
+      
+        
+      }
       body{
         color: black !important;
+      }
+      p {
+        margin: 0 0 0px;
+      }
+      .table-cls tr td{
+        padding: 2px !important;
       }
       .table-cls tr td{
         padding: 5px;
@@ -425,12 +498,12 @@
       }
 	  .pnumatic-impact td{
 	    border-top: 1px solid black;
-		border-bottom: 1px solid black;
-		border-left: 1px solid black;
+		  border-bottom: 1px solid black;
+		  border-left: 1px solid black;
 	  }
 	  .terms-conditions td{
 	    border: none;
-		border-bottom: 1px solid black;
+		  border-bottom: 1px solid black;
 	  }
 
     @media print {
@@ -541,6 +614,7 @@
                     display: none !important;
                 }
             }
+            
 	  
     </style>
     
@@ -557,54 +631,52 @@
 
   
  
- <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 5px 0px auto;">
+ <table class="table  table-cls " style="width: 650px; border: 1px solid black; margin: 5px 0px auto;">
  
   <tr>
     <td colspan="9" style="width: 100%;"><img src="assets/img/DIYA.PNG"/></td>
    </tr>
    <tr>
-   <td colspan="1" style="width: 10%; color: black;">Bill From:</td>
-    <td colspan="7" style="width: 50%; color: black;">{{this.branchData?.branch_name}}</td>
+   <td class="Bill-From" colspan="1" style="width: 10%; color: black;">Bill From:</td>
+    <td  class="Bill-From" colspan="7" style="width: 50%; color: black;">{{this.branchData?.branch_name}}</td>
      
    </tr>
    <tr>
 
-    <td colspan="1" style="width: 10%; color: black;">Address:</td>
-    <td colspan="1" style="width: 50%; color: black;">{{this.branchData?.address1}} {{this.branchData?.address2}} {{this.branchData?.address3}} {{this.branchData?.state}} {{this.branchData?.country}} {{this.branchData?.zipcode}}</td>
-      <td colspan="6" style="width: 40%;  border: 1px solid black;  font-weight: bold; background-color: #bfbfbf; color: black; border-right: none;" >Contact person for this Offer:</td>
+    <td  class="Bill-From" colspan="1" style="width: 10%; color: black;">Address:</td>
+    <td  class="Bill-From" colspan="1" style="width: 50%; color: black;">{{this.branchData?.address1}} {{this.branchData?.address2}} {{this.branchData?.address3}} {{this.branchData?.state}} {{this.branchData?.country}} {{this.branchData?.zipcode}}</td>
+      <td class="bg-C contact-border" colspan="6" style="width: 40%;  border: 1px solid black;  font-weight: bold; background-color: #bfbfbf; color: black; border-right: none;" >Contact person for this Offer:</td>
   </tr>
+  
   <tr>
-    <td colspan="1" style="width: 10%;">E-Mail:</td>
-    <td colspan="1" style="width: 50%;">info@diyatechnologies.co.in</td>
-    <td colspan="1" style="width: 10%; border-left: 1px solid black; border-right: 1px solid red;">Name</td>
+    <td  class="Bill-From" colspan="1" style="width: 10%;">E-Mail:</td>
+    <td  class="Bill-From" colspan="1" style="width: 50%;">info@diyatechnologies.co.in</td>
+    <td class="name-border" colspan="1" style="width: 10%; border-left: 1px solid black; border-right: 1px solid red;">Name</td>
     <td colspan="6" style="width: 30%; border-bottom: none;  ">{{this.salesPersonData?.username}}</td>
    
   </tr>
   <tr>
-    <td colspan="1" style="width: 10%;">GSTN:</td>
-    <td colspan="1" style="width: 50%;">{{this.branchData?.branch_gst}}</td>
+    <td  class="Bill-From" colspan="1" style="width: 10%;">GSTN:</td>
+    <td  class="Bill-From" colspan="1" style="width: 50%;">{{this.branchData?.branch_gst}}</td>
     <td colspan="1" style="width: 10%; border-left: 1px solid black; border-right: 1px solid red;">Mail-ID</td>
     <td colspan="6" style="width: 30%;   ">{{this.salesPersonData?.email}}</td>
   </tr>
   <tr>
-    <td colspan="1" style="width: 10%;">Website:</td>
-    <td colspan="1" style="width: 50%;">www.diyatechnologies.in</td>
+    <td  class="Bill-From" colspan="1" style="width: 10%;">Website:</td>
+    <td  class="Bill-From" colspan="1" style="width: 50%;">www.diyatechnologies.in</td>
     <td colspan="1" style="width: 10%; border-left: 1px solid black;  border-right: 1px solid red;">Mobile.no</td>
     <td colspan="6" style="width: 30%;   ">{{this.salesPersonData?.mobile}}</td>
   </tr>
  </table>
- <table class="table table-bordered table-cls-xs" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
-   <tr>
+ <table class="table table-bordered table-cls-xs naaz" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
+   <!-- <tr class="border-none">
     <td colspan="4" style="width: 100%; height: 20px;"></td>
-   </tr>
+   </tr> -->
    <tr>
-    <td colspan="4" style="width: 100%; text-align: center; font-weight: bold; border-top: 1px solid black; border-bottom: 1px solid black; background-color: #bfbfbf;">QUOTATION</td>
+    <td class="quation" colspan="4" style="width: 100%; text-align: center; font-weight: bold;  border-bottom: 1px solid black; background-color: #bfbfbf;">QUOTATION</td>
   
   </tr>
-  <tr>
-    <td colspan="4" style="width: 100%; height: 20px;"></td>
   
-  </tr>
   <tr>
     <td colspan="1" style="width: 30%; font-weight: bold; border-right: 1px solid red; border-top:1px solid ;">Quotation Reference No.</td>
     <td colspan="1" style="width: 35%; font-weight: bold; border-top:1px solid black; border-right:1px solid black">{{this.quoteData?.quote_id}}</td>
@@ -633,24 +705,20 @@
     <td colspan="1" style="width: 30%; font-weight: bold; border-right: 1px solid red; border-top:1px solid black">Application / Project:    </td>
     <td colspan="3" style="width: 70%;  border-top:1px solid black;">{{this.quoteData?.quote_title}}</td> 
   </tr>
-  <tr>
-    <td colspan="4" style="width: 100%; height: 20px; border-top: 1px solid black" ></td>
-    
-    
-  </tr>
+  
  </table>
  <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
-  <tr>
-    <td colspan="1" style="width: 5%; border-top: none; background-color: #bfbfbf; padding: 5px; border-bottom: 1px solid black;">Sr No</td>
-    <td colspan="1" style="width: 25%;border-top: none; border-left:1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Product Description</td>
-   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">GST %</td>
-   <td colspan="1" style="width: 5%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf;border-bottom: 1px solid black;">Qty</td>
+  <tr >
+    <td class="bg-C" colspan="1" style="width: 5%; border-top: none; background-color: #bfbfbf; padding: 5px; border-bottom: 1px solid black;">Sr No</td>
+    <td class="bg-C" colspan="1" style="width: 25%;border-top: none; border-left:1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Product Description</td>
+   <td class="bg-C" colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">GST %</td>
+   <td class="bg-C" colspan="1" style="width: 5%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf;border-bottom: 1px solid black;">Qty</td>
  
-   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">UOM</td>
-   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Unit Rate</td>
-   <td colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Disc</td>
-   <td colspan="1" style="width: 15%;  border-top: none;  border-left: 1px solid black;background-color: #bfbfbf;border-bottom: 1px solid black;">Net Unit Rate</td>
-   <td colspan="1" style="width: 10%;  border-top: none;  border-left: 1px solid black;background-color: #bfbfbf; border-bottom: 1px solid black;">Amount</td>
+   <td class="bg-C" colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">UOM</td>
+   <td class="bg-C" colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Unit Rate</td>
+   <td class="bg-C" colspan="1" style="width: 10%;  border-top: none; border-left: 1px solid black; background-color: #bfbfbf; border-bottom: 1px solid black;">Disc</td>
+   <td class="bg-C" colspan="1" style="width: 15%;  border-top: none;  border-left: 1px solid black;background-color: #bfbfbf;border-bottom: 1px solid black;">Net Unit Rate</td>
+   <td class="bg-C" colspan="1" style="width: 10%;  border-top: none;  border-left: 1px solid black;background-color: #bfbfbf; border-bottom: 1px solid black;">Amount</td>
   </tr>
   <tr *ngFor="let prod of this.quoteData?.product_services,index as i" class="pnumatic-impact">
     <td colspan="1" style="width: 5%;  border: none;  padding: 5px; text-align: center; border-bottom: 1px solid black;">{{i+1}}</td>
@@ -683,10 +751,7 @@
    <td colspan="1" style="width: 15%;  border-top: none; "> </td>
    <td colspan="1" style="width: 10%;  border-top: none; text-align: right; ">  {{decimalFormat(this.totalAmount)}}</td>
   </tr>
-  <tr>
-    <td colspan="4" style="width: 100%; height: 20px; " ></td>
-    
-  </tr>
+  
 
 
  </table>
@@ -732,7 +797,7 @@
  </table>
  <table class="table table-bordered table-cls" style="width: 650px; border: 1px solid black; margin: 0px auto; border-top: none;">
    <tr>
-     <td colspan="3" style="width: 100%; background-color: #bfbfbf; border-bottom: 1px solid black;">Terms & Conditions</td>
+     <td class="bg-C" colspan="3" style="width: 100%; background-color: #bfbfbf; border-bottom: 1px solid black;">Terms & Conditions</td>
    </tr>
   <tr class="terms-conditions">
      <td colspan="1" style="width:5%;  border-top: none; text-align: center; border-right: 1px solid black;" >1</td>
@@ -828,9 +893,9 @@
  
   </tr> 
   <tr>
-    <td ><img src="assets/img/IR.PNG"/></td>
-    <td ><img src="assets/img/URYU.PNG"/></td>
-    <td ><img src="assets/img/TOH.PNG"/></td>
+    <td ><img class="Logo-Img Logo-Img-1" src="assets/img/IR.PNG"/></td>
+    <td ><img class="Logo-Img Logo-Img-2" src="assets/img/URYU.PNG"/></td>
+    <td ><img class="Logo-Img Logo-Img-3" src="assets/img/TOH.PNG"/></td>
    
  
   </tr>

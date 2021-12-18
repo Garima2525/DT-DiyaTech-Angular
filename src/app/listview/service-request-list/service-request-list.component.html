@@ -99,7 +99,24 @@
     </kendo-grid-column>
     
  
-     
+    <kendo-grid-column
+    title="Action"
+    [width]="100"
+    [class]="{ 'text-center': true }"
+    [resizable]="false"
+    [filterable]="false"
+    
+  >
+    <ng-template kendoGridCellTemplate let-service>
+      <kendo-menu >
+        <kendo-menu-item  icon="gear">
+          <kendo-menu-item icon="edit"  url="/service-request-edit/{{service._id}}"  text="Edit" > </kendo-menu-item>
+        </kendo-menu-item>
+      </kendo-menu>
+    </ng-template>
+
+  </kendo-grid-column>
+
   </kendo-grid>
   </div>
   </div>

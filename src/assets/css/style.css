@@ -79,15 +79,12 @@ tr.k-state-selected > td{
     min-height: 300px;
     font-size: 14px;
   
- 
-  
 }
 
 .breadcrumb-item.active{
     color:black ;
 }
-   
-
+  
 .card1{
    
     min-height: 300px;
@@ -277,10 +274,20 @@ li.multiselect-item-checkbox div {
 .side-img1{
     height:1.1rem;
 }
-@media screen and (max-width: 768px) {
+@media print and (max-width: 768px) {
     label.col-md-3.control-label, label.col-sm-3.control-label {
         padding-left: 15px;
         padding-right: 15px;
     }
   }
+
+@media all and (max-width: 768px) {
+    label.col-md-3.control-label, label.col-sm-3.control-label {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+
+  
 

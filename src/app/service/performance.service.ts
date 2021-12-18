@@ -29,6 +29,25 @@ export class PerformanceService {
     };
     return this.http.get(api_url, httpOptions);
   }
-
+  getbyid(id:any){
+    let api_url=this.base_url+"/getbyid/"+id
+    const httpOptions={
+      headers:new HttpHeaders({
+        'content-type':'application/json;charset=UTF-8',
+        'apikey': '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
+      }),
+    }
+    return this.http.get(api_url,httpOptions)
+  }
+  updateForm(data: any, id: any) {
+    let api_url = this.base_url + '/updatebyid/' + id;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json;charset=UTF-8',
+        apikey: '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
+      }),
+    };
+    return this.http.post(api_url, data, httpOptions);
+  }
 }
 

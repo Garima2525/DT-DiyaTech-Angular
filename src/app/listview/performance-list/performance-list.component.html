@@ -91,23 +91,23 @@
     <kendo-grid-column field="duration" title="Duration" [width]="100">
     </kendo-grid-column>
  
-     <!-- <kendo-grid-column
+     <kendo-grid-column
      title="Controls"
      [width]="100"
      [class]="{ 'text-center': true }"
      [resizable]="false"
      [filterable]="false"
     >
-     <ng-template kendoGridCellTemplate let-account>
+     <ng-template kendoGridCellTemplate let-performance>
       <kendo-menu>
         <kendo-menu-item text="Action">
-          <kendo-menu-item text="Edit" icon="edit"> </kendo-menu-item>
+          <kendo-menu-item icon="edit"  url="/performance-edit/{{performance._id}}"  text="Edit" > </kendo-menu-item>
           <kendo-menu-item text="Delete" icon="delete"></kendo-menu-item>
         </kendo-menu-item>
        
       </kendo-menu>
      </ng-template>
-   </kendo-grid-column> -->
+   </kendo-grid-column>
   </kendo-grid>
   </div>
   </div>

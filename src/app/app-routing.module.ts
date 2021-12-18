@@ -36,7 +36,8 @@ import {ServiceRequestComponent} from './service-request/service-request.compone
 import {ServiceRequestListComponent} from './listview/service-request-list/service-request-list.component'
 import {PerformanceComponent} from './performance/performance.component'
 import {PerformanceListComponent} from './listview/performance-list/performance-list.component'
-
+import {ServiceRequestEditComponent} from './editform/service-request-edit/service-request-edit.component'
+import {PerformanceEditComponent} from './editform/performance-edit/performance-edit.component'
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'',component:DashboardComponent},
@@ -81,7 +82,9 @@ const routes: Routes = [
   {path:'service-request',component:ServiceRequestComponent},
   {path:'service-request-list',component:ServiceRequestListComponent},
   {path:'performance',component:PerformanceComponent},
-  {path:'performance-list',component:PerformanceListComponent}
+  {path:'performance-list',component:PerformanceListComponent},
+  {path:'service-request-edit/:id',component:ServiceRequestEditComponent},
+  {path:'performance-edit/:id',component:PerformanceEditComponent}
 ];
 
 @NgModule({

@@ -72,6 +72,9 @@ import { PerformanceComponent } from './performance/performance.component';
 import { PerformanceListComponent } from './listview/performance-list/performance-list.component';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ServiceRequestEditComponent } from './editform/service-request-edit/service-request-edit.component';
+import { PerformanceEditComponent } from './editform/performance-edit/performance-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -116,7 +119,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ServiceRequestComponent,
     ServiceRequestListComponent,
     PerformanceComponent,
-    PerformanceListComponent
+    PerformanceListComponent,
+    ServiceRequestEditComponent,
+    PerformanceEditComponent,
+    
   ],
   imports: [
     DataTablesModule,

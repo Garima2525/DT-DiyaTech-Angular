@@ -7,11 +7,11 @@ import { CompanyService } from '../service/company.service';
 import { ContactService } from '../service/contact.service';
 
 import { ProductService } from '../service/product.service';
-import { QuoteFormService } from '../service/quote-form.service';
+
 import { TosterService } from '../service/toster.service';
 import { UploadAttachmentService } from '../service/upload-attachment.service';
 import { UserService } from '../service/user.service';
-import { FlatBindingDirective } from '@progress/kendo-angular-treelist';
+
 import { SortDescriptor } from '@progress/kendo-data-query';
 import { MultiSelectTreeCheckableSettings, MultiSelectTreeHierarchyBindingDirective } from "@progress/kendo-angular-dropdowns";
 import { Product } from '../../productInterface'
