@@ -38,6 +38,8 @@ import {PerformanceComponent} from './performance/performance.component'
 import {PerformanceListComponent} from './listview/performance-list/performance-list.component'
 import {ServiceRequestEditComponent} from './editform/service-request-edit/service-request-edit.component'
 import {PerformanceEditComponent} from './editform/performance-edit/performance-edit.component'
+import {NewProductEditComponent}   from './editform/new-product-edit/new-product-edit.component'
+import {RoleEditComponent} from './editform/role-edit/role-edit.component'
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'',component:DashboardComponent},
@@ -84,7 +86,9 @@ const routes: Routes = [
   {path:'performance',component:PerformanceComponent},
   {path:'performance-list',component:PerformanceListComponent},
   {path:'service-request-edit/:id',component:ServiceRequestEditComponent},
-  {path:'performance-edit/:id',component:PerformanceEditComponent}
+  {path:'performance-edit/:id',component:PerformanceEditComponent},
+  {path:'new-products-edit/:id',component:NewProductEditComponent},
+  {path:'role-edit/:id',component:RoleEditComponent}
 ];
 
 @NgModule({

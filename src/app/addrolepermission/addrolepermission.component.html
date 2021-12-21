@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label font-weight-600">Role Name</label>
-                            <input type="text" class="form-control validate" name="name" formControlName="role_name">
+                            <input type="text" class="form-control validate"  formControlName="role_name">
                             <div *ngIf="f.role_name.errors && f.role_name.errors.required && isValidFormSubmitted"
                               class="text-danger text-left mb-1 errorcontrols">
                               <div *ngIf="f.role_name.errors.required"><small>Role Name is
@@ -377,6 +377,80 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td class="font-bold">Add Service</td>
+
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="serviceview">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="servicecreate">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="serviceedit">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="servicedelete">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="font-bold">Performance</td>
+
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="performanceview">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="performancecreate">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="performanceedit">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">
+                                                <div class="checkbox g-my-0">
+                                                    <label class="i-checks i-checks">
+                                                        <input type="checkbox"  formControlName="performancedelete">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+
 
                                     </tbody>
                                 </table>

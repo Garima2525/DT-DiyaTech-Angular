@@ -107,31 +107,18 @@ export class RoleListComponent implements OnInit {
         logic: "or",
         filters: [
           {
-            field: "quote_owner",
+            field: "role_name",
             operator: "contains",
             value: inputValue,
           },
           {
-            field: "quote_title",
+            field: "description",
             operator: "contains",
             value: inputValue,
           },
-          {
-            field: "quote_source",
-            operator: "contains",
-            value: inputValue,
-          },
-          {
-            field: "quote_status",
-            operator: "contains",
-            value: inputValue,
-          },
-          {
-            field:"created_at",
-            operator: "contains",
-            value: inputValue
-          }
           
+         
+         
         ],
       },
     }).data;

@@ -50,8 +50,9 @@ export class ServiceRequestComponent implements OnInit {
   isValidbutton: any;
   incoTerm:any=[{value:null}]
   addservice:any=[{value:null}]
+  // addservice: any = [];
   accountData:any;
-
+  todayDate:any;
   public data:any=[];
   public data1: Product[] =[]
   public data2: Product[] =[]
@@ -61,7 +62,7 @@ export class ServiceRequestComponent implements OnInit {
   showDropdownBox:boolean=false
   totalAmount:any=0
   totalQuantity:any=0
-
+  salesPersonData:any
   groupName:any
   groupSize:any=0
   groupAmount:any=0
@@ -111,6 +112,7 @@ export class ServiceRequestComponent implements OnInit {
   contactDropdownSettings={}
   productDropdownSettings={}
   ownerDropdownSettings={}
+  salesPersonDropdownSettings={}
 
   account_id:any=''
   company_name:any=''
@@ -163,6 +165,9 @@ export class ServiceRequestComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.todayDate = new Date();
+    console.log(this.todayDate);
+    
     this.auth.userLoggedIn().subscribe((user:any)=>{
       console.log(user)
       this.currentUser=user.result.username
@@ -182,7 +187,10 @@ export class ServiceRequestComponent implements OnInit {
       console.log(data)
       this.users=data.result
     })
-
+    this.product.getAllSalesPerson().subscribe((data:any)=>{
+      console.log(data)
+        this.salesPersonData=data.result  
+    })
 
     this.company.GetAddress().subscribe((branch:any)=>{
       console.log(branch)
@@ -233,56 +241,84 @@ export class ServiceRequestComponent implements OnInit {
       closeDropDownOnSelection:true,
       allowSearchFilter: false
     }
+    this.salesPersonDropdownSettings={
+      singleSelection: true,
+      idField: '_id',
+      textField: 'username',
+      noDataAvailablePlaceholderText:'No Branch Found!',
+      closeDropDownOnSelection:true,
+      allowSearchFilter: false
+    }
     this.forminit(this.serviceId);
   }
+ 
+
+
+  // optionClick(index:any){
+  //   console.log(index)
+  // }
+
   handleAddservice(){
     this.addservice.push({value:null})
-   }
-
-   handleBlurservice(e:any,index:any){
-    this.addservice[index].value=e.target.value
-    console.log( this.addservice);
     
    }
+ 
+  handleBlurservice(e:any,index:any){
+    this.addservice[index].value=e.target.value
+    console.log(e.target.value,index)
+    console.log(this.addservice)
+  }
 
-   handleDeleteservice(index:any){
-    this.addservice.splice(index,1)
+  handleDeleteservice(index:any){
+   this.incoTerm.splice(index,1)
+  }
+ 
+ 
+
+
+//   handleUpload(e:any){
+//     let date=new Date()
+//     // console.log(e.target.files)
+//     this.attachment_files=e.target.files
+      
+//     for(let file of e.target.files){
+//        this.upload.uploadFiles(file,this.lead_id).subscribe((url:any)=>{
+//         let img_url=url.url
+//          this.files_url.push({img_url,name:file.name,size:file.size,attached_by:this.loggedInUser,upload_date:date,lead_id:this.lead_id})
+//          console.log({img_url,name:file.name,size:file.size,attached_by:this.loggedInUser,upload_date:date,lead_id:this.lead_id})
+//        })
+//      }
+
+//     for(let file of e.target.files)
+//         this.show_files.push({
+//           name:file.name,
+//           size:file.size,
+//           attached_by:this.loggedInUser,
+//           upload_date:date
+//         })
+// }
+handleAttachmentUpload(e:any){
+  let date=new Date()
+  this.attachment_files=e.target.files
+    
+  for(let file of e.target.files){
+     this.upload.uploadFiles(file,this.serviceId).subscribe((url:any)=>{
+      let img_url=url.url
+       this.files_url.push({img_url,name:file.name,size:file.size,attached_by:this.currentUser,upload_date:date,lead_id:this.serviceId})
+       console.log({img_url,name:file.name,size:file.size,attached_by:this.currentUser,upload_date:date,lead_id:this.serviceId})
+     })
    }
 
+   for(let file of e.target.files)
+  this.show_files.push({
+    name:file.name,
+    size:file.size,
+    attached_by:this.currentUser,
+    upload_date:date.toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric'})
+  })
 
 
-  optionClick(index:any){
-    console.log(index)
-  }
-
-
-  removeAttachment(index:any){
-    console.log(index)
-    this.files_url.splice(index,1)
-  }
-
-
-  handleUpload(e:any){
-    let date=new Date()
-    // console.log(e.target.files)
-    this.attachment_files=e.target.files
-      
-    for(let file of e.target.files){
-       this.upload.uploadFiles(file,this.lead_id).subscribe((url:any)=>{
-        let img_url=url.url
-         this.files_url.push({img_url,name:file.name,size:file.size,attached_by:this.loggedInUser,upload_date:date,lead_id:this.lead_id})
-         console.log({img_url,name:file.name,size:file.size,attached_by:this.loggedInUser,upload_date:date,lead_id:this.lead_id})
-       })
-     }
-
-    for(let file of e.target.files)
-        this.show_files.push({
-          name:file.name,
-          size:file.size,
-          attached_by:this.loggedInUser,
-          upload_date:date
-        })
-}
+ }
 
 
   onContactSelect(contact:any){
@@ -317,12 +353,12 @@ export class ServiceRequestComponent implements OnInit {
       service_id:[uni],
       service_type:'',
       service_location:'',
-      priority:'',
-      source_type:'',
+      priority:'Low',
+      source_type:'Call',
       company:'',
       account:'',
       account_info:'',
-      add_service:[],
+      add_service:'',
       person_name:'',
       assign_to:'',
       visit_schedule:'',
@@ -340,7 +376,10 @@ export class ServiceRequestComponent implements OnInit {
     }
   }
   
-
+  removeAttachment(index:any){
+    console.log(index)
+    this.files_url.splice(index,1)
+  }
   onFormSubmit() {
     this.isValidFormSubmitted = false;
     if (this.ServiceForm.invalid) {
@@ -356,6 +395,8 @@ export class ServiceRequestComponent implements OnInit {
       this.ServiceForm.value.account=this.accountVal
       this.ServiceForm.value.account_info=this.account_info_val
       this.ServiceForm.value.add_service = this.addservice;
+      
+      
       this.serviceS.submitForm(this.ServiceForm.value).subscribe((data) => {
         console.log(data);
         this.Toaster.showSuccess(
@@ -375,4 +416,5 @@ export class ServiceRequestComponent implements OnInit {
       });
     }
   }
+  
 }

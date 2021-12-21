@@ -17,6 +17,7 @@ export class AddrolepermissionComponent implements OnInit {
     ) {}
   addroleform!: FormGroup;
   isValidFormSubmitted:any;
+  
   ngOnInit(): void {
     this.forminit();
   }
@@ -62,6 +63,14 @@ export class AddrolepermissionComponent implements OnInit {
       rolecreate: false,
       roleedit: false,
       roledelete: false,
+      servicecreate: false,
+      serviceedit: false,
+      servicedelete: false,
+      serviceview: false,
+      performancecreate: false,
+      performanceview: false,
+      performanceedit: false,
+      performancedelete: false,
       convertleadtoquote: false,
       convertquotetodeal: false,
     });
@@ -76,7 +85,7 @@ export class AddrolepermissionComponent implements OnInit {
        console.log(this.addroleform, 'true');
        this.userService.createRole(this.addroleform.value).subscribe((data) => {
          this.buttondisabled = 'false';
-         this.toast.showSuccess("Success")
+         this.toast.showSuccess("Congratulation!, Role has been created")
          setTimeout(()=>{
           this.router.navigate(['/role-list'])
          },2000)

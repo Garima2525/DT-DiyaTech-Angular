@@ -118,5 +118,25 @@ export class ProductService {
     return this.http.get(api_url,httpOptions)
   }
 
-  
+  getproduct(id:any){
+    let api_url=this.base_url+"/getproductsbyid/"+id
+    const httpOptions={
+      headers:new HttpHeaders({
+        'content-type':'application/json;charset=UTF-8',
+        'apikey': '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
+      }),
+    }
+    return this.http.get(api_url,httpOptions)
+  }
+
+  updateForm(data: any, id: any) {
+    let api_url = this.base_url + '/updateproductsbyid/' + id;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json;charset=UTF-8',
+        apikey: '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
+      }),
+    };
+    return this.http.post(api_url, data, httpOptions);
+  }
 }

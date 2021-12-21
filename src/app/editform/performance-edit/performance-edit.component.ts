@@ -35,6 +35,7 @@ export class PerformanceEditComponent implements OnInit {
   gname:any;
   weightage:any;
   duration:any;
+  idata:any = [];
   constructor(
     private form: FormBuilder,
     private Toaster: TosterService,
@@ -86,6 +87,8 @@ export class PerformanceEditComponent implements OnInit {
      this.gname=data.result[0].goal_name;
      this.weightage=data.result[0].weightage;
      this.duration=data.result[0].duration
+     this.idata = data.result[0].industry;
+     console.log(this.idata);
     });
     
   }
@@ -128,7 +131,7 @@ onFormSubmit() {
     console.log(this.Perform, 'true');
     this.isValidbutton = true;
     this.Perform.value.user_id = this.login_id;
-    
+    this.Perform.value.materials = this.idata;
     this.Performance.updateForm(this.Perform.value,this.perId).subscribe((data) => {
       console.log(data);
       this.Toaster.showSuccess(

@@ -27,7 +27,16 @@ export class UserService {
     };
     return this.http.get(api_url, httpOptions);
   }
-
+  updaterolebyid(id:any,data: any) {
+    let api_url = this.base_url + '/role/updatebyid/'+id;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json;charset=UTF-8',
+        apikey: '8GWF6J1-WVG40Q4-HBWGNVY-9VXTXQ8',
+      }),
+    };
+    return this.http.post(api_url, data, httpOptions);
+  }
 
   getAllUsers() {
     // https://epr.troology.com/dt/login/get-allusers
@@ -74,6 +83,18 @@ export class UserService {
   createRole(data: any) {
     console.log(data);
     let api_url = this.base_url + '/role';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json;charset=UTF-8',
+        apikey: this.api_key,
+      }),
+    };
+    return this.http.post(api_url, data, httpOptions);
+  }
+
+  changePassword(data: any,id:any) {
+    console.log(data);
+    let api_url = this.base_url + '/user/change-password/'+id;
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json;charset=UTF-8',

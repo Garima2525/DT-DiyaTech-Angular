@@ -33,27 +33,27 @@ export class NewProductsListComponent implements OnInit {
         logic: "or",
         filters: [
           {
-            field: "lead_owner",
-            operator: "contains",
-            value: inputValue,
-          },
-          {
             field: "lead_id",
             operator: "contains",
             value: inputValue,
           },
           {
-            field: "created_date_time",
+            field: "product_name",
             operator: "contains",
             value: inputValue,
           },
           {
-            field: "modified_date_time",
+            field: "type",
             operator: "contains",
             value: inputValue,
           },
           {
-            field: "aging",
+            field: "UnitPrice",
+            operator: "contains",
+            value: inputValue,
+          },
+          {
+            field: "GST",
             operator: "contains",
             value: inputValue,
           },

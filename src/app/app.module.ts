@@ -75,6 +75,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ServiceRequestEditComponent } from './editform/service-request-edit/service-request-edit.component';
 import { PerformanceEditComponent } from './editform/performance-edit/performance-edit.component';
 
+import { NewProductEditComponent } from './editform/new-product-edit/new-product-edit.component';
+import { RoleEditComponent } from './editform/role-edit/role-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -122,6 +125,9 @@ import { PerformanceEditComponent } from './editform/performance-edit/performanc
     PerformanceListComponent,
     ServiceRequestEditComponent,
     PerformanceEditComponent,
+   
+    NewProductEditComponent,
+        RoleEditComponent,
     
   ],
   imports: [

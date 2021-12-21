@@ -85,7 +85,7 @@
       >
         
       </kendo-grid-column> -->
-      <!-- <kendo-grid-column
+       <kendo-grid-column
         title="Controls"
         [width]="100"
         [class]="{ 'text-center': true }"
@@ -93,23 +93,17 @@
         [filterable]="false"
         
       >
-        <ng-template kendoGridCellTemplate let-quote>
+        <ng-template kendoGridCellTemplate let-role>
        
           <kendo-menu>
             <kendo-menu-item icon="gear">
-              <kendo-menu-item   url="" text="Edit" > </kendo-menu-item>
-              <kendo-menu-item   url="" text="Clone"> </kendo-menu-item>
-              <kendo-menu-item   url="" text="Status" > </kendo-menu-item>
-              <kendo-menu-item   url="" text="Convert to Quote" > </kendo-menu-item>
-              <kendo-menu-item   url="" text="Delete" > </kendo-menu-item>
-              <kendo-menu-item   url="" text="Download Excel" > </kendo-menu-item>
-              <kendo-menu-item   url="" text="Print" > </kendo-menu-item>
+              <kendo-menu-item icon="edit"  url="/role-edit/{{role._id}}"  text="Edit" > </kendo-menu-item>
               
             </kendo-menu-item>
-          </kendo-menu>
+          </kendo-menu> 
 
         </ng-template>
-      </kendo-grid-column> -->
+      </kendo-grid-column>
    
     <!-- <kendo-grid-column-group title="Performance" [columnMenu]="false">
       <kendo-grid-column

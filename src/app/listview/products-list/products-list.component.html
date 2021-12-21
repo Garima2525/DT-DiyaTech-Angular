@@ -95,10 +95,13 @@
         [resizable]="false"
       > 
       </kendo-grid-column>
-   
+     
+    
+
+
   </kendo-grid>
 
-
+  <div *ngIf="!gridView" class="k-i-loading"></div> 
 
   </div>
   </div>
