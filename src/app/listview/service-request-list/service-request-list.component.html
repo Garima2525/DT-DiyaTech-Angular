@@ -70,10 +70,10 @@
     </kendo-grid-column>
     <kendo-grid-column  title="Details" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="service" >Account :  {{ dataItem.account}}</div>
-        <div class="service" >Contact : {{dataItem.account_info }}</div>
-        <!-- <div class="service" >Name : {{dataItem.person_name }}</div> -->
-        <!-- <div class="service" >Source : {{dataItem.source_type }}</div> -->
+        <div class="service" >Account :  {{dataItem.account }}</div> 
+        <!-- <div class="service" >Contact : {{dataItem.contactData[0].first_name }}</div> -->
+        <!-- <div class="service" >Name : {{dataItem.account }}</div>
+        <div class="service" >Source : {{dataItem.source_type }}</div> -->
         
       </ng-template>
     </kendo-grid-column>
@@ -90,7 +90,7 @@
      
     <kendo-grid-column  title="" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="service" >Assign  :  {{ dataItem.assign_to}}</div>
+        <!-- <div class="service" >Assign  :  {{ dataItem.salesPersonData[0].username}}</div> -->
         <!-- <div class="service" >Visit Schedule : {{dataItem.visit_schedule  }}</div> -->
         <div class="service" ><i class="fa fa-calendar-plus-o" style="color:green;" aria-hidden="true"></i> Schedule  : {{ dataItem.visit_schedule |date:'dd-MM-yyyy' }}</div>
         <div class="service" >Status  :  {{ dataItem.stages}}</div>

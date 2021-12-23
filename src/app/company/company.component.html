@@ -101,7 +101,7 @@
            
                 <div class="input-group">
             <input type="file" (change)="handleUpload($event)" encType="multipart/form-data" class="form-control " placeholder="Uplode your Company Logo" id="file" formControlName="company_logo" style="font-size:12px; border-right:0px;" >
-            <span class="input-group-addon " style="border-left:0px; font-size:15px;background:white;"><a onclick="$('#file').click()" style="color:blue;text-decoration: underline;">Browser</a></span>
+            <span class="input-group-addon " style="border-left:0px; font-size:15px;background:white;"><a onclick="$('#file').click()" style="color:blue;text-decoration: underline;">Choose file</a></span>
             </div> 
             <div *ngIf="c.company_logo.errors && c.company_logo.errors.required && isValidFormSubmitted"
             class="text-danger text-left mb-1 errorcontrols">

@@ -90,7 +90,7 @@
               [placeholder]="''"
               [settings]="dropdownSettings"
               [data]="accountData"
-              
+              formControlName="account"
               (onSelect)="onItemSelect($event)"
               >
               </ng-multiselect-dropdown>
@@ -123,24 +123,34 @@
       </div>
         
                                              
-        
+      <div class="col-md-4 form-group">  
+        <label >Assign To</label> 
+        <select formControlName="assign_to" class="form-control" >
+          <option value="" selected >Select  </option>
+          <option *ngFor="let objtrans of salesPersonData" value={{objtrans._id}}> {{objtrans.username}} </option>
+        </select>
+</div>
 
                                             
 
 
+     
 
-
-                                              <div class="col-md-4 form-group">  
-                                                <label >Assign To</label> 
+                                              <!-- <div class="col-md-4 form-group">  
+                                                <label >Assign To</label>
+                                                <selectclass="form-control" formControlName="assign_to">
+                                                  <option value="" selected >Select </option>
+                                                  <option *ngFor="let objtrans of salesPersonData" value={{objtrans._id}}> {{objtrans.transporter_name}} </option>
+                                                </select>  -->
                                                 <!-- <input type="text" class="form-control" formControlName="assign_to"> -->
-                                                <ng-multiselect-dropdown
+                                                <!-- <ng-multiselect-dropdown
                                                 [placeholder]="'Select a Sales Person'"
                                                 [settings]="salesPersonDropdownSettings"
                                                 [data]="salesPersonData"
                                                 formControlName="assign_to"
                                                 >
-                                              </ng-multiselect-dropdown>
-                                                </div>     
+                                              </ng-multiselect-dropdown> -->
+                                                <!-- </div>      -->
                                                   <div class="clearfix"> </div>
                                                 <div class="col-md-4 form-group">  
                                                     <label >Visit Schedule</label> 

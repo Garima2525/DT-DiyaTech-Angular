@@ -14,7 +14,7 @@
             <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Dashboard</li>
             <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Service </li>
             <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Service View List</li>
-            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;">Create New Service </li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;"> Edit Service</li>
           </ol>
         </nav>
       </div>
@@ -36,12 +36,12 @@
                    
                         <div class="col-md-4 form-group">  
                         <label >Service ID  </label> 
-                        <input type="text" class="form-control" formControlName="service_id"  value={{s_id}} [attr.disabled]=true>
+                        <input type="text" class="form-control" formControlName="service_id"  value={{this.s_id}} [attr.disabled]=true>
                         </div>
 
                         <div class="col-md-4 form-group">  
                         <label >Service Type</label> 
-                        <select class="form-control" formControlName="service_type" value="{{s_type}}" >
+                        <select class="form-control" formControlName="service_type" >
                           <option value="" disabled> Service Type</option>
                             <option value="AMC">AMC</option>
                             <option value="FOC">FOC</option>
@@ -52,7 +52,7 @@
         
                         <div class="col-md-4 form-group">  
                         <label >Service Location</label> 
-                        <select class="form-control" formControlName="service_location" value="{{s_location}}">
+                        <select class="form-control" formControlName="service_location">
                           <option value="" disabled>Select Service Location</option>
                                 <option value="On site">On site</option>
                                 <option value="Off site">Off site</option>
@@ -62,21 +62,22 @@
                      
                      <div class="col-md-4 form-group">  
                         <label >Priority</label> 
-                        <select class="form-control" formControlName="priority" value="{{priority}}">
-                          <option value="Low"> Low</option>
+                        <select class="form-control" class="form-control" formControlName="priority">
+                          <option value="Low"  > Low</option>
                                 <option value="Medium">Medium</option>
                                 <option value="High">High</option>
                                 <option value="Urgent">Urgent</option>
                         </select>
+                        
                         </div>
         
                         <div class="col-md-4 form-group">  
                             <label >Source Type</label> 
                             <select class="form-control" formControlName="source_type">
-                              <option value="" disabled>Select Source Type</option>
-                                    <option >Call</option>
-                                    <option>E Mail</option>
-                                    <option >Message</option>
+                             
+                                    <option value="Call">Call</option>
+                                    <option value="E Mail">E Mail</option>
+                                    <option value="Message">Message</option>
                                     
                             </select>
                             </div>
@@ -118,32 +119,49 @@
            
          <div class="col-md-4 form-group">  
                                             <label >Contact Person Name </label> 
-                                            <input type="text" class="form-control" formControlName="person_name" value="{{p_name}}"> 
+                                            <input type="text" class="form-control" formControlName="person_name">
       </div>
         
                                              
-        
+      <div class="col-md-4 form-group">  
+        <label >Assign To</label> 
+        <select formControlName="assign_to" class="form-control" >
+          <option value="" selected >Select  </option>
+          <option *ngFor="let objtrans of salesPersonData" value={{objtrans._id}}> {{objtrans.username}} </option>
+        </select>
+</div>
 
                                             
 
 
+     
 
-
-                                              <div class="col-md-4 form-group">  
-                                                <label >Assign To</label> 
-                                                <input type="text" class="form-control" formControlName="assign_to" value="{{assign_to}}">
-                                                </div>     
+                                              <!-- <div class="col-md-4 form-group">  
+                                                <label >Assign To</label>
+                                                <selectclass="form-control" formControlName="assign_to">
+                                                  <option value="" selected >Select </option>
+                                                  <option *ngFor="let objtrans of salesPersonData" value={{objtrans._id}}> {{objtrans.transporter_name}} </option>
+                                                </select>  -->
+                                                <!-- <input type="text" class="form-control" formControlName="assign_to"> -->
+                                                <!-- <ng-multiselect-dropdown
+                                                [placeholder]="'Select a Sales Person'"
+                                                [settings]="salesPersonDropdownSettings"
+                                                [data]="salesPersonData"
+                                                formControlName="assign_to"
+                                                >
+                                              </ng-multiselect-dropdown> -->
+                                                <!-- </div>      -->
                                                   <div class="clearfix"> </div>
                                                 <div class="col-md-4 form-group">  
                                                     <label >Visit Schedule</label> 
-                                                    <input type="datetime-local" class="form-control" formControlName="visit_schedule" value="{{v_schedule}}">
+                                                    <input type="date" class="form-control" formControlName="visit_schedule" min="{{ todayDate |date:'yyyy-MM-dd' }}" max="2050-03-31" >
                                                     </div> 
         
                                                     <div class="col-md-4 form-group">  
                                                         <label >Stages /
                                                             Service Status</label> 
                                                         <!-- <input type="text" class="form-control" formControlName="Name"> -->
-                                                        <select class="form-control" formControlName="stages" value="{{stages}}">
+                                                        <select class="form-control" formControlName="stages">
                                                             <option value="Completed">Completed</option>
                                                             <option value="Pending">Pending</option>
                                                             <option value="Open">Open</option>
@@ -162,18 +180,34 @@
                   <div class="panel-heading font-bold">Add Service </div> 
                   <div class="panel-body">
                  
-                    <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
+                    <!-- <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
                       <div class="col-md-12" style="padding: 0px;"  >
                           
                         <div *ngFor="let service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group"  >
           
-                          <input  (blur)="handleBlurservice($event,i)"  value="{{adds}}" type="text" class="form-control" formControlName="add_service"  >
+                          <input  (blur)="handleBlurservice($event,i)"   value={{service.value}} type="text" class="form-control" formControlName="add_service"  >
                           <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon"><i class="fa fa-trash" aria-hidden="true"></i></span>
                         </div>
                       </div>
                       <div class="input-group-addon "  (click)="handleAddservice()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer; margin-left: 12px;
                   ">+</div>
+                    </div> -->
+
+
+                    <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
+                      <div class="col-md-12" >
+                        <div *ngFor="let  service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
+          
+                          <input  (blur)="handleBlurservice($event,i)" value={{service.value}} type="text" class="form-control" >
+                          <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon">X</span>
+                        </div>
+                      </div>
+                      <div class="input-group-addon "  (click)="handleAddservice()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer;">+</div>
                     </div>
+
+
+
+
                     </div>   
                       
             </div>
@@ -193,11 +227,9 @@
                      <b> Attachment</b>
                      </div>
                      <div  style="text-align: right;padding-right:18px;">
-                      <!--  <input type="file" style="display: inline;">  -->
                       <b onclick="$('#file').click()" style="cursor: pointer;">Attach <i class="fa fa-paperclip " aria-hidden="true"></i></b>
-                      <input accept="application/pdf,image/*" type="file" (change)="handleUpload($event)" multiple encType="multipart/form-data" class="form-control " placeholder="Uplode your Company Logo" id="file" formControlName="attach_file" style="font-size:12px; border-right:0px;display: none;" >
-                      <!-- <span class="input-group-addon " style="border:0px;color: #58666e; font-size:15px;background:white;"><a onclick="$('#file').click()" style="color:blue;text-decoration: underline;">Attach <i class="fa fa-paperclip " aria-hidden="true"></i></a></span> -->
-                    </div>
+                          <input accept="application/pdf,image/*" type="file" (change)="handleAttachmentUpload($event)" multiple encType="multipart/form-data" class="form-control " placeholder="Uplode your Company Logo" id="file" formControlName="attachments" style="font-size:12px; border-right:0px;display: none;" >
+                      </div>
                      </div>
                     <br>
                     <br>
@@ -207,19 +239,20 @@
                      <thead>
                                       <tr style="background:#FFE5E5; ">
                                           <th>File Name</th>
-                                          <th>Attached By </th>
+                                          <th>Attach By </th>
                                           <th>Date added</th>
                                           <th>Size</th>
-                                          <th>Action</th>
+                                          <th></th>
                                        
                                       </tr>
-                                      <tr *ngFor=" let file of files_url,index as i"><th >
-                                        <p  style="color:blue">{{file.name}}</p></th>
-                                          <th>{{file.attached_by}}</th>
+                                      <tr *ngFor="let file of files_url, index as i"><th>
+                                        <!-- <a href="" style="color:blue">{{file.name}}</a></th> -->
+                                        <p  style="color:blue">{{file.name}}</p></th>  
+                                        <th>{{file.attached_by}} </th>
                                           <th>{{file.upload_date}}</th>
                                           <th>{{file.size}}</th>
                                           <th>
-                                          <i (click)="removeAttachment(i)" style="cursor:pointer;" class="fa fa-trash"  aria-hidden="true"></i></th>
+                                          <i (click)="removeAttachment(i)"  class="fa fa-trash"  aria-hidden="true"></i></th>
                                           </tr>
                                   </thead>
                      </table>

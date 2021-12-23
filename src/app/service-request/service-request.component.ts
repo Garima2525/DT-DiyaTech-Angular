@@ -5,19 +5,14 @@ import { AccountService } from '../service/account.service';
 import { AuthService } from '../service/auth.service';
 import { CompanyService } from '../service/company.service';
 import { ContactService } from '../service/contact.service';
-
 import { ProductService } from '../service/product.service';
-
 import { TosterService } from '../service/toster.service';
 import { UploadAttachmentService } from '../service/upload-attachment.service';
 import { UserService } from '../service/user.service';
-
 import { SortDescriptor } from '@progress/kendo-data-query';
 import { MultiSelectTreeCheckableSettings, MultiSelectTreeHierarchyBindingDirective } from "@progress/kendo-angular-dropdowns";
-import { Product } from '../../productInterface'
 import { ServiceRequestService } from '../service/service-request.service';
 
-import Swal from 'sweetalert2'; 
 
 @Component({
   selector: 'app-service-request',
@@ -25,17 +20,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./service-request.component.css']
 })
 export class ServiceRequestComponent implements OnInit {
-
   
   @ViewChild('multiselecttree', { static: true }) 
+
   public multiselecttree: any;
   public checkableSettings: MultiSelectTreeCheckableSettings = {
     checkChildren: true,
     checkOnClick: false,
   };
-
-
-
 
   saveas: any = true;
   saveasnew: any = true;
@@ -50,46 +42,23 @@ export class ServiceRequestComponent implements OnInit {
   isValidbutton: any;
   incoTerm:any=[{value:null}]
   addservice:any=[{value:null}]
-  // addservice: any = [];
   accountData:any;
   todayDate:any;
-  public data:any=[];
-  public data1: Product[] =[]
-  public data2: Product[] =[]
-  public value: Product[] =[]
   selectedProduct: any = [];
   showDropdownData:any=[]
   showDropdownBox:boolean=false
   totalAmount:any=0
   totalQuantity:any=0
   salesPersonData:any
-  groupName:any
-  groupSize:any=0
-  groupAmount:any=0
-  groupPartNumber:any
-  mergedProduct:any=[]
-
-
-
-
-
-
-  productForm!:FormGroup;
-
-
- 
   contactData:any
   contactTempData:any=''
   loggedInUser:any
   leadOwner:any
   leadOwnerId:any
   selectedCompany:any={}
-
   users:any
- 
   lead_id:any
   location:any
- 
   isValidPrdFormSubmitted:any=false
   branchData:any
   productData:any
@@ -102,7 +71,6 @@ export class ServiceRequestComponent implements OnInit {
   MergedProductsName:any=""
   quoteLocation:any
   quoteLocationId:any
-
   ShowFilter = true;
   limitSelection = false;
   dropdownList:any=[]
@@ -114,19 +82,6 @@ export class ServiceRequestComponent implements OnInit {
   ownerDropdownSettings={}
   salesPersonDropdownSettings={}
 
-  account_id:any=''
-  company_name:any=''
-  company_industry:any=''
-  company_country:any=''
-  company_state:any=''
-  company_city:any=''
-  company_location:any=''
-  company_gst:any=''
-  company_pan:any=''
-  company_tan:any=''
-  company_cin:any=''
-
-
   contact_id:any
   contact_name:any
   contact_role:any
@@ -137,10 +92,8 @@ export class ServiceRequestComponent implements OnInit {
   account_info_val: any;
   add_service:any;
 
-
   constructor( 
     private fb:FormBuilder,
-  
     private Toaster:TosterService,
     private router:Router,
     private Route: Router,
@@ -151,29 +104,16 @@ export class ServiceRequestComponent implements OnInit {
     private serviceS: ServiceRequestService,
     private company:CompanyService,
     private product:ProductService,
-    private user:UserService) { 
-
-      this.product.getAllProduct().subscribe((data:any)=>{
-        console.log(data)
-        this.productData=data.result.slice()  
-        this.data1=this.productData.slice()
-       
-        this.data2=this.data1.slice()
-        })
-      
-  
-   }
+    private user:UserService) {}
 
   ngOnInit(): void {
     this.todayDate = new Date();
     console.log(this.todayDate);
-    
     this.auth.userLoggedIn().subscribe((user:any)=>{
       console.log(user)
       this.currentUser=user.result.username
       this.userId=user.result._id 
     })
-
     let number = Math.random() // 0.9394456857981651
     number.toString(36); // '0.xtis06h6'
     var id = number.toString(36).substr(2, 9);
@@ -192,11 +132,7 @@ export class ServiceRequestComponent implements OnInit {
         this.salesPersonData=data.result  
     })
 
-    this.company.GetAddress().subscribe((branch:any)=>{
-      console.log(branch)
-      this.branchData=branch.result
-    })
-
+   
 
     this.account.getAllAccount().subscribe((data:any)=>{
       this.accountData=data
@@ -208,7 +144,6 @@ export class ServiceRequestComponent implements OnInit {
       this.contactData=data
     })
 
-    
     this.dropdownSettings = {
       singleSelection: true,
       idField: 'account_id',
@@ -241,26 +176,12 @@ export class ServiceRequestComponent implements OnInit {
       closeDropDownOnSelection:true,
       allowSearchFilter: false
     }
-    this.salesPersonDropdownSettings={
-      singleSelection: true,
-      idField: '_id',
-      textField: 'username',
-      noDataAvailablePlaceholderText:'No Branch Found!',
-      closeDropDownOnSelection:true,
-      allowSearchFilter: false
-    }
+    
     this.forminit(this.serviceId);
   }
  
-
-
-  // optionClick(index:any){
-  //   console.log(index)
-  // }
-
   handleAddservice(){
     this.addservice.push({value:null})
-    
    }
  
   handleBlurservice(e:any,index:any){
@@ -273,30 +194,6 @@ export class ServiceRequestComponent implements OnInit {
    this.incoTerm.splice(index,1)
   }
  
- 
-
-
-//   handleUpload(e:any){
-//     let date=new Date()
-//     // console.log(e.target.files)
-//     this.attachment_files=e.target.files
-      
-//     for(let file of e.target.files){
-//        this.upload.uploadFiles(file,this.lead_id).subscribe((url:any)=>{
-//         let img_url=url.url
-//          this.files_url.push({img_url,name:file.name,size:file.size,attached_by:this.loggedInUser,upload_date:date,lead_id:this.lead_id})
-//          console.log({img_url,name:file.name,size:file.size,attached_by:this.loggedInUser,upload_date:date,lead_id:this.lead_id})
-//        })
-//      }
-
-//     for(let file of e.target.files)
-//         this.show_files.push({
-//           name:file.name,
-//           size:file.size,
-//           attached_by:this.loggedInUser,
-//           upload_date:date
-//         })
-// }
 handleAttachmentUpload(e:any){
   let date=new Date()
   this.attachment_files=e.target.files
@@ -320,14 +217,11 @@ handleAttachmentUpload(e:any){
 
  }
 
-
   onContactSelect(contact:any){
     console.log(contact)
-
     let filter_contact = this.contactData.filter((cntc:any)=>cntc.contact_id===contact.contact_id)
     console.log(filter_contact[0])
     this.account_info_val=filter_contact[0]._id
-   
   }
 
 
@@ -339,14 +233,9 @@ handleAttachmentUpload(e:any){
     let filtered_company= this.accountData.filter((acc:any)=>acc.account_id===item.account_id)
     console.log(filtered_company)
     this.accountVal=contacts[0]._id
-   
   }
 
-  public sort: SortDescriptor[] = [
-    
-  ];
-
- 
+  public sort: SortDescriptor[] = [];
 
   forminit(uni: any) {
     this.ServiceForm = this.fb.group({
@@ -355,7 +244,6 @@ handleAttachmentUpload(e:any){
       service_location:'',
       priority:'Low',
       source_type:'Call',
-      company:'',
       account:'',
       account_info:'',
       add_service:'',
@@ -365,21 +253,22 @@ handleAttachmentUpload(e:any){
       attachments:[],
       stages:'',
       remark:''
-      
     });
   }
-  saveform(svalue: any) {
+
+saveform(svalue: any) {
     if (this.ServiceForm.invalid) {
       this.saveas = true;
     } else {
       this.saveas = svalue;
     }
   }
-  
+
   removeAttachment(index:any){
     console.log(index)
     this.files_url.splice(index,1)
   }
+
   onFormSubmit() {
     this.isValidFormSubmitted = false;
     if (this.ServiceForm.invalid) {
@@ -395,8 +284,6 @@ handleAttachmentUpload(e:any){
       this.ServiceForm.value.account=this.accountVal
       this.ServiceForm.value.account_info=this.account_info_val
       this.ServiceForm.value.add_service = this.addservice;
-      
-      
       this.serviceS.submitForm(this.ServiceForm.value).subscribe((data) => {
         console.log(data);
         this.Toaster.showSuccess(

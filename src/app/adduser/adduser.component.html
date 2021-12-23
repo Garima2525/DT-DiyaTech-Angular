@@ -213,14 +213,17 @@
 
       
 
-      <kendo-grid-column
-        field="role"
-        title="Role"
-        [width]="100"
-        [class]="{ 'text-center': true }"
-        [resizable]="false"
-      >
+      
+
+      <kendo-grid-column  title="ole" [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div class="service" > {{ dataItem.roledata[0].role_name}}</div>
+          
+          
+        </ng-template>
       </kendo-grid-column>
+
+
 
       <kendo-grid-column
       field="designation"

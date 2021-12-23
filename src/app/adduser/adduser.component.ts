@@ -61,9 +61,10 @@ export class AdduserComponent implements OnInit {
       {
         username: ['', Validators.required],
         email: ['', Validators.required],
-        phone: ['', Validators.required],
+        phone: ['', Validators.required,Validators.pattern('^[6-9][0-9]{9}$')],
         designation: ['', Validators.required],
-        password: ['', Validators.compose([Validators.required])],
+        password: ['', Validators.compose([Validators.required]),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')],
+        
         cpassword: ['', Validators.compose([Validators.required])],
         role: ['', Validators.required],
       },
