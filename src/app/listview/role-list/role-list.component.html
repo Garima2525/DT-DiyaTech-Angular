@@ -41,19 +41,9 @@
         />
       <kendo-grid-spacer></kendo-grid-spacer>
       <button *ngIf="this.userPermission.rolecreate"  class="button"> <a routerLink="/role-permission">Create New Role</a></button>
-      <!-- <button kendoGridPDFCommand icon="file-pdf">Export to PDF</button> -->
-      <!-- <button kendoGridExcelCommand type="button" icon="file-excel">
-        Export to Excel
-      </button> -->
+      
     </ng-template>
-    <!-- <kendo-grid-checkbox-column
-      [width]="45"
-      [headerClass]="{ 'text-center': true }"
-      [class]="{ 'text-center': true }"
-      [resizable]="false"
-      [columnMenu]="false"
-      [showSelectAll]="true"
-    ></kendo-grid-checkbox-column> -->
+   
     
       <kendo-grid-column field="role_name" title="Role Name" [width]="100">
         <ng-template kendoGridCellTemplate let-dataItem>
@@ -67,24 +57,7 @@
         </ng-template>
       </kendo-grid-column>
 
-      <!-- <kendo-grid-column
-        field="quote_source"
-        title="Quote Source"
-        [width]="100"
-        [class]="{ 'text-center': true }"
-        [resizable]="false"
-      >
-       
-      </kendo-grid-column> -->
-      <!-- <kendo-grid-column
-        field="quote_status"
-        title="Quote Status"
-        [width]="100"
-        [class]="{ 'text-center': true }"
-        [resizable]="false"
-      >
-        
-      </kendo-grid-column> -->
+    
        <kendo-grid-column
         title="Action"
         [width]="100"
@@ -105,68 +78,7 @@
         </ng-template>
       </kendo-grid-column>
    
-    <!-- <kendo-grid-column-group title="Performance" [columnMenu]="false">
-      <kendo-grid-column
-        field="rating"
-        title="Rating"
-        [width]="110"
-        [resizable]="false"
-        filter="numeric"
-      >
-        <!-- <ng-template kendoGridCellTemplate let-dataItem>
-          <kendo-rating [value]="dataItem.rating" [max]="5"></kendo-rating>
-        </ng-template> 
-      </kendo-grid-column>
-      <kendo-grid-column
-        field="target"
-        title="Engagement"
-        [width]="230"
-        [resizable]="false"
-        filter="numeric"
-      >
-        <ng-template kendoGridCellTemplate let-dataItem>
-          <kendo-sparkline
-            type="bar"
-            [data]="dataItem.target"
-            [tooltip]="{ visible: false }"
-            [transitions]="true"
-            [seriesDefaults]="{
-              labels: { background: 'none', visible: true, format: '{0}%' }
-            }"
-          >
-            <kendo-chart-area [opacity]="0" [width]="200"></kendo-chart-area>
-            <!-- <kendo-chart-value-axis>
-              <kendo-chart-value-axis-item [min]="0" [max]="130">
-              </kendo-chart-value-axis-item>
-            </kendo-chart-value-axis> 
-          </kendo-sparkline>
-        </ng-template>
-      </kendo-grid-column>
-      <kendo-grid-column
-        field="budget"
-        title="Budget"
-        [width]="100"
-        filter="numeric"
-      >
-        <ng-template kendoGridCellTemplate let-dataItem>
-          <span [ngClass]="{ 'red text-bold': dataItem.budget < 0 }">{{
-            dataItem.budget | currency
-          }}</span>
-        </ng-template>
-      </kendo-grid-column>
-    </kendo-grid-column-group>
-    <kendo-grid-column-group title="Contacts" [columnMenu]="false">
-      <kendo-grid-column field="phone" title="Phone" [width]="130">
-      </kendo-grid-column>
-      <kendo-grid-column field="address" title="Address" [width]="200">
-      </kendo-grid-column>
-    </kendo-grid-column-group> -->
-
-    <!-- <kendo-grid-pdf
-      fileName="Employees.pdf"
-      [repeatHeaders]="true"
-    ></kendo-grid-pdf>
-    <kendo-grid-excel fileName="Employees.xlsx"></kendo-grid-excel> -->
+  
   </kendo-grid>
   </div>
   </div>

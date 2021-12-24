@@ -61,7 +61,7 @@ export class AdduserComponent implements OnInit {
       {
         username: ['', Validators.required],
         email: ['', Validators.required],
-        phone: ['', Validators.required,Validators.pattern('^[6-9][0-9]{9}$')],
+        phone: ['', [Validators.required, Validators.pattern('^[6-9][0-9]{9}$')]],
         designation: ['', Validators.required],
         password: ['', Validators.compose([Validators.required]),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')],
         
@@ -130,43 +130,7 @@ export class AdduserComponent implements OnInit {
     this.router.navigateByUrl('/edit-quote', { state: { id } });
   }
 
-  // handleDelete(id:any){
 
-  //   Swal.fire({
-  //     title: 'Are you sure?',
-  //     text: "You won't be able to revert this!",
-  //     icon: 'warning',
-  //     showCancelButton: true,
-  //     confirmButtonColor: '#3085d6',
-  //     cancelButtonColor: '#d33',
-  //     confirmButtonText: 'Yes, delete it!'
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       this.lead.deleteAccount(id).subscribe((data:any)=>{
-  //         if(data.status===200)
-  //           Swal.fire(data.message, '', 'success')
-  //         else if(data.status===500)
-  //           Swal.fire(data.message, '', 'error')
-  //           this.getAccounts()
-  //       })
-
-  //     }
-  //   })
-
-  // Swal.fire({
-  //   title: 'Are You Sure?',
-  //   // showDenyButton: true,
-  //   showCancelButton: true,
-  //   confirmButtonText: 'Delete',
-  //   // denyButtonText: `Don't save`,
-  // }).then((result) => {
-  //   /* Read more about isConfirmed, isDenied below */
-  //   if (result.isConfirmed) {
-
-  //   } else if (result.isDenied) {
-  //     Swal.fire('Changes are not saved', '', 'info')
-  //   }
-  // })
 
   public onFilter(e: any): void {
     let inputValue = e.target.value;

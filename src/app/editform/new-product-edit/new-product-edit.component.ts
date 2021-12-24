@@ -23,6 +23,7 @@ export class NewProductEditComponent implements OnInit {
   isValidbutton: any;
   saveas: any = true;
   isValidFormSubmitted: any;
+  productname:any;
   constructor(
     private prdAdd:FormBuilder,private prdadd:ProductService,
     private toast:TosterService,
@@ -48,7 +49,9 @@ export class NewProductEditComponent implements OnInit {
     this.product.getproduct(this.PID).subscribe((data: any) => {
       console.log(data.result[0]);
       this.forminit(data.result[0]);
-     
+   
+      this.productname = data.result[0].productname;
+      console.log(this.productname)
     });
     
   }
@@ -70,7 +73,7 @@ export class NewProductEditComponent implements OnInit {
       parent:productId.parent,
       quantity:productId.quantity,
       amount:productId.amount,
-      products:productId.products
+     
     })
     
   }
