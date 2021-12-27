@@ -25,7 +25,7 @@ export class NewProductEditComponent implements OnInit {
   isValidFormSubmitted: any;
   productname:any;
   constructor(
-    private prdAdd:FormBuilder,private prdadd:ProductService,
+    private fb:FormBuilder,private prdadd:ProductService,
     private toast:TosterService,
     private router:Router,
     private _Activatedroute:ActivatedRoute,
@@ -57,22 +57,26 @@ export class NewProductEditComponent implements OnInit {
   }
 
   
-  forminit(productId:any){
-    this.productForm=this.prdAdd.group({
-      productname:productId.productname,
-      CCNNo:productId.CCNNo,
-      Category:productId.Category,
-      GST:productId.GST,
-      HSNCode:productId.HSNCode,
-      OEM:productId.OEM,
-      OEMProductCode:productId.OEMProductCode,
-      PartNo:productId.PartNo,
-      UOM:productId.UOM,
-      UnitPrice:productId.UnitPrice,
-      type:productId.type,
-      parent:productId.parent,
-      quantity:productId.quantity,
-      amount:productId.amount,
+  forminit(uni:any){
+    this.productForm=this.fb.group({
+      type:uni.type,
+      productname:uni.productname,
+      PartNo:uni.PartNo,
+      CCNNo:uni.CCNNo,
+      UnitPrice:uni.UnitPrice,
+      UOM:uni.UOM,
+      Category:uni.Category,
+      OEM:uni.OEM,
+      OEMProductCode:uni.OEMProductCode,
+      HSNCode:uni.HSNCode,
+      GST:uni.GST,
+     
+     
+     
+      
+    
+    
+     
      
     })
     
@@ -88,9 +92,7 @@ export class NewProductEditComponent implements OnInit {
  
 
   onFormSubmit() {
-    this.productForm.value.amount=this.productForm.value.UnitPrice
-    this.productForm.value.quantity=1
-    this.productForm.value.parent=false
+    
     this.isValidFormSubmitted = false;
     if (this.productForm.invalid) {
       console.log(this.productForm, 'error');

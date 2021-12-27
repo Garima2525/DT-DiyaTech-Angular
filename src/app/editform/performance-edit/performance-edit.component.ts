@@ -36,6 +36,7 @@ export class PerformanceEditComponent implements OnInit {
   weightage:any;
   duration:any;
   idata:any = [];
+  PerformanceId:any;
   constructor(
     private form: FormBuilder,
     private Toaster: TosterService,
@@ -50,11 +51,11 @@ export class PerformanceEditComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.perId =  this._Activatedroute.snapshot.paramMap.get('id');
-    this.Auth.userLoggedIn().subscribe((logindata:any)=>{
+    this.PerformanceId = this._Activatedroute.snapshot.paramMap.get('id');
+    this.Auth.userLoggedIn().subscribe((logindata: any) => {
       console.log(logindata);
-      this.login_id=logindata.result._id
-    })
+      this.login_id = logindata.result._id;
+    });
     this.industry.getAllAccount().subscribe((data:any)=>{
       this.industrydata=data
       console.log(data)
@@ -63,7 +64,13 @@ export class PerformanceEditComponent implements OnInit {
       this.userdata=data.result
       console.log(data)
     });
-   
+    this.Performance.getbyid(this.PerformanceId).subscribe((data: any) => {
+      console.log(data.result[0]);
+      this.forminit(data.result[0]);
+      this.goal_id = data.result[0].goal_id;
+      
+    });
+
 
     this.dropdownSettings= {
       singleSelection:false,
@@ -78,24 +85,21 @@ export class PerformanceEditComponent implements OnInit {
       textField: 'industry',
       allowSearchFilter: true
     };
-    this.Performance.getbyid(this.perId).subscribe((data: any) => {
-      console.log(data.result[0]);
+    // this.Performance.getbyid(this.perId).subscribe((data: any) => {
+    //   console.log(data.result[0]);
 
-    this.forminit(data.result[0]);
-    this.goal_id = data.result[0].goal_id;
-     this.goal_type=data.result[0].goal_type
-     this.gname=data.result[0].goal_name;
-     this.weightage=data.result[0].weightage;
-     this.duration=data.result[0].duration
-     this.idata = data.result[0].industry;
-     console.log(this.idata);
-    });
+    // this.forminit(data.result[0]);
+    // this.goal_id = data.result[0].goal_id;
+     
+     
+    // });
     
   }
 
-  forminit(uni: any) {
-    this.Perform = this.form.group({
-      goal_id: uni.goal_id,
+
+forminit(uni: any) {
+  this.Perform = this.form.group({
+    goal_id: uni.goal_id,
       industry:uni.industry,
       employee:uni.employee,
       goal_type:uni.goal_type,
@@ -109,9 +113,9 @@ export class PerformanceEditComponent implements OnInit {
       quote_value:uni.quote_value,
       deal_quantity:uni.deal_quantity,
       deal_value:uni.deal_value,
-      
-  })
+  });
 }
+
 saveform(svalue: any) {
   if (this.Perform.invalid) {
     this.saveas = true;
@@ -131,7 +135,7 @@ onFormSubmit() {
     console.log(this.Perform, 'true');
     this.isValidbutton = true;
     this.Perform.value.user_id = this.login_id;
-    this.Perform.value.materials = this.idata;
+    // this.Perform.value.materials = this.idata;
     this.Performance.updateForm(this.Perform.value,this.perId).subscribe((data) => {
       console.log(data);
       this.Toaster.showSuccess(

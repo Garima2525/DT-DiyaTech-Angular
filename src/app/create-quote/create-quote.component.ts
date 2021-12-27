@@ -36,6 +36,7 @@ export class CreateQuoteComponent implements OnInit {
   public data2: Product[] =[]
   public value: Product[] =[]
   selectedProduct: any = [];
+  PartNo: any = [];
   showDropdownData:any=[]
   showDropdownBox:boolean=false
   totalAmount:any=0
@@ -755,6 +756,7 @@ export class CreateQuoteComponent implements OnInit {
 
     this.selectedProduct=[]
     this.groupPartNumber=null
+    this.PartNo=null
     this.groupName=""
     this.groupAmount=0
     this.groupSize=0 

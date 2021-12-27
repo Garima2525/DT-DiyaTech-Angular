@@ -72,13 +72,13 @@ export class PerformanceComponent implements OnInit {
     number.toString(36); // '0.xtis06h6'
     var id = number.toString(36).substr(2, 9);
     this.performanceId=id.toUpperCase()
-    this.forminit(this.performanceId);
+    this.forminit();
     
   }
 
-  forminit(uni: any) {
+  forminit() {
     this.Perform = this.form.group({
-      goal_id: [uni],
+      goal_id: [this.performanceId, Validators.required],
       industry:'',
       employee:'',
       goal_type:'',

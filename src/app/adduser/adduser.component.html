@@ -97,10 +97,17 @@
                       <div class="form-group">
                         <label class="control-label font-weight-600">Password</label>
                         <input type="text" class="form-control  input-sm" placeholder="Password" formControlName="password">
-                        <div *ngIf="f.password.errors && f.password.errors.required && isValidFormSubmitted"
+                        <!-- <div *ngIf="f.password.errors && f.password.errors.required && isValidFormSubmitted"
                           class="text-danger text-left mb-1 errorcontrols">
                           <div *ngIf="f.password.errors.required"><small>Password is
                               required.</small></div>
+                              <div *ngIf="f.password.errors.pattern">Invalid Mobile.</div>
+                        </div> -->
+
+                        <div *ngIf="f.password.errors  && isValidFormSubmitted" class="text-danger text-left mb-1 errorcontrols">
+                          <div *ngIf="f.password.errors.required"><small>Password is
+                            required.</small></div>
+                          <div *ngIf="f.password.errors.pattern">Minimum 8 character password.</div>
                         </div>
                       </div>
                     </div>
@@ -129,7 +136,7 @@
                       <div class="form-group">
                         <label class="control-label font-weight-600">Role</label>
                         <select class="form-control validation user_role input-sm" name="role" formControlName="role">
-                          <option value="">Choose Role</option>
+                          <option value="" disabled>Choose Role</option>
                           <option *ngFor="let role of roledata" value="{{role._id}}">{{role.role_name}}</option>
                         </select>
                         <div *ngIf="f.role.errors && f.role.errors.required && isValidFormSubmitted"
@@ -139,6 +146,25 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label font-weight-600">DT Users</label>
+                        <select class="form-control validation user_role input-sm"  formControlName="dt_users">
+                          <option value="" disabled>Choose Users</option>
+                          <option value="User">User</option>
+                          <option value="Salesperson">Salesperson</option>
+                          
+                        </select>
+                        <div *ngIf="f.dt_users.errors && f.dt_users.errors.required && isValidFormSubmitted"
+                          class="text-danger text-left mb-1 errorcontrols">
+                          <div *ngIf="f.dt_users.errors.required"><small>DT Users is
+                              required.</small></div>
+                        </div>
+                      </div>
+                    </div>
+
+
 
                   </div>
                   <div class="row">
