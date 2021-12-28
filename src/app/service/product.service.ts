@@ -139,4 +139,17 @@ export class ProductService {
     };
     return this.http.post(api_url, data, httpOptions);
   }
+
+  bulkAddProduct(data:any){
+    
+    let api_url=this.base_url+"bulk-product"
+    const httpOptions={
+      headers:new HttpHeaders({
+        'content-type':'application/json;charset=UTF-8',
+        'apikey': this.api_key
+      }),
+    }
+    return this.http.post(api_url,data,httpOptions)
+    
+  }
 }

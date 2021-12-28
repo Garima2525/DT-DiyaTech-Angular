@@ -216,7 +216,6 @@
   
 
 
-
             <div class="row">
               <div class="col-sm-12">
                 <div class="panel panel-default">
@@ -245,14 +244,14 @@
                                           <th></th>
                                        
                                       </tr>
-                                      <tr *ngFor="let file of files_url, index as i"><th>
+                                      <tr *ngFor="let file of show_files"><th>
                                         <!-- <a href="" style="color:blue">{{file.name}}</a></th> -->
                                         <p  style="color:blue">{{file.name}}</p></th>  
                                         <th>{{file.attached_by}} </th>
                                           <th>{{file.upload_date}}</th>
                                           <th>{{file.size}}</th>
-                                          <th>
-                                          <i (click)="removeAttachment(i)"  class="fa fa-trash"  aria-hidden="true"></i></th>
+                                          <th><i class="fa fa-pencil-square-o " aria-hidden="true"></i>
+                                          <i  class="fa fa-trash"  aria-hidden="true"></i></th>
                                           </tr>
                                   </thead>
                      </table>
@@ -262,7 +261,6 @@
           </div>
           </div>
         </div>
-
           <div class="row">
             <div class="col-sm-12">
               <div class="panel panel-default">

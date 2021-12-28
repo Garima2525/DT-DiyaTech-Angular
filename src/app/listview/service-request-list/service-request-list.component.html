@@ -51,28 +51,28 @@
     
     <kendo-grid-column  title="Service Details" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="service" >Type :  {{ dataItem.service_type}}</div>
-        <div class="service" >Location : {{dataItem.service_location }}</div>
-        <div class="service" >Priority : {{dataItem.priority }}</div>
-        <!-- <div class="service" >Source : {{dataItem.source_type }}</div> -->
+        <div class="service" ><b>Type</b> :  {{ dataItem.service_type}}</div>
+        <div class="service" ><b>Location</b> : {{dataItem.service_location }}</div>
+        <div class="service" ><b>Priority</b> : {{dataItem.priority }}</div>
+         <div class="service" ><b>Source</b> : {{dataItem.source_type }}</div> 
         
       </ng-template>
     </kendo-grid-column>
 
-    <kendo-grid-column  title="Source Type" [width]="100">
+    <!-- <kendo-grid-column  title="Source Type" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="service" >   {{ dataItem.source_type}}</div>
+        <div class="service" >   {{ dataItem.source_type}}</div> -->
      
         <!-- <div class="service" >Name : {{dataItem.person_name }}</div> -->
         <!-- <div class="service" >Source : {{dataItem.source_type }}</div> -->
         
-      </ng-template>
-    </kendo-grid-column>
+      <!-- </ng-template>
+    </kendo-grid-column> -->
     <kendo-grid-column  title="Details" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
        
-        <div class="service" >Account : {{dataItem.contactData[0].company_name }}</div>
-        <div class="service" >Contact : {{dataItem.contactData[0].first_name }}</div>
+        <div class="service" ><b>Account</b> : {{dataItem.contactData[0].company_name }}</div>
+        <div class="service" ><b>Account</b> : {{dataItem.contactData[0].first_name }}</div>
         <!-- <div class="service" >Name : {{dataItem.account }}</div>
         <div class="service" >Source : {{dataItem.source_type }}</div> -->
         
@@ -89,19 +89,23 @@
     </kendo-grid-column> -->
      
      
-    <kendo-grid-column  title="" [width]="100">
+    <kendo-grid-column  title="Status" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <div class="service" >Assign  :  {{ dataItem.assign_to}}</div>
+        <!-- <div class="service" >Assign  :  {{ dataItem.assign_to}}</div> -->
         <!-- <div class="service" >Visit Schedule : {{dataItem.visit_schedule  }}</div> -->
-        <div class="service" ><i class="fa fa-calendar-plus-o" style="color:green;" aria-hidden="true"></i> Schedule  : {{ dataItem.visit_schedule |date:'dd-MM-yyyy' }}</div>
-        <div class="service" >Status  :  {{ dataItem.stages}}</div>
+        <div class="service" ><i class="fa fa-calendar-plus-o" style="color:green;" aria-hidden="true"></i>  <b>Schedule</b>  : {{ dataItem.visit_schedule |date:'dd-MM-yyyy' }}</div>
+        <div class="service" >  <b>Status</b>:  {{ dataItem.stages}}</div>
         
       </ng-template>
     </kendo-grid-column>
     
+
+
+
+    
  
     <kendo-grid-column
-    title="Action"
+    title="Controls"
     [width]="100"
     [class]="{ 'text-center': true }"
     [resizable]="false"
@@ -110,8 +114,8 @@
   >
     <ng-template kendoGridCellTemplate let-service>
       <kendo-menu >
-        <kendo-menu-item  icon="gear">
-          <kendo-menu-item icon="edit"  url="/service-request-edit/{{service._id}}"  text="Edit" > </kendo-menu-item>
+        <kendo-menu-item  te>
+          <!-- <kendo-menu-item icon="edit"  url="/service-request-edit/{{service._id}}"  text="Edit" > </kendo-menu-item> -->
         </kendo-menu-item>
       </kendo-menu>
     </ng-template>

@@ -34,7 +34,7 @@
                         <input type="text" class="form-control" formControlName="goal_id" value="{{goal_id}}" [attr.disabled]=true >
                         </div>
 
-                        <div class="col-md-4 form-group mSelectD">  
+                        <div class="col-md-4 form-group mSelectD"  >  
                             <label >Industry </label> 
               <!-- <ng-select
               [items]="industrydata"
@@ -43,10 +43,11 @@
               [multiple]="true">
             </ng-select> -->
             <ng-multiselect-dropdown
+            
             [placeholder]="'Select Your Item'"
             [settings]="dropdownSettings1"
             [data]="industrydata"
-         
+            [(ngModel)]="industryd"
             formControlName="industry">
         </ng-multiselect-dropdown>
                           </div>
@@ -70,7 +71,7 @@
             [placeholder]="'Select Your Item'"
             [settings]="dropdownSettings"
             [data]="userdata"
-           
+            [(ngModel)]="employeed"
             formControlName="employee">
         </ng-multiselect-dropdown>
             
@@ -82,28 +83,28 @@
 
          <div class="col-md-4 form-group">  
             <label >Goal Type </label> 
-            <select class="form-control" formControlName="goal_type" value="{{goal_type}}">
-                <option value="" disabled> Select Goal Type</option>
-                <option value="Revenue">Revenue</option>
-                <option value="Learning">Learning</option>
+            <select class="form-control" formControlName="goal_type" value={{goal_type}} >
+                <option value=""  disabled> Select Goal Type</option>
+                <option value="Revenue"  >Revenue</option>
+                <option value="Learning" >Learning</option>
             </select>
             </div>
                       
             <div class="col-md-4 form-group">  
                 <label >Goal Name </label> 
-                <input type="text" class="form-control" formControlName="goal_name"  value="{{gname}}">
+                <input type="text" class="form-control" formControlName="goal_name"  >
                 </div>
 
                 <div class="col-md-4 form-group">  
                     <label >Weightage</label> 
-                    <input type="text" class="form-control" formControlName="weightage" value="{{weightage}}" >
+                    <input type="text" class="form-control" formControlName="weightage" >
                     </div>
 
                 <div class="clearfix"></div>
     
                 <div class="col-md-4 form-group">  
                     <label >Duration</label> 
-                    <select class="form-control" formControlName="duration" value="{{duration}}">
+                    <select class="form-control" formControlName="duration" >
                         <option value="" disabled> Select Duration</option>
                         <option value="Monthly">Monthly</option>
                         <option value="Weekly">Weekly</option>

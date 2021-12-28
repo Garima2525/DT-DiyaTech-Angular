@@ -204,28 +204,28 @@ export class ServiceRequestEditComponent implements OnInit {
    this.incoTerm.splice(index,1)
   }
  
-handleAttachmentUpload(e:any){
-  let date=new Date()
-  this.attachment_files=e.target.files
-    
-  for(let file of e.target.files){
-     this.upload.uploadFiles(file,this.serviceId).subscribe((url:any)=>{
-      let img_url=url.url
-       this.files_url.push({img_url,name:file.name,size:file.size,attached_by:this.currentUser,upload_date:date,lead_id:this.serviceId})
-       console.log({img_url,name:file.name,size:file.size,attached_by:this.currentUser,upload_date:date,lead_id:this.serviceId})
-     })
+  handleAttachmentUpload(e:any){
+    let date=new Date()
+    this.attachment_files=e.target.files
+      
+    for(let file of e.target.files){
+       this.upload.uploadFiles(file,this.sId).subscribe((url:any)=>{
+        let img_url=url.url
+         this.files_url.push({img_url,name:file.name,size:file.size,attached_by:this.currentUser,upload_date:date,lead_id:this.sId})
+         console.log({img_url,name:file.name,size:file.size,attached_by:this.currentUser,upload_date:date,lead_id:this.sId})
+       })
+     }
+
+     for(let file of e.target.files)
+    this.show_files.push({
+      name:file.name,
+      size:file.size,
+      attached_by:this.currentUser,
+      upload_date:date.toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric'})
+    })
+
+
    }
-
-   for(let file of e.target.files)
-  this.show_files.push({
-    name:file.name,
-    size:file.size,
-    attached_by:this.currentUser,
-    upload_date:date.toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric'})
-  })
-
-
- }
 
   onContactSelect(contact:any){
     console.log(contact)
@@ -261,7 +261,7 @@ handleAttachmentUpload(e:any){
       person_name:uni.person_name,
       assign_to:uni.assign_to,
       visit_schedule:uni.visit_schedule,
-      attachments:[],
+      attachments:'',
       stages:uni.stages,
       remark:uni.remark
     });

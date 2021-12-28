@@ -42,18 +42,20 @@ export class NewProductEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.PID=  this._Activatedroute.snapshot.paramMap.get('id');
-    this.Auth.userLoggedIn().subscribe((logindata: any) => {
-      console.log(logindata);
-      this.login_id = logindata.result._id;
-    });
-    this.product.getproduct(this.PID).subscribe((data: any) => {
-      console.log(data.result[0]);
-      this.forminit(data.result[0]);
    
-      this.productname = data.result[0].productname;
-      console.log(this.productname)
+   
+    // this.product.getproduct(this.PID).subscribe((data: any) => {
+    //   console.log(data.result[0]);
+    //   this.forminit(data.result[0]);
+   
+    //   this.productname = data.result[0].productname;
+    //   console.log(this.productname)
+    // });
+    this.PID=this._Activatedroute.snapshot.paramMap.get("id")
+  
+    this.product.getproduct(this.PID).subscribe((data:any)=>{
+      this.forminit(data.result[0]);;
     });
-    
   }
 
   
@@ -71,13 +73,6 @@ export class NewProductEditComponent implements OnInit {
       HSNCode:uni.HSNCode,
       GST:uni.GST,
      
-     
-     
-      
-    
-    
-     
-     
     })
     
   }
@@ -91,41 +86,76 @@ export class NewProductEditComponent implements OnInit {
  
  
 
-  onFormSubmit() {
+  // onFormSubmit() {
     
+  //   this.isValidFormSubmitted = false;
+  //   if (this.productForm.invalid) {
+  //     console.log(this.productForm, 'error');
+  //     this.isValidFormSubmitted = true;
+  //     this.isValidbutton = false;
+  //     // this.toast.showError('Sorry!, Fields are mandatory.');
+  //   } else {
+  //     console.log(this.productForm, 'true');
+  //     this.isValidbutton = true;
+  //     this.productForm.value.user_id = this.login_id;
+     
+  //     // this.productForm.value.productname=this.pname
+  //     // this.productForm.value.PartNo=this.pno
+  //     // this.productForm.value.CCNNo=this.CCNNo
+     
+  //     this.prdadd.updateForm(this.PID,this.productForm.value).subscribe((data:any)=>{
+  //       console.log(data);
+  //       this.toast.showSuccess(
+  //         'Congratulation!,Product has been updated.'
+  //       );
+  //       if (this.saveas == 'save') {
+  //         console.log(this.saveas);
+  //         setTimeout(() => {
+  //           this.router.navigate(['/new-products']);
+  //         }, 1000);
+  //       } else {
+  //         console.log(this.saveas);
+  //         setTimeout(() => {
+  //           window.location.reload();
+  //         }, 5000);
+  //       }
+  //      });
+  //   }
+  //  }
+
+
+
+   onFormSubmit() {
     this.isValidFormSubmitted = false;
     if (this.productForm.invalid) {
       console.log(this.productForm, 'error');
       this.isValidFormSubmitted = true;
       this.isValidbutton = false;
-      // this.toast.showError('Sorry!, Fields are mandatory.');
+      this.toast.showError('Sorry!, Fields are mandatory.');
     } else {
       console.log(this.productForm, 'true');
       this.isValidbutton = true;
-      this.productForm.value.user_id = this.login_id;
      
-      // this.productForm.value.productname=this.pname
-      // this.productForm.value.PartNo=this.pno
-      // this.productForm.value.CCNNo=this.CCNNo
-     
-      this.prdadd.updateForm(this.productForm.value,this.PID).subscribe((data:any)=>{
-        console.log(data);
-        this.toast.showSuccess(
-          'Congratulation!,Product has been updated.'
-        );
-        if (this.saveas == 'save') {
-          console.log(this.saveas);
-          setTimeout(() => {
-            this.router.navigate(['/new-products']);
-          }, 1000);
-        } else {
-          console.log(this.saveas);
-          setTimeout(() => {
-            window.location.reload();
-          }, 5000);
-        }
-       });
+      this.product
+        .updateForm(this.productForm.value,this.PID)
+        .subscribe((resdata: any) => {
+          console.log(resdata);
+          this.toast.showSuccess(
+            'Congratulation!, Product has been updated.'
+          );
+          if (this.saveas == 'save') {
+            console.log(this.saveas);
+            setTimeout(() => {
+              this.router.navigate(['/new-products']);
+            }, 5000);
+          } else {
+            console.log(this.saveas);
+            setTimeout(() => {
+              window.location.reload();
+            }, 5000);
+          }
+        });
     }
-   }
+  }
 }
 

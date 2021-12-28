@@ -36,7 +36,8 @@
         (input)="onFilter($event)"
         />
       <kendo-grid-spacer></kendo-grid-spacer>
-      <button class="button" > <a routerLink="/performance">Create New Performance</a></button>
+      <button class="button" *ngIf="this.userPermission?.performancecreate"> <a routerLink="/performance">Create New Performance</a></button>
+      
     </ng-template>
     
     
@@ -101,10 +102,13 @@
      <ng-template kendoGridCellTemplate let-performance>
       <kendo-menu>
         <kendo-menu-item text="Action">
-          <kendo-menu-item icon="edit"  url="/performance-edit/{{performance._id}}"  text="Edit" > </kendo-menu-item>
-          <!-- <kendo-menu-item text="Delete" icon="delete"></kendo-menu-item> -->
-        </kendo-menu-item>
+          <kendo-menu-item icon="edit" *ngIf="this.userPermission?.performanceedit" url="/performance-edit/{{performance._id}}"  text="Edit" > </kendo-menu-item>
        
+        
+        </kendo-menu-item>
+          
+      
+
       </kendo-menu>
      </ng-template>
    </kendo-grid-column>

@@ -150,7 +150,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="control-label font-weight-600">DT Users</label>
-                        <select class="form-control validation user_role input-sm"  formControlName="dt_users">
+                        <select class="form-control validation dt_users input-sm"  formControlName="dt_users">
                           <option value="" disabled>Choose Users</option>
                           <option value="User">User</option>
                           <option value="Salesperson">Salesperson</option>
@@ -241,7 +241,7 @@
 
       
 
-      <kendo-grid-column  title="ole" [width]="100">
+      <kendo-grid-column  title="Role" [width]="100">
         <ng-template kendoGridCellTemplate let-dataItem>
           <div class="service" > {{ dataItem.roledata[0].role_name}}</div>
           

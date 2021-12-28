@@ -3,7 +3,6 @@
 <div id="content" class="app-content" role="main">
     <div class="app-content-body ">
       <div class="top">
-      
         <div class="row t-main">
     <div class="col-sm-6 col-xs-12 t-main-1">
       <h4 class="m-n  t-main1">Performance</h4>
@@ -46,36 +45,19 @@
             [placeholder]="'Select Your Item'"
             [settings]="dropdownSettings1"
             [data]="industrydata"
-           
             formControlName="industry">
-        </ng-multiselect-dropdown>
-                          </div>
+            </ng-multiselect-dropdown>
+            </div>
         
-                            <div class="col-md-4 form-group mSelectD">  
-                                <label >Employee </label> 
-                                <!-- <input type="text" class="form-control" formControlName="employee"  > -->
-
-                                <!-- <ng-select
-              [items]="userdata"
-              bindLabel="username"
-              placeholder="Select User"
-              [multiple]="true"
-              >
-            </ng-select>  -->
-            <!-- <select formControlName="transporter_name" class="form-control" >
-              <option value="" selected >Select Transporter Name </option>
-              <option *ngFor="let objtrans of userdata" value={{objtrans._id}}> {{objtrans.username}} </option>
-            </select> -->
+            <div class="col-md-4 form-group mSelectD">  
+            <label >Employee </label>            
             <ng-multiselect-dropdown
             [placeholder]="'Select Your Item'"
             [settings]="dropdownSettings"
             [data]="userdata"
-           
             formControlName="employee">
-        </ng-multiselect-dropdown>
-            
-           
-                                </div>
+            </ng-multiselect-dropdown>
+            </div>
             
          <div class="clearfix"></div>
 
