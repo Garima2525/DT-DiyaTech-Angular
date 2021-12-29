@@ -22,9 +22,9 @@ export class AppComponent {
     // this.auth.userLoggedIn().subscribe((data:any)=>{
     //  console.log(data)
     // })
-    if (localStorage.getItem("username") === null || localStorage.getItem('user')) {
-      localStorage.clear();
-    }
+    // if (localStorage.getItem("username") === null || localStorage.getItem('user')) {
+    //   localStorage.clear();
+    // }
     
   }
   title = 'DT-angular-App';

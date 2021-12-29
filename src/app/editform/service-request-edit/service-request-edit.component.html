@@ -6,7 +6,7 @@
       
         <div class="row t-main">
     <div class="col-sm-6 col-xs-12 t-main-1">
-      <h4 class="m-n  t-main1">Edit Service</h4>
+      <h4 class="m-n  t-main1"> Service</h4>
     </div>
     <div class="col-sm-6 text-right poppins">
         <nav aria-label="breadcrumb">
@@ -14,7 +14,7 @@
             <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Dashboard</li>
             <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Service </li>
             <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Service View List</li>
-            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;"> Edit Service</li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;">Create New Service </li>
           </ol>
         </nav>
       </div>
@@ -36,7 +36,7 @@
                    
                         <div class="col-md-4 form-group">  
                         <label >Service ID  </label> 
-                        <input type="text" class="form-control" formControlName="service_id"  value={{this.s_id}} [attr.disabled]=true>
+                        <input type="text" class="form-control" formControlName="service_id" value="{{s_id}}" [attr.disabled]=true>
                         </div>
 
                         <div class="col-md-4 form-group">  
@@ -90,7 +90,7 @@
               [placeholder]="''"
               [settings]="dropdownSettings"
               [data]="accountData"
-              
+              formControlName="account"
               (onSelect)="onItemSelect($event)"
               >
               </ng-multiselect-dropdown>
@@ -198,7 +198,7 @@
                       <div class="col-md-12" >
                         <div *ngFor="let  service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
           
-                          <input  (blur)="handleBlurservice($event,i)" value={{service.value}} type="text" class="form-control" >
+                          <input  (blur)="handleBlurservice($event,i)"  type="text" class="form-control" value={{add_serviced}} >
                           <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon">X</span>
                         </div>
                       </div>
@@ -214,6 +214,7 @@
             </div>
             </div>
   
+
 
 
             <div class="row">
@@ -261,6 +262,7 @@
           </div>
           </div>
         </div>
+
           <div class="row">
             <div class="col-sm-12">
               <div class="panel panel-default">

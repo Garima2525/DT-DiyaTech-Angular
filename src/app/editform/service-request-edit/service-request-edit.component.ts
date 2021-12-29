@@ -5,19 +5,14 @@ import { AccountService } from 'src/app/service/account.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { CompanyService } from 'src/app/service/company.service';
 import { ContactService } from 'src/app/service/contact.service';
-
 import { ProductService } from 'src/app/service/product.service';
-
 import { TosterService } from 'src/app/service/toster.service';
 import { UploadAttachmentService } from 'src/app/service/upload-attachment.service';
 import { UserService } from 'src/app/service/user.service';
-
 import { SortDescriptor } from '@progress/kendo-data-query';
 import { MultiSelectTreeCheckableSettings, MultiSelectTreeHierarchyBindingDirective } from "@progress/kendo-angular-dropdowns";
 import { Product } from 'src/productInterface'
 import { ServiceRequestService } from 'src/app/service/service-request.service';
-
-import Swal from 'sweetalert2'; 
 @Component({
   selector: 'app-service-request-edit',
   templateUrl: './service-request-edit.component.html',
@@ -31,10 +26,6 @@ export class ServiceRequestEditComponent implements OnInit {
     checkChildren: true,
     checkOnClick: false,
   };
-
-
-
-
   saveas: any = true;
   saveasnew: any = true;
   ServiceForm!:FormGroup
@@ -96,8 +87,13 @@ export class ServiceRequestEditComponent implements OnInit {
   contact_email:any
   accountVal: any;
   account_info_val: any;
-  add_service:any;
+  service_type:any;
   sId:any;
+  accountd:any;
+  account_info:any;
+  selectedItemtt : any = [];
+  add_serviced:any;
+  sdata:any;
   constructor( 
     private fb:FormBuilder,
     private Toaster:TosterService,
@@ -117,11 +113,12 @@ export class ServiceRequestEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.todayDate = new Date();
-    console.log(this.todayDate);
-    this.sId =  this._Activatedroute.snapshot.paramMap.get('id');
-    this.auth.userLoggedIn().subscribe((logindata:any)=>{
-    console.log(logindata);
-    this.userId=logindata.result._id
+    
+    this.sId=  this._Activatedroute.snapshot.paramMap.get('id');
+    this.auth.userLoggedIn().subscribe((logindata: any) => {
+      console.log(logindata);
+      this.userId = logindata.result._id;
+   
 });
     this.account.getAllAccount().subscribe((data:any)=>{
       this.accountData=data
@@ -137,12 +134,6 @@ export class ServiceRequestEditComponent implements OnInit {
       console.log(data)
         this.salesPersonData=data.result  
     })
-
-    this.account.getAllAccount().subscribe((data:any)=>{
-      this.accountData=data
-      console.log(data)
-    })  
-
     this.contact.getAllContact().subscribe((data:any)=>{
       console.log(data)
       this.contactData=data
@@ -166,15 +157,7 @@ export class ServiceRequestEditComponent implements OnInit {
       allowSearchFilter: true
     }
 
-    this.productDropdownSettings={
-      singleSelection: true,
-      idField: 'id',
-      textField: 'productname',
-      noDataAvailablePlaceholderText:'No Product Found!',
-      closeDropDownOnSelection:true,
-      allowSearchFilter: true
-    }
-
+   
     this.ownerDropdownSettings={
       singleSelection: true,
       idField: '_id',
@@ -187,13 +170,25 @@ export class ServiceRequestEditComponent implements OnInit {
       console.log(data.result[0]);
     this.forminit(data.result[0]);
     this.s_id = data.result[0].service_id;
+
+    this.addservice = data.result[0].add_service;
+    // console.log(this.addservice);
+    this.accountd=data.result[0].account;
+    this.service_type=data.result[0].service_type;
+    console.log(this.accountd)
+
+
+    this.files_url=data[0].attachments
+    // console.log(data[0].product_services)
+    this.sdata.approved_by=data[0].approved_by && data[0].approved_by!="undefined"?data[0].approved_by[0]:{username:'NA'}
+    this.sdata.verified_by=data[0].verified_by && data[0].approved_by!="undefined"?data[0].verified_by[0]:{username:'NA'}
+    this.show_files=data[0].attachments
   });
 }
- 
+
   handleAddservice(){
     this.addservice.push({value:null})
    }
- 
   handleBlurservice(e:any,index:any){
     this.addservice[index].value=e.target.value
     console.log(e.target.value,index)
@@ -203,7 +198,7 @@ export class ServiceRequestEditComponent implements OnInit {
   handleDeleteservice(index:any){
    this.incoTerm.splice(index,1)
   }
- 
+
   handleAttachmentUpload(e:any){
     let date=new Date()
     this.attachment_files=e.target.files
@@ -226,7 +221,6 @@ export class ServiceRequestEditComponent implements OnInit {
 
 
    }
-
   onContactSelect(contact:any){
     console.log(contact)
     let filter_contact = this.contactData.filter((cntc:any)=>cntc.contact_id===contact.contact_id)
@@ -247,25 +241,30 @@ export class ServiceRequestEditComponent implements OnInit {
 
   public sort: SortDescriptor[] = [];
 
-  forminit(uni: any) {
-    this.ServiceForm = this.fb.group({
-      service_id:uni.service_id,
-      service_type:uni.service_type,
-      service_location:uni.uniservice_location,
-      priority:uni.priority,
+ 
+
+
+
+  forminit(Sdata:any) {
+    this.ServiceForm = this.fb.group({ 
+      service_id:Sdata.service_id,
+      service_type:Sdata.service_type,
+     
+      service_location:Sdata.service_location,
+      priority:Sdata.priority,
       
-      source_type:uni.source_type,
-      account:uni.account,
-      account_info:uni.account_info,
-      add_service:uni.add_service,
-      person_name:uni.person_name,
-      assign_to:uni.assign_to,
-      visit_schedule:uni.visit_schedule,
+      source_type:Sdata.source_type,
+      account:Sdata.account,
+      account_info:Sdata.account_info,
+      add_service:Sdata.add_service,
+      person_name:Sdata.person_name,
+      assign_to:Sdata.assign_to,
+      visit_schedule:Sdata.visit_schedule,
       attachments:'',
-      stages:uni.stages,
-      remark:uni.remark
+      stages:Sdata.stages,
+      remark:Sdata.remark
     });
-  }
+}
 
 saveform(svalue: any) {
     if (this.ServiceForm.invalid) {
@@ -281,38 +280,36 @@ saveform(svalue: any) {
   }
 
   onFormSubmit() {
-    // this.isValidFormSubmitted = false;
-    // if (this.ServiceForm.invalid) {
-    //   console.log(this.ServiceForm, 'error');
-    //   this.isValidFormSubmitted = true;
-    //   this.isValidbutton = false;
-    //   this.Toaster.showError('Sorry!, Fields are mandatory.');
-    // } else {
-    //   console.log(this.ServiceForm, 'true');
-    //   this.isValidbutton = true;
-    //   this.ServiceForm.value.user_id = this.userId;
-    //   this.ServiceForm.value.attachments=this.files_url
-    //   this.ServiceForm.value.account=this.accountVal
-    //   this.ServiceForm.value.account_info=this.account_info_val
-    //   this.ServiceForm.value.add_service = this.addservice;
-    //   this.serviceS.submitForm(this.ServiceForm.value).subscribe((data) => {
-    //     console.log(data);
-    //     this.Toaster.showSuccess(
-    //       'Congratulation!, Service has been created.'
-    //     );
-    //     if (this.saveas == 'save') {
-    //       console.log(this.saveas);
-    //       setTimeout(() => {
-    //         this.Route.navigate(['/service-request-list']);
-    //       }, 5000);
-    //     } else {
-    //       console.log(this.saveas);
-    //       setTimeout(() => {
-    //         window.location.reload();
-    //       }, 5000);
-    //     }
-    //   });
-    // }
+    this.isValidFormSubmitted = false;
+    if (this.ServiceForm.invalid) {
+      console.log(this.ServiceForm, 'error');
+      this.isValidFormSubmitted = true;
+      this.isValidbutton = false;
+      this.Toaster.showError('Sorry!, Fields are mandatory.');
+    } else {
+      console.log(this.ServiceForm, 'true');
+      this.isValidbutton = true;
+      this.ServiceForm.value.user_id = this.userId;
+      this.ServiceForm.value.attachments=this.files_url
+     
+      this.serviceS.updateForm(this.ServiceForm.value,this.sId).subscribe((data) => {
+        console.log(data);
+        this.Toaster.showSuccess(
+          'Congratulation!, Service has been created.'
+        );
+        if (this.saveas == 'save') {
+          console.log(this.saveas);
+          setTimeout(() => {
+            this.Route.navigate(['/service-request-list']);
+          }, 5000);
+        } else {
+          console.log(this.saveas);
+          setTimeout(() => {
+            window.location.reload();
+          }, 5000);
+        }
+      });
+    }
   }
   
 }
