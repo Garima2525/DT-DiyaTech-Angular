@@ -57,19 +57,9 @@ export class ServiceRequestEditComponent implements OnInit {
   lead_id:any
   location:any
   isValidPrdFormSubmitted:any=false
-  branchData:any
-  productData:any
-  productVal:any=[]
-  selectedItem:any=[]
-  showbtn:boolean=false
-  selectedDataForMerge:any=[]
-  currentPrice:any
-  mergedProducts:any
-  MergedProductsName:any=""
-  quoteLocation:any
-  quoteLocationId:any
-  ShowFilter = true;
-  limitSelection = false;
+  
+ 
+  
   dropdownList:any=[]
   selectedItems: any = [];
   selectedUser:any
@@ -178,11 +168,7 @@ export class ServiceRequestEditComponent implements OnInit {
     console.log(this.accountd)
 
 
-    this.files_url=data[0].attachments
-    // console.log(data[0].product_services)
-    this.sdata.approved_by=data[0].approved_by && data[0].approved_by!="undefined"?data[0].approved_by[0]:{username:'NA'}
-    this.sdata.verified_by=data[0].verified_by && data[0].approved_by!="undefined"?data[0].verified_by[0]:{username:'NA'}
-    this.show_files=data[0].attachments
+   
   });
 }
 
@@ -291,7 +277,7 @@ saveform(svalue: any) {
       this.isValidbutton = true;
       this.ServiceForm.value.user_id = this.userId;
       this.ServiceForm.value.attachments=this.files_url
-     
+      this.ServiceForm.value.add_service=this.addservice.filter((term:any)=>(term.value!=null) || (term.value!=undefined))
       this.serviceS.updateForm(this.ServiceForm.value,this.sId).subscribe((data) => {
         console.log(data);
         this.Toaster.showSuccess(

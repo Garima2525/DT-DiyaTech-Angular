@@ -27,7 +27,8 @@ export class DealEditComponent implements OnInit {
     checkOnClick: false,
   };
 
-
+  productForm!:FormGroup
+  buttondisabled: any=true;
   public data: Product[]=[];
   public data1: Product[] =[]
   public data2: Product[] =[]
@@ -273,7 +274,8 @@ export class DealEditComponent implements OnInit {
       this.company_tan=filtered_company[0].tan
       this.company_cin=filtered_company[0].cin
 
-      this.formInit()
+      this.formInit();
+      this.formmodelInit()
     })
 
     this.dropdownSettings = {
@@ -1093,5 +1095,63 @@ return data
       sales_person:['',Validators.required]
     })
   }
-
+  handleSubmit(){
+    
+    this.productForm.value.amount=this.productForm.value.UnitPrice
+    this.productForm.value.quantity=1
+    this.productForm.value.parent=false
+    if (this.productForm.invalid) {
+      console.log(this.productForm, 'error');
+      this.isValidFormSubmitted = true;
+    }
+    else {
+      console.log(this.productForm, 'true');
+      this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
+        this.buttondisabled="false";
+       
+  
+      console.log(data)
+      if(data.status==200){
+        this.isValidFormSubmitted = true;
+        this.toast.showSuccess(data.message)
+        // this.productForm.reset()
+        this.router.navigate(['/create-deal'])
+        setTimeout(()=>{
+          location.reload();
+      },500)
+        
+      }else if(data.status==200){
+    
+        this.toast.showError(data.message)
+        
+      }
+      // setTimeout(()=>{
+      // },1000)
+    })
+  }
+} 
+formmodelInit(){
+  this.productForm=this.dlFm.group({
+    id:Math.floor(Math.random()*(100000 - 10000) + 10000),
+    CCNNo:'',
+    Category:"",
+    GST:"",
+    HSNCode:"",
+    OEM:"",
+    OEMProductCode:"",
+    PartNo:['',Validators.required],
+    UOM:['',Validators.required],
+    UnitPrice:['',Validators.required],
+    productname:['',Validators.required],
+    type:['',Validators.required],
+    parent:"",
+    quantity:"",
+    amount:'',
+    products:""
+  })
+  
+}
+get fm() {
+  return this.productForm.controls;
+}
 }

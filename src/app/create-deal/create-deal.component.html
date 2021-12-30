@@ -441,6 +441,11 @@
               <div class="col-sm-12" >
                 <div class="panel panel-default">
                 <div class="panel-body">
+                  <div style="text-align: right;">
+                    <button class="add-group"   data-toggle="modal" data-target="#exampleModalCenter1">ADD Product</button>
+                    
+                    </div>
+                    <br>
                   <div class="example-wrapper">
 
                     <!-- <kendo-combobox [data]="data1" textField="productname" valueField="productname" [filterable]="true"
@@ -788,7 +793,7 @@
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-heading font-bold">INCO Terms</div> 
-        <div class="panel-body">
+        <!-- <div class="panel-body">
       
   
           <div  class="form-group  col-md-12 " style="display: flex;align-items: flex-end;">
@@ -801,7 +806,7 @@
             </div>
             <div class="input-group-addon "  (click)="handleAddIncoTerm()"   style="margin: 5px 0; color:red;font-size:20px;background:white;border-left: 1px solid #cfdadd; width: 35px;cursor: pointer;">+</div>
           </div>
-          </div>    
+          </div>     -->
             <div class="panel-body">
           <div class="col-md-12 form-group">  
             
@@ -1010,3 +1015,158 @@
       </div>
       </div>
     </form>
+
+
+    <!-- model -->
+
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close  m-t-xs" data-dismiss="modal"><span>⤬</span></button>
+      <span class="modal-title  font-weight-600 text-20">Add Product</span>
+    </div>
+    <div class="modal-body">
+      <div class="details">
+      <form  [formGroup]="productForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Type</label>
+                <select formControlName="type" class="form-control">
+                  <option value="" disabled>Select Type</option>
+                    <option value="Product">Product</option>
+                    <option value="Service">Service</option>
+                </select>
+                <div *ngIf="fm.type.errors && fm.type.errors.required && isValidFormSubmitted"
+                 class="text-danger text-left mb-1 errorcontrols">
+                 <div *ngIf="fm.type.errors.required"><small>Type  is
+                     required.</small></div>
+               </div>
+              </div>
+            </div>
+           
+          <div class="col-md-6">
+              <div class="form-group">
+                <label >Product Name</label> 
+                <input formControlName="productname" type="text" class="form-control" placeholder="" >
+                <div *ngIf="fm.productname.errors && fm.productname.errors.required && isValidFormSubmitted"
+                class="text-danger text-left mb-1 errorcontrols">
+                <div *ngIf="fm.productname.errors.required"><small>Product Name  is
+                    required.</small></div>
+              </div>
+              </div>
+            </div>
+        </div>
+         
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Part No</label>
+              <input formControlName="PartNo" type="text" class="form-control" placeholder="" >
+              <div *ngIf="fm.PartNo.errors && fm.PartNo.errors.required && isValidFormSubmitted"
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="fm.PartNo.errors.required"><small>Part No  is
+                  required.</small></div>
+            </div>
+            </div>
+            </div>
+           
+          <div class="col-md-6">
+              <div class="form-group">
+                <label> CCN No</label>
+                <input formControlName="CCNNo" type="text" class="form-control" placeholder="" >
+                </div>
+            </div>
+        </div>
+         
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Unit Price</label>
+              <input formControlName="UnitPrice" type="text" class="form-control" placeholder="" >
+              <div *ngIf="fm.UnitPrice.errors && fm.UnitPrice.errors.required && isValidFormSubmitted"
+class="text-danger text-left mb-1 errorcontrols">
+<div *ngIf="fm.UnitPrice.errors.required"><small>Unit Price is
+  required.</small></div>
+</div>
+            </div>
+            </div>
+           
+          <div class="col-md-6">
+              <div class="form-group">
+                <label> UOM</label>
+                <input formControlName="UOM" type="text" class="form-control" placeholder="" >
+                <div *ngIf="fm.UOM.errors && fm.UOM.errors.required && isValidFormSubmitted"
+                class="text-danger text-left mb-1 errorcontrols">
+                <div *ngIf="fm.UOM.errors.required"><small>UOM Price is
+                    required.</small></div>
+              </div>
+              </div>
+            </div>
+        </div>
+         
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label> Category</label>
+               <input formControlName="Category" type="text" class="form-control" placeholder="" >
+              </div>
+            </div>
+           
+          <div class="col-md-6">
+              <div class="form-group">
+                <label>OEM</label>
+                <input formControlName="OEM" type="text" class="form-control" placeholder="" >
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label> OEM Product Code</label>
+              <input formControlName="OEMProductCode" type="text" class="form-control" >
+              </div>
+            </div>
+           
+          <div class="col-md-6">
+              <div class="form-group">
+                <label> HSN Code</label>
+                <input  formControlName="HSNCode" type="text" class="form-control" placeholder="" >
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label> GST</label>
+              <input formControlName="GST" type="text" class="form-control" placeholder="" >
+              </div>
+            </div>
+           
+          
+        </div>
+
+        
+          <div class="row">
+            <div class="col-md-6">
+              <label class="control-label font-weight-600">&nbsp;</label>
+              <div class="form-group">
+                  <button type="button"  class="btn btn-dark"  id="closemodal" data-dismiss="modal">Cancel</button>
+                  <button class="btn btn-danger" (click)="handleSubmit()">Save</button>
+              </div>
+            </div>
+          </div>
+
+
+
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

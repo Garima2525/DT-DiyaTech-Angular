@@ -29,6 +29,8 @@ export class LeadEditComponent implements OnInit {
     checkOnClick: false,
   };
 
+  productForm!:FormGroup
+  buttondisabled: any=true;
 
   public data: Product[]=[];
   public data1: Product[] =[]
@@ -368,6 +370,8 @@ removeAttachment(index:any){
     this.data=this.data?.filter((dt:any)=>dt)
     this.showbtn=data.result[0].product_services.length>1?true:false
     this.forminit(data)
+    this.formmodelInit()
+
     })
 
     this.company.GetAddress().subscribe((branch:any)=>{
@@ -1159,5 +1163,61 @@ return data
       selected_contact:['',Validators.required]
     });
   }
-
+  handleSubmit(){
+    
+    this.productForm.value.amount=this.productForm.value.UnitPrice
+    this.productForm.value.quantity=1
+    this.productForm.value.parent=false
+    if (this.productForm.invalid) {
+      console.log(this.productForm, 'error');
+      this.isValidFormSubmitted = true;
+    }
+    else {
+      console.log(this.productForm, 'true');
+      this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
+        this.buttondisabled="false";
+       
+  
+      console.log(data)
+      if(data.status==200){
+        this.isValidFormSubmitted = true;
+       
+        this.toast.showSuccess('Product Added!.');
+        this.productForm.reset()
+        this.router.navigate(['/new-products'])
+        location.reload();
+      }else if(data.status==200){
+        location.reload();
+        this.toast.showError(data.message)
+        
+      }
+      // setTimeout(()=>{
+      // },1000)
+    })
+  }
+} 
+formmodelInit(){
+  this.productForm=this.lead.group({
+    id:Math.floor(Math.random()*(100000 - 10000) + 10000),
+    CCNNo:'',
+    Category:"",
+    GST:"",
+    HSNCode:"",
+    OEM:"",
+    OEMProductCode:"",
+    PartNo:['',Validators.required],
+    UOM:['',Validators.required],
+    UnitPrice:['',Validators.required],
+    productname:['',Validators.required],
+    type:['',Validators.required],
+    parent:"",
+    quantity:"",
+    amount:'',
+    products:""
+  })
+  
+}
+get fm() {
+  return this.productForm.controls;
+}
 }

@@ -26,7 +26,8 @@ export class CreateDealComponent implements OnInit {
     checkChildren: true,
     checkOnClick: false,
   };
-
+  productForm!:FormGroup
+  buttondisabled: any=true;
 
   public data: Product[]=[];
   public data1: Product[] =[]
@@ -265,6 +266,7 @@ export class CreateDealComponent implements OnInit {
     }
 
     this.formInit()
+    this.formmodelInit();
 
   }
 
@@ -1033,4 +1035,65 @@ return data
       sales_person:['',Validators.required]
     })
   }
+
+
+  handleSubmit(){
+    
+    this.productForm.value.amount=this.productForm.value.UnitPrice
+    this.productForm.value.quantity=1
+    this.productForm.value.parent=false
+    if (this.productForm.invalid) {
+      console.log(this.productForm, 'error');
+      this.isValidFormSubmitted = true;
+    }
+    else {
+      console.log(this.productForm, 'true');
+      this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
+        this.buttondisabled="false";
+       
+ 
+  
+      console.log(data)
+      if(data.status==200){
+        this.isValidFormSubmitted = true;
+        this.toast.showSuccess(data.message)
+        this.data.push(this.productForm.value)
+        // this.router.navigate(['/create-deal'])
+       
+        
+      }else if(data.status==200){
+    
+        this.toast.showError(data.message)
+        
+      }
+      // setTimeout(()=>{
+      // },1000)
+    })
+  }
+} 
+formmodelInit(){
+  this.productForm=this.dlFm.group({
+    id:Math.floor(Math.random()*(100000 - 10000) + 10000),
+    CCNNo:'',
+    Category:"",
+    GST:"",
+    HSNCode:"",
+    OEM:"",
+    OEMProductCode:"",
+    PartNo:['',Validators.required],
+    UOM:['',Validators.required],
+    UnitPrice:['',Validators.required],
+    productname:['',Validators.required],
+    type:['',Validators.required],
+    parent:"",
+    quantity:"",
+    amount:'',
+    products:""
+  })
+  
 }
+get fm() {
+  return this.productForm.controls;
+}
+}
+
