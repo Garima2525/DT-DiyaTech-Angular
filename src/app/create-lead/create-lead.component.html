@@ -10,12 +10,12 @@
               </div>
               <div class="col-sm-6 text-right poppins">
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb t-main">
-                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Dashboard</li>
-                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Leads</li>
-                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Leads View List</li> 
+                  <ol class="breadcrumb t-main" style="cursor:pointer;">
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;" routerLink="/">Dashboard</li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;" >Leads</li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;" routerLink="/lead">Leads View List</li> 
                     <!-- <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;"> Account View List</li> -->
-                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;">Create New Leads</li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;color:red;"routerLink="/create-lead">Create New Leads</li>
                   </ol>
                 </nav>
               </div>
@@ -35,9 +35,6 @@
                     <label >Lead ID <span class="text-danger">*</span></label> 
                       <input type="text" [attr.disabled]=true class="form-control" placeholder="" formControlName="lead_id">
                     </div>
-               
-        
-      
                       <div class="col-md-4 form-group">
                         <label >Lead Owner <span class="text-danger">*</span></label>
                           <!-- <input type="text" [attr.disabled]=true value={{this.loggedInUser}} class="form-control" placeholder="Lead Owner" formControlName="lead_owner"> -->
@@ -1010,8 +1007,6 @@
                    
                   
                 </div>
-
-                
                   <div class="row">
                     <div class="col-md-6">
                       <label class="control-label font-weight-600">&nbsp;</label>
@@ -1021,9 +1016,6 @@
                       </div>
                     </div>
                   </div>
-
-
-
               </form>
               </div>
             </div>

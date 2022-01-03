@@ -160,20 +160,21 @@ height:25px;
         <div class="col-sm-12" style="padding: 0px;margin: 0px;"><p style="font-size: 17px;"> This is secure system and you will need to provide your login details to access.</p></div>
         
        
-       <form [formGroup]="checkoutForm"> 
+       <form [formGroup]="checkoutForm"  > 
         <div class="row">
         <div class="col-md-12 form-group" >
           <input type="text" [readonly]="this.active" class="form-control" id="username" placeholder="Username" formControlName="email" style="border-radius: 6px; background:#F5F5F5 ; height: 45px;">
         </div>
         <div class="col-md-12 form-group" *ngIf="displaypassword && display">
-          <input type="password"  class="form-control " placeholder="Password" formControlName="password" style="border-radius: 6px; background:#F5F5F5 ; height: 45px ;">
+          <input type="password"  class="form-control " placeholder="Password" formControlName="password" style="border-radius: 6px; background:#F5F5F5 ; height: 45px ;" (keydown)="keyDownFunction($event)">
         </div>
         <div class="col-md-12 form-group" *ngIf="displayotp && display">
           <input type="number" class="form-control " placeholder="otp" formControlName="otp" style="border-radius: 6px; background:#F5F5F5 ; height: 45px ;">
         </div>
         <div class="col-md-12 form-group" style="display:flex;justify-content:space-between; margin-top: 1%;">
           <span style="visibility: hidden;"><input type="checkbox"> Remember me</span>
-          <span>Forgot Password</span>
+          <span  style="cursor: pointer;">Forgot Password</span>
+          <!-- <span routerLink="/forget-password"  style="cursor: pointer;">Forgot Password</span> -->
         </div>
         <!-- <div class="col-md-11 form-group robot" style="display:flex;justify-content:space-between;">
           <span><input type="checkbox"> I'am not robot</span>

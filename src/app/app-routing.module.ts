@@ -40,6 +40,7 @@ import {ServiceRequestEditComponent} from './editform/service-request-edit/servi
 import {PerformanceEditComponent} from './editform/performance-edit/performance-edit.component'
 import {NewProductEditComponent}   from './editform/new-product-edit/new-product-edit.component'
 import {RoleEditComponent} from './editform/role-edit/role-edit.component'
+import {ForgetpassComponent} from './forgetpass/forgetpass.component'
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'',component:DashboardComponent},
@@ -88,7 +89,8 @@ const routes: Routes = [
   {path:'service-request-edit/:id',component:ServiceRequestEditComponent},
   {path:'performance-edit/:id',component:PerformanceEditComponent},
   {path:'new-products-edit/:id',component:NewProductEditComponent},
-  {path:'role-edit/:id',component:RoleEditComponent}
+  {path:'role-edit/:id',component:RoleEditComponent},
+  {path:'forget-password',component:ForgetpassComponent}
 ];
 
 @NgModule({

@@ -103,8 +103,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.forminit()
+    
   }
-
+  keyDownFunction(event:any) {
+    if (event.keyCode === 13) {
+      // this.checkoutForm
+      this.SubmitLogin();
+    }
+    
+  }
 
   forminit(){
     this.checkoutForm = this.fb.group({

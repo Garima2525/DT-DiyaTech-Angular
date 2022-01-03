@@ -77,6 +77,7 @@ import { PerformanceEditComponent } from './editform/performance-edit/performanc
 
 import { NewProductEditComponent } from './editform/new-product-edit/new-product-edit.component';
 import { RoleEditComponent } from './editform/role-edit/role-edit.component';
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
 
 
 @NgModule({
@@ -128,6 +129,7 @@ import { RoleEditComponent } from './editform/role-edit/role-edit.component';
    
     NewProductEditComponent,
         RoleEditComponent,
+        ForgetpassComponent,
     
   ],
   imports: [

@@ -9,8 +9,8 @@
     </div>
     <div class="col-sm-6 text-right poppins">
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb t-main">
-          <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Dashboard</li>
+        <ol class="breadcrumb t-main" style="cursor: pointer;">
+          <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;"routerLink="/">Dashboard</li>
           <!-- <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Products</li> -->
           <!-- <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;">Leads View List</li>  -->
           <!-- <li class="breadcrumb-item active" aria-current="page" style="font-size:11px;"> Account View List</li> -->
@@ -104,7 +104,7 @@
      >
       <ng-template kendoGridCellTemplate let-product>
        <kendo-menu>
-         <kendo-menu-item text="Action">
+         <kendo-menu-item icon="gear">
            <kendo-menu-item icon="edit"  url="/new-products-edit/{{product._id}}"  text="Edit" > </kendo-menu-item>
            <!-- <kendo-menu-item text="Delete" icon="delete"></kendo-menu-item> -->
          </kendo-menu-item>
