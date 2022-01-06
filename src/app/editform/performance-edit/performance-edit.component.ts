@@ -36,6 +36,8 @@ export class PerformanceEditComponent implements OnInit {
   gname:any;
   industryd:any;
   employeed:any;
+  type_revenue_btn: any=true;
+  type_learning_btn: any=false;
   constructor(
     private form: FormBuilder,
     private Toaster: TosterService,
@@ -63,10 +65,10 @@ export class PerformanceEditComponent implements OnInit {
     this.Performance.getbyid(this.PerformanceId).subscribe((data: any) => {
       
       console.log(data.result[0]);
-     
-        this.forminit(data.result[0]);
-        this.goal_type = data.result[0].goal_type;
-        this.goal_id = data.result[0].goal_id;
+      this.forminit(data.result[0]);
+      this.goal_type = data.result[0].goal_type;
+      this.goal_id = data.result[0].goal_id;
+      this.getGoalType( this.goal_type);
         
 
         this.industryd=data.result[0].industry;
@@ -94,6 +96,7 @@ export class PerformanceEditComponent implements OnInit {
       textField: 'industry',
       allowSearchFilter: true
     };
+  
   }
   forminit(uni: any) {
     this.Perform = this.form.group({
@@ -189,5 +192,17 @@ onFormSubmit() {
       });
   }
 }
+getGoalType(type:any){
+  if(type=='Revenue'){
+    this.type_revenue_btn=true;
+    this.type_learning_btn=false;
+  }
+  else{
+    this.type_revenue_btn=false;
+    this.type_learning_btn=true;
+  }
+  this.Perform.value.goal_type=type;
+}
+
 }
 

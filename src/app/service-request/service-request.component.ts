@@ -191,7 +191,7 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   handleDeleteservice(index:any){
-   this.incoTerm.splice(index,1)
+   this.addservice.splice(index,1)
   }
  
 handleAttachmentUpload(e:any){

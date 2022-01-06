@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { AccountService } from '../service/account.service';
 import { PerformanceService } from '../service/performance.service';
 import { UserService } from '../service/user.service';
+declare var $: any;
 @Component({
   selector: 'app-performance',
   templateUrl: './performance.component.html',
@@ -15,10 +16,15 @@ import { UserService } from '../service/user.service';
 })
 export class PerformanceComponent implements OnInit {
 
+  title = "CodeSandbox";
+  toggle = [];
+  status = "Enable";
+
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
   dropdownSettings1 = {};
+  addgoal:any=[{value:null}]
   login_id: any;
   performanceId:any;
   Perform!: FormGroup;
@@ -27,6 +33,9 @@ export class PerformanceComponent implements OnInit {
   industrydata:any;
   isValidFormSubmitted: any;
   userdata:any = [];
+  add_goal:any;
+  type_revenue_btn: any=true;
+  type_learning_btn: any=false;
   constructor(
     private form: FormBuilder,
     private Toaster: TosterService,
@@ -81,7 +90,7 @@ export class PerformanceComponent implements OnInit {
       goal_id: [this.performanceId, Validators.required],
       industry:'',
       employee:'',
-      goal_type:'',
+      goal_type:'Revenue',
       goal_name:'',
       weightage:'',
       duration:'',
@@ -95,6 +104,19 @@ export class PerformanceComponent implements OnInit {
       
   })
 }
+handleAddgoal(){
+  this.addgoal.push({value:null})
+ }
+
+handleBlurgoal(e:any,index:any){
+  this.addgoal[index].value=e.target.value
+  console.log(e.target.value,index)
+  console.log(this.addgoal)
+}
+
+handleDeletegoal(index:any){
+  this.addgoal.splice(index,1)
+ }
 saveform(svalue: any) {
   if (this.Perform.invalid) {
     this.saveas = true;
@@ -114,7 +136,7 @@ onFormSubmit() {
     console.log(this.Perform, 'true');
     this.isValidbutton = true;
     this.Perform.value.user_id = this.login_id;
-    
+    this.Perform.value.add_goal = this.addgoal;
     this.Performance.submitForm(this.Perform.value).subscribe((data) => {
       console.log(data);
       this.Toaster.showSuccess(
@@ -134,4 +156,21 @@ onFormSubmit() {
     });
   }
 }
+
+getGoalType(type:any){
+  if(type=='Revenue'){
+    this.type_revenue_btn=true;
+    this.type_learning_btn=false;
+  }
+  else{
+    this.type_revenue_btn=false;
+    this.type_learning_btn=true;
+  }
+  this.Perform.value.goal_type=type;
 }
+
+
+
+
+}
+

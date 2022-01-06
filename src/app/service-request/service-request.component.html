@@ -198,7 +198,7 @@
                       <div class="col-md-12" >
                         <div *ngFor="let  service of addservice; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
           
-                          <input  (blur)="handleBlurservice($event,i)" value={{service.value}} type="text" class="form-control" >
+                          <input  (blur)="handleBlurservice($event,i)" value={{service.value}} type="text" class="form-control">
                           <span (click)="handleDeleteservice(i)" style="cursor: pointer;" class="input-group-addon">X</span>
                         </div>
                       </div>

@@ -91,9 +91,7 @@
      
     <kendo-grid-column  title="Status" [width]="100">
       <ng-template kendoGridCellTemplate let-dataItem>
-        <!-- <div class="service" >Assign  :  {{ dataItem.assign_to}}</div> -->
-        <!-- <div class="service" >Visit Schedule : {{dataItem.visit_schedule  }}</div> -->
-        <div class="service" ><i class="fa fa-calendar-plus-o" style="color:green;" aria-hidden="true"></i>  <b>Schedule</b>  : {{ dataItem.visit_schedule |date:'dd-MM-yyyy' }}</div>
+        
         <div class="service" >  <b>Status</b>:  {{ dataItem.stages}}</div>
         
       </ng-template>

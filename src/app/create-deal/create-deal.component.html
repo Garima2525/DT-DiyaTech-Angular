@@ -490,6 +490,7 @@
                     <kendo-treelist-column  title="Unit Price" [width]="200">
                       <ng-template kendoTreeListCellTemplate let-product>
                         <input data-val-range-min="1" data-val-range="Length should be greater 1" [readonly]="product.type === 'Group' ? true : false" name="size" class="k-textbox" (keyup)="this.handleChangeUnitprice($event,product)" [value]= "product.UnitPrice" required />
+                       
                       </ng-template>
                     </kendo-treelist-column>
                   
@@ -981,7 +982,7 @@
               <input type="radio" name="validity"  (click)="handleCheckbox('Other')" style="font-size:12px;"/> Other
             </div>
             <div class="col-md-1 deal_div" style="border: 1px solid black;"> 
-              <input type="datetime-local">
+              <!-- <input type="datetime-local"> -->
               {{dt}}
             </div>
             </div>  
@@ -1170,3 +1171,4 @@ class="text-danger text-left mb-1 errorcontrols">
   </div>
 </div>
 </div>
+<pre> {{productForm.value | json}} </pre>

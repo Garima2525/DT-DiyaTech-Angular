@@ -80,6 +80,7 @@ import { RoleEditComponent } from './editform/role-edit/role-edit.component';
 import { ForgetpassComponent } from './forgetpass/forgetpass.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -159,6 +160,8 @@ import { ForgetpassComponent } from './forgetpass/forgetpass.component';
     CommonModule,
     FormsModule,
     NgSelectModule,
+    
+    
 
   ],
   providers: [

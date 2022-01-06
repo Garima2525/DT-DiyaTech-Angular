@@ -82,13 +82,42 @@
 
 
          <div class="col-md-4 form-group">  
-            <label >Goal Type </label> 
-            <select class="form-control" formControlName="goal_type" value={{goal_type}} >
-                <option value=""  disabled> Select Goal Type</option>
-                <option value="Revenue"  >Revenue</option>
-                <option value="Learning" >Learning</option>
-            </select>
-            </div>
+          <label >Goal Type </label> 
+          <br>
+          <!-- <select class="form-control" formControlName="goal_type">
+              <option value="" disabled> Select Goal Type</option>
+              <option value="Revenue">Revenue</option>
+              <option value="Learning">Learning</option>
+          </select> -->
+          
+          <!-- <label class="rs">
+            <span>
+              <input type="radio" formControlName="goal_type" value="Revenue"  checked>
+              <img src="../../assets/img/Group 1404.png">
+             
+              <div>Revenue</div>
+            </span>
+           
+          </label>
+          
+          <label class="rs" style="margin-left:10px;">
+            <span>
+              <input type="radio" formControlName="goal_type" value="Learning">
+            <img src="../../assets/img/Group 1403.png">
+            <div>Learning</div>
+            </span>
+            
+          </label>
+           -->
+       
+           <div  [className]="type_revenue_btn ? 'btn btn-default col-sm-5 redClass' : 'btn btn-default col-sm-5 greyClass'" (click)="getGoalType('Revenue')">
+            <img src="../../assets/img/Group 1403.png"><br/>Revenue
+          </div>
+          <div style="margin-left:10px;" [className]="type_learning_btn ? 'btn btn-default col-sm-5 redClass' : 'btn btn-default col-sm-5 greyClass'" (click)="getGoalType('Learning')">
+            <img src="../../assets/img/Group 1404.png"><br/>Learning
+          </div>
+        </div>
+
                       
             <div class="col-md-4 form-group">  
                 <label >Goal Name </label> 
