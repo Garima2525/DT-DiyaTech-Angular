@@ -1208,21 +1208,20 @@ return data
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
-  
       console.log(data)
       if(data.status==200){
         this.isValidFormSubmitted = true;
         this.toast.showSuccess(data.message)
-        this.productForm.reset()
-        this.router.navigate(['/new-products'])
-        location.reload();
+        
+        this.data.push(data.result)
+        this.data=this.data.filter((dt:any)=>dt)
+        
       }else if(data.status==200){
-        location.reload();
+    
         this.toast.showError(data.message)
         
       }
-      // setTimeout(()=>{
-      // },1000)
+      
     })
   }
 } 

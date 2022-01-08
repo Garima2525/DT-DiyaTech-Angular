@@ -40,46 +40,92 @@
                         </div>
 
                         <div class="col-md-4 form-group">  
-                        <label >Service Type</label> 
-                        <select class="form-control" formControlName="service_type" >
+                        <label >Service Type</label> <br>
+                        <!-- <select class="form-control" formControlName="service_type" >
                           <option value="" disabled> Service Type</option>
                             <option value="AMC">AMC</option>
                             <option value="FOC">FOC</option>
                             <option value="Paid">Paid</option>
                             <option value="Other">Other</option>
-                        </select>
+                        </select> -->
+                       
+                        <div id="p-div"  [className]="service_amc_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'" (click)="getservice('AMC')" >
+                          <img src="../../assets/img/Group 1394.png"><br/>AMC
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;" [className]="service_foc_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'" (click)="getservice('FOC')" >
+                          <img src="../../assets/img/Group 1401 (1).png"><br/>FOC
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;" [className]="service_paid_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'"  (click)="getservice('Paid')">
+                          <img src="../../assets/img/Group 1393.png"><br/>Paid
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;" [className]="service_other_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'"  (click)="getservice('Other')" >
+                          <img src="../../assets/img/Group 1392.png"><br/>Other
+                        </div>
+
+
+                        
                         </div>
         
                         <div class="col-md-4 form-group">  
                         <label >Service Location</label> 
-                        <select class="form-control" formControlName="service_location">
+                        <br>
+                        <!-- <select class="form-control" formControlName="service_location">
                           <option value="" disabled>Select Service Location</option>
                                 <option value="On site">On site</option>
                                 <option value="Off site">Off site</option>
-                        </select>
+                        </select> -->
+                        <div  [className]="type_on_btn ? 'btn btn-default col-sm-3 redClass' : 'btn btn-default col-sm-3 greyClass'" (click)="getLocationType('On site')">
+                          <img src="../../assets/img/Group 1399.png"><br/>On site
+                        </div>
+                        <div style="margin-left:10px;" [className]="type_off_btn ? 'btn btn-default col-sm-3 redClass' : 'btn btn-default col-sm-3 greyClass'" (click)="getLocationType('Of site')">
+                          <img src="../../assets/img/Group 1397.png"><br/>off site
+                        </div>
                         </div>
                      <div class="clearfix"></div> 
                      
                      <div class="col-md-4 form-group">  
                         <label >Priority</label> 
-                        <select class="form-control" class="form-control" formControlName="priority">
+                        <!-- <select class="form-control" class="form-control" formControlName="priority">
                           <option value="Low"  > Low</option>
                                 <option value="Medium">Medium</option>
                                 <option value="High">High</option>
                                 <option value="Urgent">Urgent</option>
-                        </select>
-                        
+                        </select> -->
+                        <br>
+                        <div id="p-div"  [className]="priority_low_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'" (click)="getpriority('Low')" >
+                          <img src="../../assets/img/Group 1402.png"><br/>Low
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;font-size: 10px" [className]="priority_medium_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'" (click)="getpriority('Medium')" >
+                          <img src="../../assets/img/Group 1384.png"><br/>Medium
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;" [className]="priority_hight_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'"  (click)="getpriority('Hight')">
+                          <img src="../../assets/img/Group 1386 (1).png"><br/>High
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;" [className]="priority_urgent_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'"  (click)="getpriority('Urgent')" >
+                          <img src="../../assets/img/Group 1388 (1).png"><br/>Urgent
+                        </div>
                         </div>
         
                         <div class="col-md-4 form-group">  
                             <label >Source Type</label> 
-                            <select class="form-control" formControlName="source_type">
+                            <!-- <select class="form-control" formControlName="source_type">
                              
                                     <option value="Call">Call</option>
                                     <option value="E Mail">E Mail</option>
                                     <option value="Message">Message</option>
                                     
-                            </select>
+                            </select> -->
+
+                            <br>
+                        <div id="p-div"  [className]="source_call_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'" (click)="getsource('Call')" >
+                          <img src="../../assets/img/Icon feather-phone-call (1).png"><br/>Call
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;" [className]="source_mail_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'" (click)="getsource('E Mail')" >
+                          <img src="../../assets/img/Icon simple-email (1).png"><br/>E Mail
+                        </div>
+                        <div  id="p-div" style="margin-left:10px;font-size: 10px" [className]="source_message_btn ? 'btn btn-default col-sm-2 redClass' : 'btn btn-default col-sm-2 greyClass'"  (click)="getsource('Message')">
+                          <img src="../../assets/img/Icon material-message.png"><br/>Message
+                        </div>
                             </div>
                      
          <div class="form-group  col-md-4 ">

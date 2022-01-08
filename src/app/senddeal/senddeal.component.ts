@@ -50,7 +50,7 @@ export class SenddealComponent implements OnInit {
         this.totalGST+=item.amount*(parseFloat(item.GST)/100)
         this.totalAmountTax+=(item.UnitPrice)*100/(100+parseFloat(item.GST));
         // this.totalAmountTax+=((item.UnitPrice*100)/(100+parseFloat(item.GST)));
-        this.quantity+=item.quantity
+        this.quantity+=parseInt(item.quantity)
         this.totalAmountTax+=item.UnitPrice
       })
       

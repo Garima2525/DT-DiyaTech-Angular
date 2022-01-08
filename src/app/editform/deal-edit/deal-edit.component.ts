@@ -1109,27 +1109,23 @@ return data
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
-  
       console.log(data)
       if(data.status==200){
         this.isValidFormSubmitted = true;
         this.toast.showSuccess(data.message)
-        // this.productForm.reset()
-        this.router.navigate(['/create-deal'])
-        setTimeout(()=>{
-          location.reload();
-      },500)
+        
+        this.data.push(data.result)
+        this.data=this.data.filter((dt:any)=>dt)
         
       }else if(data.status==200){
     
         this.toast.showError(data.message)
         
       }
-      // setTimeout(()=>{
-      // },1000)
+      
     })
   }
-} 
+}  
 formmodelInit(){
   this.productForm=this.dlFm.group({
     id:Math.floor(Math.random()*(100000 - 10000) + 10000),

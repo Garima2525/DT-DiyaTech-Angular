@@ -1051,23 +1051,20 @@ return data
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
- 
-  
       console.log(data)
       if(data.status==200){
         this.isValidFormSubmitted = true;
         this.toast.showSuccess(data.message)
-        this.data.push(this.productForm.value)
-        // this.router.navigate(['/create-deal'])
-       
+        
+        this.data.push(data.result)
+        this.data=this.data.filter((dt:any)=>dt)
         
       }else if(data.status==200){
     
         this.toast.showError(data.message)
         
       }
-      // setTimeout(()=>{
-      // },1000)
+      
     })
   }
 } 

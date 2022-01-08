@@ -58,7 +58,27 @@ export class ServiceRequestEditComponent implements OnInit {
   location:any
   isValidPrdFormSubmitted:any=false
   
- 
+  add_service:any;
+  type_on_btn: any=true;
+  type_off_btn: any=false;
+
+priority_low_btn:any=true;
+priority_medium_btn:any=false;
+priority_hight_btn:any=false;
+priority_urgent_btn:any=false;
+
+service_amc_btn:any=true;
+service_foc_btn:any=false;
+service_paid_btn:any=false;
+service_other_btn:any=false;
+
+source_call_btn:any=true;
+source_mail_btn:any=false;
+source_message_btn:any=false;
+
+service_type:any
+priority:any
+  service_location: any;
   
   dropdownList:any=[]
   selectedItems: any = [];
@@ -77,7 +97,7 @@ export class ServiceRequestEditComponent implements OnInit {
   contact_email:any
   accountVal: any;
   account_info_val: any;
-  service_type:any;
+  source_type:any
   sId:any;
   accountd:any;
   account_info:any;
@@ -108,6 +128,8 @@ export class ServiceRequestEditComponent implements OnInit {
     this.auth.userLoggedIn().subscribe((logindata: any) => {
       console.log(logindata);
       this.userId = logindata.result._id;
+      this.getLocationType( this.service_location);
+      this.getpriority( this.priority);
    
 });
     this.account.getAllAccount().subscribe((data:any)=>{
@@ -297,5 +319,95 @@ saveform(svalue: any) {
       });
     }
   }
+  getLocationType(location:any){
+    if(location=='On site'){
+      this.type_on_btn=true;
+      this.type_off_btn=false;
+    }
+    else{
+      this.type_on_btn=false;
+      this.type_off_btn=true;
+    }
+    this.service_location=location
+    this.ServiceForm.value.service_location= this.service_location;
+  }
   
+
+getpriority(priority:any){
+  if(priority=='Low'){
+    this.priority_low_btn=true;
+    this.priority_medium_btn=false;
+    this.priority_hight_btn=false;
+    this.priority_urgent_btn=false;
+  }
+   else if(priority=='Medium') {
+    this.priority_low_btn=false;
+    this.priority_medium_btn=true;
+    this.priority_hight_btn=false;
+    this.priority_urgent_btn=false;
+  }
+  else if(priority=='Hight') {
+    this.priority_low_btn=false;
+    this.priority_medium_btn=false;
+    this.priority_hight_btn=true;
+    this.priority_urgent_btn=false;
+  }else{
+    this.priority_low_btn=false;
+    this.priority_medium_btn=false;
+    this.priority_hight_btn=false;
+    this.priority_urgent_btn=true;
+  }
+  this.priority=priority
+  this.ServiceForm.value.priority= this.priority;
+}
+
+getservice(service:any){
+  if(service=='AMC'){
+    this.service_amc_btn=true;
+    this.service_foc_btn=false;
+    this.service_paid_btn=false;
+    this.service_other_btn=false;
+  }
+   else if(service=='FOC') {
+    this.service_amc_btn=false;
+    this.service_foc_btn=true;
+    this.service_paid_btn=false;
+    this.service_other_btn=false;
+  }
+  else if(service=='Paid') {
+    this.service_amc_btn=false;
+    this.service_foc_btn=false;
+    this.service_paid_btn=true;
+    this.service_other_btn=false;
+  }else{
+    this.service_amc_btn=false;
+    this.service_foc_btn=false;
+    this.service_paid_btn=false;
+    this.service_other_btn=true;
+  }
+  this.service_type=service
+  this.ServiceForm.value.service_type= this.service_type;
+}
+
+getsource(source:any){
+  if(source=='Call'){
+    this.source_call_btn=true;
+    this.source_mail_btn=false;
+    this.source_message_btn=false;
+  }
+   else if(source=='E Mail') {
+    this.source_call_btn=false;
+    this.source_mail_btn=true;
+    this.source_message_btn=false;
+  }
+ else{
+  this.source_call_btn=false;
+  this.source_mail_btn=false;
+  this.source_message_btn=true;
+  }
+  this.source_type=source
+  this.ServiceForm.value.source_type= this.source_type;
+}
+
+
 }

@@ -13,7 +13,18 @@ import { CountryStateCityService } from '../service/country-state-city.service';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
+
 export class AccountComponent implements OnInit {
+  value:any = {
+    seat1: undefined,
+    seat2: undefined,
+    seat3: undefined,
+  }
+
+
+
+
+  
   accFormAdd!:FormGroup
   accountId:any
   Data:any=[]
@@ -25,7 +36,10 @@ export class AccountComponent implements OnInit {
   country_code:any=91
   username:any
   isValidFormSubmitted:any=false
+  statedata: any;
 
+
+ 
   constructor(private account:FormBuilder,
     private accnt:AccountService,
     private toast:TosterService,
@@ -87,31 +101,29 @@ export class AccountComponent implements OnInit {
     changeState(){
       console.log(this.accFormAdd.value.company_state)
       this.accFormAdd.value.company_city=''
-      this.state_country.getCity(this.accFormAdd.value.company_state).subscribe((city)=>{
-        console.log(city)
+      // this.state_country.getCity(this.accFormAdd.value.company_state).subscribe((city)=>{
+      //   console.log(city)
 
-        this.City=city
-      })
+      //   this.City=city
+      // })
     }
 
-    countryChangeAdd(){
-      console.log(this.accFormAdd.value.country)
-      this.accFormAdd.value.company_state=''
-      this.accFormAdd.value.company_city=''
-      this.state_country.getStates(this.accFormAdd.value.country).subscribe((state)=>{
+    countryChangeAdd(c:any){
+      console.log(c.target.value)
+      this.state_country.getStates({country:c.target.value}).subscribe((state:any)=>{
         console.log(state)
-        this.AddState=state
+        this.AddState=state.result
       })
     }
 
-    changeStateAdd(){
-      console.log(this.accFormAdd.value.state)
-      this.accFormAdd.value.company_city=''
-      this.state_country.getCity(this.accFormAdd.value.state).subscribe((city)=>{
-        console.log(city)
-        this.AddCity=city
-      })
-    }
+    // changeStateAdd(){
+    //   console.log(this.accFormAdd.value.state)
+    //   this.accFormAdd.value.company_city=''
+    //   this.state_country.getCity(this.accFormAdd.value.state).subscribe((city)=>{
+    //     console.log(city)
+    //     this.AddCity=city
+    //   })
+    // }
 
     get f() {
       return this.accFormAdd.controls;
@@ -162,6 +174,23 @@ export class AccountComponent implements OnInit {
                 remark:'',
                 created_at:''
     })
+  }
+  getstate(e: any) {
+    console.log(e.target.value);
+    this.state_country.getStates({
+      statename: e.target.value,
+    }).subscribe((data: any) => {
+      console.log(data);
+      this.statedata = data.result;
+    });
+  }
+
+  seat1Modified(value:any) {
+    value.seat2 = value.seat1;
+    value.seat3 = value.seat2;
+  }
+  seat2Modified(value:any){
+    value.seat3 = value.seat2;  
   }
 }
 

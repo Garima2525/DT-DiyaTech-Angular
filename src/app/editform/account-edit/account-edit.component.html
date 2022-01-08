@@ -103,41 +103,48 @@
           </div>
          
           <div class="col-md-4 form-group">
-            <label >Country <span class="text-danger">*</span>  </label>
-            <select (change)="changeCountry($event)" value={{this.Data?.company_country}} formControlName="company_country" id="" class="form-control"  >
-              <option value="" [attr.selected]=true disabled> Select Country  </option>
-              <option *ngFor="let obj of Country" value={{obj.country_name}}>{{obj.country_name}}</option>
+            <label >Country <span class="text-danger">*</span>   </label>
+            <select (change)="countryChangeAdd($event)" formControlName="company_country" id="" class="form-control"  >
+              <option value="" selected disabled> Select Country  </option>
+              <option  value="India" >India</option>
+              <option  value="Bangladesh" >Bangladesh</option>
+              <option  value="Nepal" >Nepal</option>
             </select> 
             <div *ngIf="f.company_country.errors && f.company_country.errors.required && isValidFormSubmitted"
-            class="text-danger text-left mb-1 errorcontrols">
-            <div *ngIf="f.company_country.errors.required"><small>Company Country is required.</small></div>
-          </div> 
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="f.company_country.errors.required"><small>Company Country is required.</small></div>
+            </div>
           </div>
-        
-    
-          <div class="col-md-4 form-group">
-            <label >State  <span class="text-danger">*</span>  </label>
-            <select (change)="changeState($event)" value={{this.Data?.company_state}}  formControlName="company_state" id="" class="form-control"  >
-              <option value="" disabled> Select State  </option>
-              <option *ngFor="let obj of State" value={{obj.state_name}}> {{obj.state_name}}  </option>
-            </select> 
-            <div *ngIf="f.company_state.errors && f.company_state.errors.required && isValidFormSubmitted"
-            class="text-danger text-left mb-1 errorcontrols">
-            <div *ngIf="f.company_state.errors.required"><small>Company State is required.</small></div>
-          </div> 
-          </div>
-          <div class="clearfix"></div>     
+          
 
           <div class="col-md-4 form-group">
-            <label >City  <span class="text-danger">*</span>  </label>
-            <select formControlName="company_city" id="" class="form-control"  >
-              <option  value="" disabled> Select City </option>
-              <option *ngFor="let obj of City" value={{obj.city_name}}> {{obj.city_name}}  </option>
-            </select> 
+            <label >State  <span class="text-danger">*</span>  </label>
+            <select  formControlName="company_state" id="" class="form-control" >
+              <option value="" selected disabled> Select State  </option>
+              <option *ngFor="let state of AddState" > {{state}} </option>
+            </select>
+            <div *ngIf="f.company_state.errors && f.company_state.errors.required && isValidFormSubmitted"
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="f.company_state.errors.required"><small>Company State is required.</small></div>
+           
+          </div>
+    </div>
+         
+      
+    
+          <div class="col-md-4 form-group">
+            <label >City <span class="text-danger">*</span>   </label>
+            <!-- <label >City    </label>
+            <select formControlName="city" id="" class="form-control"  >
+              <option value="" selected disabled> Select City </option>
+              <option *ngFor="let obj of AddCity" value={{obj.city_name}}> {{obj.city_name}}  </option> 
+            </select>  -->
+            <input type="text" formControlName="company_city" class="form-control">
             <div *ngIf="f.company_city.errors && f.company_city.errors.required && isValidFormSubmitted"
-            class="text-danger text-left mb-1 errorcontrols">
-            <div *ngIf="f.company_city.errors.required"><small>Company City is required.</small></div>
-          </div> 
+              class="text-danger text-left mb-1 errorcontrols">
+              <div *ngIf="f.company_city.errors.required"><small>Company City is required.</small></div>
+           
+          </div>
           </div>
           
     
@@ -239,32 +246,36 @@
            
             <div class="col-md-4 form-group">
               <label >Country   </label>
-              <select (change)="countryChangeAdd($event)" value={{this.Data?.country}} formControlName="country" id="" class="form-control"  >
+              <select (change)="countryChangeAdd($event)" formControlName="country" id="" class="form-control"  >
                 <option value="" selected disabled> Select Country  </option>
-                <option *ngFor="let obj of Country" value={{obj?.country_name}} >{{obj.country_name}}</option>
+                <option  value="India" >India</option>
+                <option  value="Bangladesh" >Bangladesh</option>
+                <option  value="Nepal" >Nepal</option>
               </select> 
             </div>
-          
-      
+            
+
             <div class="col-md-4 form-group">
-              <label >State    </label>
-              
-              <select (change)="changeStateAdd($event)"  value={{this.Data?.state}} formControlName="state" id="" class="form-control"  >
+              <label >State   </label>
+              <select  formControlName="state" id="" class="form-control" >
                 <option value="" selected disabled> Select State  </option>
-                <option *ngFor="let obj of AddState" value={{obj.state_name}}> {{obj.state_name}}  </option>
-              </select> 
-            </div>
+                <option *ngFor="let state of AddState" > {{state}} </option>
+              </select>
+      </div>
            
+        
       
             <div class="col-md-4 form-group">
-              <label >City    </label>
+              <label >City   </label>
+              <!-- <label >City    </label>
               <select formControlName="city" id="" class="form-control"  >
                 <option value="" selected disabled> Select City </option>
                 <option *ngFor="let obj of AddCity" value={{obj.city_name}}> {{obj.city_name}}  </option> 
-              </select> 
+              </select>  -->
+              <input type="text" formControlName="city" class="form-control">
             </div>
-            <div class="clearfix"></div>     
-    
+            <div class="clearfix"></div>
+            
             <div class="col-md-4 form-group">
               <label >Zip Code </label>
               <input type="text"  class="form-control " placeholder="Enter zip" formControlName="zip_code"/>

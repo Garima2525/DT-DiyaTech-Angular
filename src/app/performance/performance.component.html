@@ -139,12 +139,12 @@
                    
                         <div class="col-md-12 form-group">  
                         <label >Lead Quantity</label> 
-                        <input type="text" class="form-control" formControlName="lead_quantity">
+                        <input type="number" class="form-control" formControlName="lead_quantity">
                         </div>
 
                         <div class="col-md-12 form-group">  
                             <label >Lead Value</label> 
-                            <input type="text" class="form-control" formControlName="lead_value">
+                            <input type="number" class="form-control" formControlName="lead_value">
                             </div>
             </div>
             </div>
@@ -159,12 +159,12 @@
                  
                       <div class="col-md-12 form-group">  
                       <label >Quote Quantity</label> 
-                      <input type="text" class="form-control" formControlName="quote_quantity">
+                      <input type="number" class="form-control" formControlName="quote_quantity">
                       </div>
 
                       <div class="col-md-12 form-group">  
                           <label >Quote Value</label> 
-                          <input type="text" class="form-control" formControlName="quote_value">
+                          <input type="number" class="form-control" formControlName="quote_value">
                           </div>
           </div>
           </div>
@@ -179,12 +179,12 @@
                
                     <div class="col-md-12 form-group">  
                     <label >Deal Quantity</label> 
-                    <input type="text" class="form-control" formControlName="deal_quantity">
+                    <input type="number" class="form-control" formControlName="deal_quantity">
                     </div>
 
                     <div class="col-md-12 form-group">  
                         <label >Quote Value</label> 
-                        <input type="text" class="form-control" formControlName="deal_value">
+                        <input type="number" class="form-control" formControlName="deal_value">
                         </div>
         </div>
         </div>
@@ -227,10 +227,10 @@
             <div class="col-md-12" >
               <div *ngFor="let  agoal of addgoal; index as i;" style="margin: 5px 0" class="col-md-12 input-group">
 <div class="col-sm-9">
-  <input  (blur)="handleBlurgoal($event,i)" type="text" class="form-control"  placeholder="Enter Goal">
+  <input  (blur)="handleBlurgoal($event,i)" type="text" class="form-control"  placeholder="Enter Goal"  (input)="valueInsert($event,'learn_based_goal',i)">
 </div>
 <div class="col-sm-3">
-  <input  (blur)="handleBlurgoal($event,i)" type="text" class="form-control"  placeholder="Enter Weightage" >
+  <input  (blur)="handleBlurgoal($event,i)" type="text" class="form-control"  placeholder="Enter Weightage" (input)="valueInsert($event,'learn_based_weightage',i)">
 </div>
 <span (click)="handleDeletegoal(i)" style="cursor: pointer;border: 1px solid rgb(175, 170, 170);" class="input-group-addon">X</span>
                

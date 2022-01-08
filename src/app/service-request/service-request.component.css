@@ -1,7 +1,18 @@
-.ss input[type="radio"] {
-  display: none;
-}
 
-input[type="radio"]:checked + label {
-  border: 1px solid red;
+.redClass{
+  border:1px solid red;
+}
+.greyClass{
+  border:1px solid #e5e4e4;
+}
+img{
+  height: 30px;
+}
+#p-div img{
+  height: 20px;
+  font-size: 12px;
+}
+#p-div {
+
+  font-size: 12px;
 }

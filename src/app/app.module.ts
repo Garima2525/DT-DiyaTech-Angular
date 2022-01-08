@@ -78,6 +78,7 @@ import { PerformanceEditComponent } from './editform/performance-edit/performanc
 import { NewProductEditComponent } from './editform/new-product-edit/new-product-edit.component';
 import { RoleEditComponent } from './editform/role-edit/role-edit.component';
 import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 
 
 
@@ -160,7 +161,7 @@ import { ForgetpassComponent } from './forgetpass/forgetpass.component';
     CommonModule,
     FormsModule,
     NgSelectModule,
-    
+    AngularMultiSelectModule
     
 
   ],

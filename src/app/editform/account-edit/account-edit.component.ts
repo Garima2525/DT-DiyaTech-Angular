@@ -100,11 +100,11 @@ export class AccountEditComponent implements OnInit {
     })
   }
 
-  countryChangeAdd(e:any){
-    console.log(e.target.value)
-    this.state_country.getStates(e.target.value).subscribe((state)=>{
+  countryChangeAdd(c:any){
+    console.log(c.target.value)
+    this.state_country.getStates({country:c.target.value}).subscribe((state:any)=>{
       console.log(state)
-      this.AddState=state
+      this.AddState=state.result
     })
   }
 

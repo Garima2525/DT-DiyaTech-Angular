@@ -121,7 +121,13 @@ export class CreateLeadComponent implements OnInit {
   contact_email:any
   files_url:any=[]
 
-
+  loading = false;
+  indices: any;
+  readonly bufferSize: number = 3;
+  timer:any;
+  settings:any= {};
+  itemList:any=[];
+  selectedItemss:any=[]
   constructor( 
     private lead:FormBuilder,
     private productfm:FormBuilder,
@@ -137,20 +143,11 @@ export class CreateLeadComponent implements OnInit {
     private product:ProductService,
     private user:UserService) { 
 
-      this.product.getAllProduct().subscribe((data:any)=>{
-        console.log(data)
-        this.productData=data.result.slice()  
-        this.data1=this.productData.slice()
-        // data.result.map((item:any)=>{
-        //   this.data1.push(item)
-        //   this.data2.push(item)
-        // })
-        this.data2=this.data1.slice()
-        })
-      let number = Math.random() // 0.9394456857981651
-   number.toString(36); // '0.xtis06h6'
-  var id = "L-"+number.toString(36).substr(2, 9);
-  this.lead_id=id.toUpperCase()
+    
+    let number = Math.random() // 0.9394456857981651
+    number.toString(36); // '0.xtis06h6'
+    var id = "L-"+number.toString(36).substr(2, 9);
+    this.lead_id=id.toUpperCase()
    }
 
   async convertToQuote(){
@@ -291,6 +288,24 @@ export class CreateLeadComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.itemList = [
+      {"id":1,"itemName":"India"},
+      {"id":2,"itemName":"Singapore"},
+      {"id":3,"itemName":"Australia"},
+      {"id":4,"itemName":"Canada"},
+      {"id":5,"itemName":"South Korea"},
+      {"id":6,"itemName":"Germany"},
+      {"id":7,"itemName":"France"},
+      {"id":8,"itemName":"Russia"},
+      {"id":9,"itemName":"Italy"},
+      {"id":10,"itemName":"Sweden"}
+    ];
+    this.product.getAllProductLimit(100).subscribe((data:any)=>{
+      console.log(data)
+      this.productData=data.result.slice()  
+      this.data1=this.productData.slice()
+      this.data2=this.data1.slice()
+      })
 
     this.auth.userLoggedIn().subscribe((user:any)=>{
       console.log(user.result)
@@ -341,11 +356,24 @@ export class CreateLeadComponent implements OnInit {
     this.productDropdownSettings={
       singleSelection: true,
       idField: 'id',
-      textField: 'productname',
+      labelKey: 'productname',
       noDataAvailablePlaceholderText:'No Product Found!',
       closeDropDownOnSelection:true,
-      allowSearchFilter: true
+      allowSearchFilter: true,
+      lazyLoading: true
     }
+
+    this.settings = {
+      singleSelection: true,
+      text: "Select Items",
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      enableSearchFilter: true,
+      lazyLoading: true,
+      labelKey: 'productname',
+      primaryKey:'id',
+
+  };
     this.ownerDropdownSettings={
       singleSelection: true,
       idField: '_id',
@@ -358,6 +386,37 @@ export class CreateLeadComponent implements OnInit {
     this.formmodelInit()
 
   }
+
+  onSearch(event:any){
+    if(event.target.value.length>4){
+      this.product.getProductDataSearch({'searchValue':event.target.value}).subscribe((data:any)=>{
+        console.log(data)
+        if(data.result==null){
+          this.productData=[]
+        }else{
+          this.productData=data.result.slice()  
+        }
+        this.data1=this.productData.slice()
+        this.data2=this.data1.slice()
+        })
+    }
+    else{
+      console.log('edrtyertertye');
+    }
+  }
+
+  fetchMore(event: any) {
+    if (event.endIndex === this.data1.length - 1) {
+      console.log(this.data1.length);
+      let limit=this.data1.length+100;
+      this.product.getAllProductLimit({'lim':limit}).subscribe((data:any)=>{
+        console.log(data)
+        this.productData=data.result.slice()  
+        this.data1=this.productData.slice()
+        this.data2=this.data1.slice()
+        })
+    }
+}
 
 
   optionClick(index:any){

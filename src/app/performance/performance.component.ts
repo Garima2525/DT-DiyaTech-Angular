@@ -24,7 +24,12 @@ export class PerformanceComponent implements OnInit {
   selectedItems = [];
   dropdownSettings = {};
   dropdownSettings1 = {};
-  addgoal:any=[{value:null}]
+  addgoal:any=[{
+    learn_based_goal:null,
+    learn_based_weightage:null,
+  
+
+  }]
   login_id: any;
   performanceId:any;
   Perform!: FormGroup;
@@ -33,7 +38,7 @@ export class PerformanceComponent implements OnInit {
   industrydata:any;
   isValidFormSubmitted: any;
   userdata:any = [];
-  add_goal:any;
+ 
   type_revenue_btn: any=true;
   type_learning_btn: any=false;
   constructor(
@@ -101,6 +106,7 @@ export class PerformanceComponent implements OnInit {
       quote_value:'',
       deal_quantity:'',
       deal_value:'',
+      add_goal:'',
       
   })
 }
@@ -117,6 +123,10 @@ handleBlurgoal(e:any,index:any){
 handleDeletegoal(index:any){
   this.addgoal.splice(index,1)
  }
+ valueInsert(e:any,name:any,index:any){
+  this.addgoal[index][name]=e.target.value
+  
+  }
 saveform(svalue: any) {
   if (this.Perform.invalid) {
     this.saveas = true;
@@ -137,6 +147,7 @@ onFormSubmit() {
     this.isValidbutton = true;
     this.Perform.value.user_id = this.login_id;
     this.Perform.value.add_goal = this.addgoal;
+
     this.Performance.submitForm(this.Perform.value).subscribe((data) => {
       console.log(data);
       this.Toaster.showSuccess(

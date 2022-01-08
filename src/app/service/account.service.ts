@@ -56,4 +56,15 @@ export class AccountService {
     }
     return this.http.delete(api_url,httpOptions)
   }
+
+  getStates(statename:any) {
+    let api_url = this.base_url+"/account/getstatebycountry";
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type':'application/json;charset=UTF-8',
+        'apikey': this.api_key
+      }),
+    };
+    return this.http.post(api_url,statename, httpOptions);
+  }
 }
