@@ -24,7 +24,7 @@ export class AccountComponent implements OnInit {
 
 
 
-  
+  inputNum:any=''
   accFormAdd!:FormGroup
   accountId:any
   Data:any=[]
@@ -37,6 +37,7 @@ export class AccountComponent implements OnInit {
   username:any
   isValidFormSubmitted:any=false
   statedata: any;
+  cgst: any;
 
 
  
@@ -185,12 +186,9 @@ export class AccountComponent implements OnInit {
     });
   }
 
-  seat1Modified(value:any) {
-    value.seat2 = value.seat1;
-    value.seat3 = value.seat2;
-  }
-  seat2Modified(value:any){
-    value.seat3 = value.seat2;  
+  onKeyUp(value:any) {
+    console.log(value);
+    this.cgst=value
   }
 }
 

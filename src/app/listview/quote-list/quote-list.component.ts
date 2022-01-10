@@ -172,7 +172,7 @@ export class QuoteListComponent implements OnInit {
           this.totalAmount+=item.amount
         })
 
-        data[index].totalAmount=this.totalAmount.toFixed(2)
+        // data[index].totalAmount=this.totalAmount.toFixed(2)
 
         let date=new Date(dt.created_date_time)
         data[index].approved_by=dt.approved_by && dt.approved_by!="undefined"?dt.approved_by[0]:{username:'NA'}

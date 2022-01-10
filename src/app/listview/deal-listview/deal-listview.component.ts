@@ -172,7 +172,7 @@ export class DealListviewComponent implements OnInit {
           this.totalAmount+=item.amount
         })
 
-        data.results[index].totalAmount=this.totalAmount.toFixed(2)
+        // data.results[index].totalAmount=this.totalAmount.toFixed(2)
 
         this.contact.getContactData(dt.contact_id).subscribe((cntdata:any)=>{
           console.log(cntdata)

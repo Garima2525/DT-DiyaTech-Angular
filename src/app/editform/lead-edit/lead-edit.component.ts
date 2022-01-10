@@ -31,7 +31,7 @@ export class LeadEditComponent implements OnInit {
 
   productForm!:FormGroup
   buttondisabled: any=true;
-
+  loading = false;
   public data: Product[]=[];
   public data1: Product[] =[]
   public data2: Product[] =[]
@@ -42,7 +42,7 @@ export class LeadEditComponent implements OnInit {
   totalAmount:any=0
   totalQuantity:any=0
   userPermission:any
-
+  settings:any= {};
   groupName:any
   groupSize:any=0
   groupAmount:any=0
@@ -115,7 +115,7 @@ export class LeadEditComponent implements OnInit {
   contact_mobile:any
   contact_email:any
   files_url:any=[]
-
+  selectedItemss:any=[]
   constructor( private lead:FormBuilder,
     private toast:TosterService,
     private router:Router,
@@ -425,14 +425,17 @@ removeAttachment(index:any){
       closeDropDownOnSelection:true,
       allowSearchFilter: true
     }
-    this.productDropdownSettings={
+    this.settings = {
       singleSelection: true,
-      idField: 'id',
-      textField: 'productname',
-      noDataAvailablePlaceholderText:'No Product Found!',
-      closeDropDownOnSelection:true,
-      allowSearchFilter: true
-    }
+      text: "Select Items",
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      enableSearchFilter: true,
+      lazyLoading: true,
+      labelKey: 'productname',
+      primaryKey:'id',
+
+  };
     this.ownerDropdownSettings={
       singleSelection: true,
       idField: '_id',
@@ -469,7 +472,35 @@ removeAttachment(index:any){
     })
 
   }
-
+  fetchMore(event: any) {
+    if (event.endIndex === this.data1.length - 1) {
+      console.log(this.data1.length);
+      let limit=this.data1.length+100;
+      this.product.getAllProductLimit({'lim':limit}).subscribe((data:any)=>{
+        console.log(data)
+        this.productData=data.result.slice()  
+        this.data1=this.productData.slice()
+        this.data2=this.data1.slice()
+        })
+    }
+}
+onSearch(event:any){
+  if(event.target.value.length>4){
+    this.product.getProductDataSearch({'searchValue':event.target.value}).subscribe((data:any)=>{
+      console.log(data)
+      if(data.result==null){
+        this.productData=[]
+      }else{
+        this.productData=data.result.slice()  
+      }
+      this.data1=this.productData.slice()
+      this.data2=this.data1.slice()
+      })
+  }
+  else{
+    console.log('edrtyertertye');
+  }
+}
   handleHistoryView(id:any){
     console.log(id)
     this.leadService.getOneLog(id).subscribe((data:any)=>{
@@ -554,43 +585,32 @@ handleOwnerChange(e:any){
   }
 
   public selectionChange(val: any): void {
-    
-    console.log('selectionChange', val);
-    
-   this.value=this.data2.filter((item:any)=>item.id===val.id)
-    console.log(this.data2)
-    
-    if (this.value[0] !== undefined) {
-      
-      if(this.selectedProduct.length==1){
-        console.log("before",this.value[0])
-        // this.value[0].id=parseInt(String(this.value[0].id)+String(Math.floor(Math.random()*10000)))
-        console.log("after",this.value[0])
-        this.selectedProduct[0].amount+=Number(this.value[0].UnitPrice)
-        this.selectedProduct[0]["products"]?.push(this.value[0])
-        this.totalAmount+=Number(this.value[0].UnitPrice)
-        this.selectedProduct[0]["quantity"]==0? this.totalQuantity+=1:null
-        this.selectedProduct[0]["quantity"]=1
-        // directive.rebind();
-        this.data=this.data.filter((dt:any)=>dt)
-      } else if(this.selectedProduct.length>1){
-        this.toast.showError("Please Select only One Group!")
-      }
-      else{
-        this.totalAmount+=this.value[0].amount
-        this.totalQuantity+=Number(this.value[0].quantity)
-
-        console.log("before",this.value[0])
-        // this.value[0].id=parseInt(String(this.value[0].id)+String(Math.floor(Math.random()*10000)))
-        this.data.push(this.value[0]);
-        console.log('after', this.value[0]);
-        // directive.rebind();
-        this.data=this.data.filter((dt:any)=>dt)
-
-      }
-    }
-    console.log(this.data1,this.data2)
-  }
+    this.value=this.data2.filter((item:any)=>item.id===val.id)
+     if (this.value[0] !== undefined) {
+       
+       if(this.selectedProduct.length==1)
+       {
+         this.selectedProduct[0].amount+=Number(this.value[0].UnitPrice)
+         this.selectedProduct[0]["products"]?.push(this.value[0])
+         this.totalAmount+=Number(this.value[0].UnitPrice)
+         this.selectedProduct[0]["quantity"]==0? this.totalQuantity+=1:null
+         this.selectedProduct[0]["quantity"]=1
+         this.data=this.data.filter((dt:any)=>dt)
+       } 
+       else if(this.selectedProduct.length>1)
+       {
+         this.toast.showError("Please Select only One Group!")
+       }
+       else
+       {
+         this.totalAmount+=Number(this.value[0].UnitPrice)
+         this.totalQuantity+=Number(this.value[0].quantity)
+         this.data.push(this.value[0]);
+         this.data=this.data.filter((dt:any)=>dt)
+       }
+     }
+   }
+ 
 
   public fetchChildren = (item: any): Product[] => {
     return item.products;
@@ -764,7 +784,7 @@ return data
         item.products.length>0?item.quantity=1:item.quantity=0
 
         item.products.map((itm:any)=>{
-          item.amount+=itm.amount
+          item.amount+=Number(itm.amount)
           console.log(item.amount)
         })
         this.data.filter((dt:any)=>dt)
@@ -797,7 +817,7 @@ return data
         item.products.length>0?item.quantity=1:item.quantity=0
 
         item.products.map((itm:any)=>{
-          item.amount+=itm.amount
+          item.amount+=Number(itm.amount)
           console.log(item.amount)
         })
         this.data.filter((dt:any)=>dt)
@@ -828,7 +848,7 @@ return data
         item.products.length>0?item.quantity=1:item.quantity=0
         item.amount=0
         item.products.map((itm:any)=>{
-          item.amount+=itm.amount
+          item.amount+=Number(itm.amount)
           console.log(item.amount)
         })
         this.data=this.data.filter((dt:any)=>dt)
@@ -850,7 +870,7 @@ return data
 
    this.data= this.getParent(this.data, prod.id, amt, qty);
     this.data=this.data.filter((dt:any)=>{
-      this.totalAmount+=dt.amount
+      this.totalAmount+=Number(dt.amount)
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
@@ -863,7 +883,7 @@ return data
     this.totalAmount=0
     this.totalQuantity=0
     this.data=this.data.filter((dt:any)=>{
-      this.totalAmount+=dt.amount
+      this.totalAmount+=Number(dt.amount)
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
@@ -876,7 +896,7 @@ return data
     this.totalAmount=0
     this.totalQuantity=0
     this.data=this.data.filter((dt:any)=>{
-      this.totalAmount+=dt.amount
+      this.totalAmount+=Number(dt.amount)
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
@@ -1217,5 +1237,8 @@ formmodelInit(){
 }
 get fm() {
   return this.productForm.controls;
+}
+decimalFormat(num:any){
+  return num.toFixed(2)
 }
 }

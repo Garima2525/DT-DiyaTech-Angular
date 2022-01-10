@@ -288,18 +288,7 @@ export class CreateLeadComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.itemList = [
-      {"id":1,"itemName":"India"},
-      {"id":2,"itemName":"Singapore"},
-      {"id":3,"itemName":"Australia"},
-      {"id":4,"itemName":"Canada"},
-      {"id":5,"itemName":"South Korea"},
-      {"id":6,"itemName":"Germany"},
-      {"id":7,"itemName":"France"},
-      {"id":8,"itemName":"Russia"},
-      {"id":9,"itemName":"Italy"},
-      {"id":10,"itemName":"Sweden"}
-    ];
+   
     this.product.getAllProductLimit(100).subscribe((data:any)=>{
       console.log(data)
       this.productData=data.result.slice()  
@@ -561,43 +550,31 @@ export class CreateLeadComponent implements OnInit {
   }
 
   public selectionChange(val: any): void {
-    
-    console.log('selectionChange', val);
-    
-   this.value=this.data2.filter((item:any)=>item.id===val.id)
-    console.log(this.data2)
-    
-    if (this.value[0] !== undefined) {
-      
-      if(this.selectedProduct.length==1){
-        console.log("before",this.value[0])
-        // this.value[0].id=parseInt(String(this.value[0].id)+String(Math.floor(Math.random()*10000)))
-        console.log("after",this.value[0])
-        this.selectedProduct[0].amount+=Number(this.value[0].UnitPrice)
-        this.selectedProduct[0]["products"]?.push(this.value[0])
-        this.totalAmount+=Number(this.value[0].UnitPrice)
-        this.selectedProduct[0]["quantity"]==0? this.totalQuantity+=1:null
-        this.selectedProduct[0]["quantity"]=1
-        // directive.rebind();
-        this.data=this.data.filter((dt:any)=>dt)
-      } else if(this.selectedProduct.length>1){
-        this.toast.showError("Please Select only One Group!")
-      }
-      else{
-        this.totalAmount+=this.value[0].amount
-        this.totalQuantity+=Number(this.value[0].quantity)
-
-        console.log("before",this.value[0])
-        // this.value[0].id=parseInt(String(this.value[0].id)+String(Math.floor(Math.random()*10000)))
-        this.data.push(this.value[0]);
-        console.log('after', this.value[0]);
-        // directive.rebind();
-        this.data=this.data.filter((dt:any)=>dt)
-
-      }
-    }
-    console.log(this.data1,this.data2)
-  }
+    this.value=this.data2.filter((item:any)=>item.id===val.id)
+     if (this.value[0] !== undefined) {
+       
+       if(this.selectedProduct.length==1)
+       {
+         this.selectedProduct[0].amount+=Number(this.value[0].UnitPrice)
+         this.selectedProduct[0]["products"]?.push(this.value[0])
+         this.totalAmount+=Number(this.value[0].UnitPrice)
+         this.selectedProduct[0]["quantity"]==0? this.totalQuantity+=1:null
+         this.selectedProduct[0]["quantity"]=1
+         this.data=this.data.filter((dt:any)=>dt)
+       } 
+       else if(this.selectedProduct.length>1)
+       {
+         this.toast.showError("Please Select only One Group!")
+       }
+       else
+       {
+         this.totalAmount+=Number(this.value[0].UnitPrice)
+         this.totalQuantity+=Number(this.value[0].quantity)
+         this.data.push(this.value[0]);
+         this.data=this.data.filter((dt:any)=>dt)
+       }
+     }
+   }
 
   public fetchChildren = (item: any): Product[] => {
     return item.products;
@@ -771,7 +748,7 @@ return data
         item.products.length>0?item.quantity=1:item.quantity=0
 
         item.products.map((itm:any)=>{
-          item.amount+=itm.amount
+          item.amount+=Number(itm.amount)
           console.log(item.amount)
         })
         this.data.filter((dt:any)=>dt)
@@ -804,7 +781,7 @@ return data
         item.products.length>0?item.quantity=1:item.quantity=0
 
         item.products.map((itm:any)=>{
-          item.amount+=itm.amount
+          item.amount+=Number(itm.amount)
           console.log(item.amount)
         })
         this.data.filter((dt:any)=>dt)
@@ -813,7 +790,6 @@ return data
 return data
     
   }
-
   deleteData(data: any, id: any):any {
     console.log(data,id)
     data?.map((item: any, index: any):any => {
@@ -857,7 +833,7 @@ return data
 
    this.data= this.getParent(this.data, prod.id, amt, qty);
     this.data=this.data.filter((dt:any)=>{
-      this.totalAmount+=dt.amount
+      this.totalAmount+=Number(dt.amount)
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
@@ -1245,6 +1221,9 @@ formmodelInit(){
 }
 get fm() {
   return this.productForm.controls;
+}
+decimalFormat(num:any){
+  return num.toFixed(2)
 }
 }
 
