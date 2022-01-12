@@ -448,14 +448,28 @@
                        placeholder="Products" (filterChange)="handleFilter($event)" (selectionChange)="selectionChange($event)"  >
                     </kendo-combobox> -->
                   
-                    <ng-multiselect-dropdown
-                    [placeholder]="'Select a Product'"
-                    [settings]="productDropdownSettings"
+                    <angular2-multiselect
+                    [(ngModel)]="selectedItemss"
+                    [settings]="settings"
                     [data]="data1"
+                    [loading] = "loading"
                     formControlName="selected_contact"
                     (onSelect)="selectionChange($event)"
+                    (onScrollToEnd)="fetchMore($event)"
                     >
-                    </ng-multiselect-dropdown>
+
+
+                    <c-search>
+                      <ng-template>
+                          <input type="text" (keyup)="onSearch($event)" placeholder="Search Product" style="border: none;width: 100%; height: 100%;outline: none;"/>
+                      </ng-template>
+                 </c-search>
+                 <c-item>
+                     <ng-template let-item="item">
+                         <label style="color: #333;">{{item.productname}}({{item.PartNo}})</label>
+                     </ng-template>
+                 </c-item>
+                    </angular2-multiselect>
                   
                   <br/>
                   <br /><br />

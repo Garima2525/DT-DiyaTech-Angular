@@ -15,15 +15,10 @@ import { CountryStateCityService } from '../service/country-state-city.service';
 })
 
 export class AccountComponent implements OnInit {
-  value:any = {
-    seat1: undefined,
-    seat2: undefined,
-    seat3: undefined,
-  }
+  
 
-
-
-
+ 
+display:string=''
   inputNum:any=''
   accFormAdd!:FormGroup
   accountId:any
@@ -59,7 +54,7 @@ export class AccountComponent implements OnInit {
     submitForm():void{
 
 
-      console.log(this.accFormAdd)
+console.log(this.accFormAdd)
    console.log(this.accFormAdd.invalid)
    if(this.accFormAdd.invalid){
      window.scrollTo({top:209,
@@ -69,6 +64,9 @@ export class AccountComponent implements OnInit {
       console.log(this.accFormAdd.value)
       this.accFormAdd.value.account_owner=this.username
       this.accFormAdd.value.account_id=this.accountId
+      this.accFormAdd.value.pan=this.display;
+      // this.accFormAdd = this.pan.slice(0,27)+"..."
+ 
       this.accFormAdd.value.country_code=this.country_code
       this.accnt.submitForm(this.accFormAdd.value).subscribe((data:any)=>{
         if(data.status===200){
@@ -185,11 +183,13 @@ export class AccountComponent implements OnInit {
       this.statedata = data.result;
     });
   }
+getval(val:string){
+console.log(val);
 
-  onKeyUp(value:any) {
-    console.log(value);
-    this.cgst=value
-  }
+// this.display=display
+this.display = val.slice(2,12)
+}
+
 }
 
 // Validators.pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)

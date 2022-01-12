@@ -1186,4 +1186,5 @@ formmodelInit(){
 decimalFormat(num:any){
   return num.toFixed(2)
 }
+
 }

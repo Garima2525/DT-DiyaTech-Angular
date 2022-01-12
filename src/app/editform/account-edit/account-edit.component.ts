@@ -26,6 +26,10 @@ export class AccountEditComponent implements OnInit {
   username:any
   currentUser:any
   isValidFormSubmitted:any=false
+  secondstates: any;
+  display:string=''
+  company_country: any;
+  company_state: any;
 
   constructor(private form:FormBuilder,
     private accnt:AccountService,
@@ -41,6 +45,7 @@ export class AccountEditComponent implements OnInit {
    
     console.log(this.accounteditform.value)
     this.accounteditform.value.account_id=this.accountId
+    this.accounteditform.value.pan=this.display;
     this.accounteditform.value.country_code=String(this.country_code)
     this.accounteditform.value.account_owner=this.username
     this.accounteditform.value.created_at=this.Data?.created_at
@@ -79,59 +84,31 @@ export class AccountEditComponent implements OnInit {
     }
 
 
-  changeCountry(e:any){
-
-    console.log(e)
-    let countr:any=this.Country.filter((country:any)=>country.country_name===e.target.value)
-    console.log(countr)
-    this.accounteditform.value.company_country=countr[0].country_name
-    this.country_code=countr[0].country_phone_code
-    this.state_country.getStates(countr[0].country_name).subscribe((state)=>{
-      console.log(state)
-      this.State=state
-    })
-  }
-
-  changeState(e:any){
-    console.log(e.target.value)
-    this.state_country.getCity(e.target.value).subscribe((city)=>{
-      console.log(city)
-      this.City=city
-    })
-  }
+  
 
   countryChangeAdd(c:any){
-    console.log(c.target.value)
+    // console.log(c.target.value)
     this.state_country.getStates({country:c.target.value}).subscribe((state:any)=>{
-      console.log(state)
+      // console.log(state)
       this.AddState=state.result
     })
   }
 
-  changeStateAdd(e:any){
-    console.log(e.target.value)
-    this.state_country.getCity(e.target.value).subscribe((city)=>{
-      console.log(city)
-      this.AddCity=city
-    })
-  }
+  
 
   cancleForm(){
     this.router.navigate(['/account'])
   }
 
   ngOnInit(): void {
-    // console.log(history.state.id + 'account route')
-
-    this.Country=country
-
+   
 
     this.userAuth.userLoggedIn().subscribe((user:any)=>{
       this.currentUser=user.username
     })
     this.accountId=this._Activatedroute.snapshot.paramMap.get("id");
     // this.accountId=history.state.id
-    console.log(this._Activatedroute.snapshot.paramMap.get("id"))
+    // console.log(this._Activatedroute.snapshot.paramMap.get("id"))
     
     // this.selected="India"
     // console.log(country[0].name)
@@ -142,11 +119,16 @@ export class AccountEditComponent implements OnInit {
         this.username=data[0].account_owner
         this.country_code='91'
        this.forminit()
-        this.changeStateAdd({target:{value:data[0].state}})
-        this.countryChangeAdd({target:{value:data[0].country}})
-        this.changeState({target:{value:data[0].company_state}})
-        this.changeCountry({target:{value:data[0].company_country}})
-
+      
+      // this.secondchnage(data.result[0].country)
+  
+      
+       this.countryChangeAdd({target:{value:data[0].company_country}})
+      //  console.log(data[0].company_country);
+       this.company_state=data[0].company_state
+       console.log(data[0].company_state);
+        this.secondchnage({target:{value:data[0].country}})
+        console.log(data[0].country);
       })
      
   }
@@ -156,6 +138,9 @@ export class AccountEditComponent implements OnInit {
     console.log(e.target.value,name)
     this.accounteditform.value.company_name=e.target.value
   }
+
+
+  
   forminit(){
     
     this.accounteditform=this.form.group({
@@ -189,4 +174,23 @@ export class AccountEditComponent implements OnInit {
       modyfied_by:this.Data?.modyfied_by?this.Data?.modyfied_by:'',
     })
   }
+  // countryChangeAdd(c:any){
+  //   console.log(c.target.value)
+  //   this.state_country.getStates({country:c.target.value}).subscribe((state:any)=>{
+  //     console.log(state)
+  //     this.AddState=state.result
+  //   })
+  // }
+
+secondchnage(c:any){
+    // console.log(c.target.value)
+    this.state_country.getStates({country:c.target.value}).subscribe((state:any)=>{
+      // console.log(state)
+      this.secondstates=state.result
+    })
+  }
+  getval(val:string){
+    console.log(val);
+    this.display=val.slice(2,12)
+    }
 }

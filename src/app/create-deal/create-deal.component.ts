@@ -177,7 +177,7 @@ export class CreateDealComponent implements OnInit {
    
   ngOnInit(): void {
     this.dt = new Date();
-    this.product.getAllProductLimit({'lim':100}).subscribe((data:any)=>{
+    this.product.getAllProductLimit({'lim':1000}).subscribe((data:any)=>{
         this.productData=data.result  
         this.data1=[...data.result]
         this.data2=[...data.result]  
@@ -746,8 +746,9 @@ onSearch(event:any){
     }
   }
 
-  getParent(data: any, id: any, amt: any, qty: any):any {
-    console.log(data,id,qty,amt)
+  getParent(data: any, id: any, amt: any, qty1: any):any {
+    let qty=parseInt(qty1)
+    console.log(data,id,qty1,amt)
     let amount=0
     data?.map((item: any, index: any):any => {
       console.log(item.amount);
@@ -756,8 +757,8 @@ onSearch(event:any){
           
           // data.amount=amount
           console.log(item.id);
-          item.amount = amt;
-          item.quantity = qty;
+          item.amount = Number(amt);
+          item.quantity =Number(qty) ;
           let total=item.UnitPrice*qty
           item.amount = total-total*(item.discount/100);
 
@@ -1074,6 +1075,7 @@ return data
     }
     else {
       console.log(this.productForm, 'true');
+      this.productForm.value.id=Math.floor(Math.random()*(100000 - 10000) + 10000);
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
@@ -1083,7 +1085,17 @@ return data
         this.toast.showSuccess(data.message)
         
         this.data.push(data.result)
-        this.data=this.data.filter((dt:any)=>dt)
+        this.totalAmount=0
+        this.totalQuantity=0
+        this.data=this.data.filter((dt:any)=>{
+          console.log(Number(dt.amount));
+          
+          this.totalAmount+=parseInt(dt.amount)
+          this.totalQuantity+=Number(dt.quantity)
+          return dt
+        })
+        this.totalAmount=this.totalAmount.toFixed(2)
+        // this.data=this.data.filter((dt:any)=>dt)
         
       }else if(data.status==200){
     
@@ -1111,7 +1123,7 @@ formmodelInit(){
     parent:"",
     quantity:"",
     amount:'',
-    products:""
+    products:[]
   })
   
 }
@@ -1119,7 +1131,7 @@ get fm() {
   return this.productForm.controls;
 }
 decimalFormat(num:any){
-  return num.toFixed(2)
+  return num
 }
 }
 
