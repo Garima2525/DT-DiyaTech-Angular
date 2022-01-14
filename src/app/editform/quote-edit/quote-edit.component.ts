@@ -1010,160 +1010,7 @@ return data
 
 
   
-//   onProductSelect(product:any){
-//     console.log(product)
-//     let data=this.productVal.filter((data:any)=>data._id===product._id)
-//     if(data.length===0){
-//           let prd=this.productData.filter((data:any)=>data._id===product._id)
-//           console.log(prd[0])
-//           prd[0].quantity=1
-//           prd[0].amount=1*prd[0].UnitPrice
-//           this.productVal.push(prd[0])
-//     }
-//     this.showbtn=this.productVal.length>1?true:false
-//     this.productVal.length>1?null:this.selectedDataForMerge=[]
-//     this.selectedItem=[]
-//   }
 
-
-
-
-//   handleProductdelete(id:any,type:any){
-//     console.log(id,this.productVal)
-//     this.productVal=this.productVal.filter((item:any)=>item._id!==id)
-//     let data=this.selectedDataForMerge.filter((item:any)=>item._id!=id)
-//     if(type==='group'){
-//       this.product.deleteGroup(id).subscribe((data:any)=>{
-//         console.log(data.message)
-//       })
-//     }
-//     console.log(data)
-
-//     this.selectedDataForMerge=data
-//     this.showbtn=this.productVal.length>1?true:false
-//     this.productVal.length>1?null:this.selectedDataForMerge=[]
-//   }
-
-
-
-//   handleMergeSelection(e:any,id:any){
-//     console.log(e.target.checked,id)
-//     if(e.target.checked){
-//       let data=this.productVal.filter((item:any)=>item._id===id)
-//       this.selectedDataForMerge.push(data[0])
-//     }else{
-//       let data=this.selectedDataForMerge.filter((item:any)=>item._id!=id)
-//       this.selectedDataForMerge=data
-//     }
-//   }
-
-
-//  async MergeProducts(){
-
-//     this.mergedProducts={
-
-//     type:'group',
-//     main_id:this.quoteId,
-//     product:this.selectedDataForMerge,
-//     PartNo: this.groupPartNo,
-//     CCNNo: 'NA',
-//     productname: this.MergedProductsName,
-//     UnitPrice:this.groupAmount ,
-//     UOM: 0,
-//     Category: 'NA',
-//     OEM: 'NA',
-//     quantity:1,
-//     amount:this.groupPrice*1,
-
-//     OEMProductCode:'NA',
-//     HSNCode: 'NA',
-//     GST: 'NA'
-//   }
-
-
-//     console.log(this.mergedProducts)
-//     this.MergedProductsName?
-    
-//     this.mergedProducts.main_id && this.product.createGroup(this.mergedProducts).subscribe((data:any)=>{
-//       console.log(data)
-//       if(data.status==200){
-//         document.getElementById('closebtn')?.click()
-//         console.log( data.data.product)
-//         console.log(this.productVal)
-
-
-//         console.log(this.productVal)
-
-//         data.data.product?.map((item:any)=>{
-
-//           this.productVal=this.productVal.filter((data:any)=>{
-//             return data._id!==item._id
-//           })
-//           if(item.type==='group'){
-//             this.product.deleteGroup(item._id).subscribe((data:any)=>{
-//               console.log(data.message)
-//             })
-//           }
-//         })
-
-        
-//         this.product.getGroups(data.data.main_id).subscribe((data:any)=>{
-//           console.log(data)
-//           data.result.map((item:any)=>{
-//             this.productVal=this.productVal.filter((data:any)=>{
-//               console.log(data._id!==item._id,data._id,item._id)
-//               return data._id!==item._id
-//             })
-//             this.productVal.push(item)
-//           })
-//           console.log(this.productVal)
-//         })
-
-
-
-//        this.selectedDataForMerge=[]
-//        this.MergedProductsName=''
-       
-
-//       }
-//     }):this.toast.showError("Group Name Required")
-
-//   }
-
-
-//   handleGroupData(){
-//     this.groupAmount=0
-//     this.groupPrice=0
-    
-
-//     this.selectedDataForMerge.map((item:any)=>{
-//       console.log(typeof(item.UnitPrice),Number(item.UnitPrice))
-//       this.groupAmount+=item.amount
-//       this.groupPrice+=Number(item.UnitPrice)
-//     })
-//     this.groupPartNo=Math.floor(Math.random()*1000000)
-//   }
-
-
-
-//   inputName(e:any){
-//     this.MergedProductsName=e.target.value
-//   }
-
-
-
-
-  
-//   handleInput(e:any,index:any,name:any){
-//     console.log(this.productVal)
-//     if(e.target.value>0 && e.target.value<1001){
-//       this.productVal[index][name]=e.target.value
-//       this.productVal[index].amount=this.productVal[index].UnitPrice*e.target.value
-//     }else{
-//       this.productVal[index][name]=1
-//     }
-
-//   }
 
     
   handleBranchAdd(e:any){
@@ -1231,6 +1078,7 @@ return data
     }
     else {
       console.log(this.productForm, 'true');
+      this.productForm.value.id=Math.floor(Math.random()*(100000 - 10000) + 10000);
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
@@ -1240,7 +1088,15 @@ return data
         this.toast.showSuccess(data.message)
         
         this.data.push(data.result)
-        this.data=this.data.filter((dt:any)=>dt)
+        this.totalAmount=0
+        this.totalQuantity=0
+        this.data=this.data.filter((dt:any)=>{
+          console.log(Number(dt.amount));
+          
+          this.totalAmount+=parseInt(dt.amount)
+          this.totalQuantity+=Number(dt.quantity)
+          return dt
+        })
         
       }else if(data.status==200){
     
@@ -1264,11 +1120,11 @@ formmodelInit(){
     UOM:['',Validators.required],
     UnitPrice:['',Validators.required],
     productname:['',Validators.required],
-    type:['',Validators.required],
+    type:'Product',
     parent:"",
     quantity:"",
     amount:'',
-    products:""
+    products:[]
   })
   
 }

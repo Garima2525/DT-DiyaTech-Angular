@@ -398,35 +398,6 @@ export class CreateQuoteComponent implements OnInit {
 
   }
   
-  onSearch(event:any){
-    if(event.target.value.length>4){
-      this.product.getProductDataSearch({'searchValue':event.target.value}).subscribe((data:any)=>{
-        console.log(data)
-        if(data.result==null){
-          this.productData=[]
-        }else{
-          this.productData=data.result.slice()  
-        }
-        this.data1=this.productData.slice()
-        this.data2=this.data1.slice()
-        })
-    }
-    else{
-      console.log('edrtyertertye');
-    }
-  }
-  fetchMore(event: any) {
-    if (event.endIndex === this.data1.length - 1) {
-      console.log(this.data1.length);
-      let limit=this.data1.length+100;
-      this.product.getAllProductLimit({'lim':limit}).subscribe((data:any)=>{
-        console.log(data)
-        this.productData=data.result.slice()  
-        this.data1=this.productData.slice()
-        this.data2=this.data1.slice()
-        })
-    }
-}
 
 
   onContactSelect(contact:any){
@@ -937,7 +908,7 @@ return data
         item.products.length>0?item.quantity=1:item.quantity=0
         item.amount=0
         item.products.map((itm:any)=>{
-          item.amount+=Number(itm.amount)
+          item.amount+=itm.amount
           console.log(item.amount)
         })
         this.data=this.data.filter((dt:any)=>dt)
@@ -985,7 +956,7 @@ return data
     this.totalAmount=0
     this.totalQuantity=0
     this.data=this.data.filter((dt:any)=>{
-      this.totalAmount+=Number(dt.amount)
+      this.totalAmount+=dt.amount
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
@@ -998,7 +969,36 @@ return data
   }
 
 
+  onSearch(event:any){
+    if(event.target.value.length>4){
+      this.product.getProductDataSearch({'searchValue':event.target.value}).subscribe((data:any)=>{
+        console.log(data)
+        if(data.result==null){
+          this.productData=[]
+        }else{
+          this.productData=data.result.slice()  
+        }
+        this.data1=this.productData.slice()
+        this.data2=this.data1.slice()
+        })
+    }
+    else{
+      console.log('edrtyertertye');
+    }
+  }
 
+  fetchMore(event: any) {
+    if (event.endIndex === this.data1.length - 1) {
+      console.log(this.data1.length);
+      let limit=this.data1.length+100;
+      this.product.getAllProductLimit({'lim':limit}).subscribe((data:any)=>{
+        console.log(data)
+        this.productData=data.result.slice()  
+        this.data1=this.productData.slice()
+        this.data2=this.data1.slice()
+        })
+    }
+}
   checkAddGroup(){
     console.log("add group")
 
@@ -1142,6 +1142,7 @@ return data
     }
     else {
       console.log(this.productForm, 'true');
+      this.productForm.value.id=Math.floor(Math.random()*(100000 - 10000) + 10000);
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
@@ -1151,7 +1152,15 @@ return data
         this.toast.showSuccess(data.message)
         
         this.data.push(data.result)
-        this.data=this.data.filter((dt:any)=>dt)
+        this.totalAmount=0
+        this.totalQuantity=0
+        this.data=this.data.filter((dt:any)=>{
+          console.log(Number(dt.amount));
+          
+          this.totalAmount+=parseInt(dt.amount)
+          this.totalQuantity+=Number(dt.quantity)
+          return dt
+        })
         
       }else if(data.status==200){
     
@@ -1175,16 +1184,16 @@ formmodelInit(){
     UOM:['',Validators.required],
     UnitPrice:['',Validators.required],
     productname:['',Validators.required],
-    type:['',Validators.required],
+    type:'Product',
     parent:"",
     quantity:"",
     amount:'',
-    products:""
+    products:[]
   })
   
 }
 decimalFormat(num:any){
-  return num.toFixed(2)
+  // return num.toFixed(2)
 }
 
 }

@@ -49,10 +49,12 @@
                       <div class="form-group">
                         <label class="control-label font-weight-600">Email</label>
                         <input type="email" class="form-control  input-sm" name="email" placeholder="Email" formControlName="email">
-                        <div *ngIf="f.email.errors && f.email.errors.required && isValidFormSubmitted"
-                          class="text-danger text-left mb-1 errorcontrols">
+                        <div *ngIf="f.email.errors  && isValidFormSubmitted" class="text-danger text-left mb-1 errorcontrols">
                           <div *ngIf="f.email.errors.required"><small>Email is
-                              required.</small></div>
+                            required.</small></div>
+                         
+                          <div *ngIf="f.email.errors.pattern">Invalid email.</div>
+                         
                         </div>
                       </div>
                     </div>
@@ -75,12 +77,12 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="control-label font-weight-600">Designation</label>
-                        <!-- <input type="text" class="form-control  input-sm" placeholder="Designation" formControlName="designation"> -->
-                        <select  class="form-control" formControlName="designation">
+                        <input type="text" class="form-control  input-sm" placeholder="Designation" formControlName="designation">
+                        <!-- <select  class="form-control" formControlName="designation">
                           <option value="" disabled> Select Designation</option>
                           <option value="Staff" selected>Staff</option>
                           <option value="Sales Person"> Sales Person</option>
-                        </select>
+                        </select> -->
                         <div *ngIf="f.designation.errors && f.designation.errors.required && isValidFormSubmitted"
                           class="text-danger text-left mb-1 errorcontrols">
                           <div *ngIf="f.designation.errors.required"><small>Designation is
@@ -107,7 +109,12 @@
                         <div *ngIf="f.password.errors  && isValidFormSubmitted" class="text-danger text-left mb-1 errorcontrols">
                           <div *ngIf="f.password.errors.required"><small>Password is
                             required.</small></div>
+                         
                           <div *ngIf="f.password.errors.pattern">Minimum 8 character password.</div>
+                          <div *ngIf="f.password.errors.pattern">Use uppercase and lowecase letters(e.g.Aa)</div>
+                          <div *ngIf="f.password.errors.pattern">Use a number(e.g 123)</div>
+                         
+                          <div *ngIf="f.password.errors.pattern">Use special character (e.g @#%*).</div>
                         </div>
                       </div>
                     </div>

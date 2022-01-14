@@ -60,7 +60,7 @@ export class AdduserComponent implements OnInit {
     this.userform = this.fb.group(
       {
         username: ['', Validators.required],
-        email: ['', Validators.required],
+        email: ['', [Validators.pattern('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$')]],
         phone: ['', [Validators.required]],
         designation: ['', Validators.required],
         password: ['', Validators.compose([Validators.required,Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d\\W]{8,63}$")])],

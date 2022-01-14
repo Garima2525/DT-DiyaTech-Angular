@@ -1130,6 +1130,7 @@ return data
     }
     else {
       console.log(this.productForm, 'true');
+      this.productForm.value.id=Math.floor(Math.random()*(100000 - 10000) + 10000);
       this.product.AddProduct(this.productForm.value).subscribe((data:any)=>{
         this.buttondisabled="false";
        
@@ -1139,7 +1140,15 @@ return data
         this.toast.showSuccess(data.message)
         
         this.data.push(data.result)
-        this.data=this.data.filter((dt:any)=>dt)
+        this.totalAmount=0
+        this.totalQuantity=0
+        this.data=this.data.filter((dt:any)=>{
+          console.log(Number(dt.amount));
+          
+          this.totalAmount+=parseInt(dt.amount)
+          this.totalQuantity+=Number(dt.quantity)
+          return dt
+        })
         
       }else if(data.status==200){
     
@@ -1163,11 +1172,11 @@ formmodelInit(){
     UOM:['',Validators.required],
     UnitPrice:['',Validators.required],
     productname:['',Validators.required],
-    type:['',Validators.required],
+    type:'product',
     parent:"",
     quantity:"",
     amount:'',
-    products:""
+    products:[]
   })
   
 }

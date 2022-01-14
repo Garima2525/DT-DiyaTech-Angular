@@ -896,7 +896,7 @@ return data
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
-    this.totalAmount=this.totalAmount.toFixed(2)
+    // this.totalAmount=this.totalAmount.toFixed(2)
     // this.data[prod.id].amount=amt;
     // this.getParent(this.data, prod.id);
   }
@@ -911,7 +911,7 @@ return data
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
-    this.totalAmount=this.totalAmount.toFixed(2)
+    // this.totalAmount=this.totalAmount.toFixed(2)
   }
 
   public handleDiscount(e:any,prod:any){
@@ -924,7 +924,7 @@ return data
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
-    this.totalAmount=this.totalAmount.toFixed(2)
+    // this.totalAmount=this.totalAmount.toFixed(2)
   }
 
 
@@ -1013,11 +1013,11 @@ return data
 
     this.deleteData(this.data,prd.id)
     this.data=this.data.filter((dt:any)=>{
-      this.totalAmount+=dt.amount
+      this.totalAmount+=Number(dt.amount)
       this.totalQuantity+=Number(dt.quantity)
       return dt
     })
-    this.totalAmount=this.totalAmount.toFixed(2)
+    // this.totalAmount=this.totalAmount.toFixed(2)
   }
 
 
@@ -1094,7 +1094,7 @@ return data
           this.totalQuantity+=Number(dt.quantity)
           return dt
         })
-        this.totalAmount=this.totalAmount.toFixed(2)
+        // this.totalAmount=this.totalAmount.toFixed(2)
         // this.data=this.data.filter((dt:any)=>dt)
         
       }else if(data.status==200){
@@ -1119,7 +1119,7 @@ formmodelInit(){
     UOM:['',Validators.required],
     UnitPrice:['',Validators.required],
     productname:['',Validators.required],
-    type:['',Validators.required],
+    type:'Product',
     parent:"",
     quantity:"",
     amount:'',
@@ -1131,7 +1131,7 @@ get fm() {
   return this.productForm.controls;
 }
 decimalFormat(num:any){
-  return num
+  return num.toFixed(2)
 }
 }
 

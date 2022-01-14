@@ -53,6 +53,8 @@
     "jquery-ui": "^1.13.0",
     "ng-multiselect-dropdown": "^0.3.4",
     "ng-recaptcha": "^8.0.1",
+    "ng-spinner": "^9.0.0",
+    "ngx-spinner": "^13.0.0",
     "ngx-toastr": "^14.1.3",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.1.5",

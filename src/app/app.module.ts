@@ -79,7 +79,7 @@ import { NewProductEditComponent } from './editform/new-product-edit/new-product
 import { RoleEditComponent } from './editform/role-edit/role-edit.component';
 import { ForgetpassComponent } from './forgetpass/forgetpass.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -161,7 +161,8 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
     CommonModule,
     FormsModule,
     NgSelectModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule,
+    NgxSpinnerModule
     
 
   ],

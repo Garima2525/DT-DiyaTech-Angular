@@ -86,7 +86,8 @@ export class SendquoteComponent implements OnInit {
   }
 
   decimalFormat(num:any){
-    return num.toFixed(2)
+    return num
+    // return num.toFixed(2)
   }
    addDays(date:any, days:any) {
     if(days){
