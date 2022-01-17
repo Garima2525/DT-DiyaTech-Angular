@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {AuthService} from '../service/auth.service'
 import {TosterService} from '../service/toster.service'
 // import Swal from 'sweetalert2/dist/sweetalert2.js'
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -119,6 +120,7 @@ export class LoginComponent implements OnInit {
     this.forminit()
     
   }
+  
   keyDownFunction(event:any) {
     if (event.keyCode === 13) {
       // this.checkoutForm

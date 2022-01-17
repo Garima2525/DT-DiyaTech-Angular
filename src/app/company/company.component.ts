@@ -37,7 +37,7 @@ export class CompanyComponent implements OnInit {
   isValidFormSubmitted:any=false
   user:any
   userPermission:any
-
+  AddState:any=[]
 
 
   constructor(
@@ -182,21 +182,21 @@ export class CompanyComponent implements OnInit {
       })
     }
 
-    changeCountry(){
-      console.log(this.addressForm.value.country)
-      this.state_country.getStates(this.addressForm.value.country).subscribe((state)=>{
-        console.log(state)
-        this.State=state
-      })
-    }
+    // changeCountry(){
+    //   console.log(this.addressForm.value.country)
+    //   this.state_country.getStates(this.addressForm.value.country).subscribe((state)=>{
+    //     console.log(state)
+    //     this.State=state
+    //   })
+    // }
 
-    changeState(){
-      console.log(this.addressForm.value.state)
-      this.state_country.getCity(this.addressForm.value.state).subscribe((city)=>{
-        console.log(city)
-        this.City=city
-      })
-    }
+    // changeState(){
+    //   console.log(this.addressForm.value.state)
+    //   this.state_country.getCity(this.addressForm.value.state).subscribe((city)=>{
+    //     console.log(city)
+    //     this.City=city
+    //   })
+    // }
     
     get c() {
       return this.companyForm.controls;
@@ -220,18 +220,20 @@ export class CompanyComponent implements OnInit {
         }
       })
     })
-    //   let number2 = Math.random() // 0.9394456857981651
-    //   number2.toString(36); // '0.xtis06h6'
-    //  var id = number2.toString(36).substr(2, 9);
-    //  this.branchId=id.toUpperCase()
+      let number2 = Math.random() // 0.9394456857981651
+      number2.toString(36); // '0.xtis06h6'
+     var id = number2.toString(36).substr(2, 9);
+     this.branchId=id.toUpperCase()
 
     this.getAddress()
+    console.log(this.getAddress);
+    
     this.Country=country
     this.auth.userLoggedIn().subscribe((data:any)=>{
       this.loginUser=data.result.username
       this.company.getCompanyData(this.companyId).subscribe((companydata:any)=>{
         this.Data=companydata[0]
-        console.log(companydata[0])
+        // console.log(companydata[0])
         this.companyName=companydata[0]?.company_name
         this.companyGst=companydata[0]?.gstin
         this.companyPan=companydata[0]?.pan
@@ -240,11 +242,22 @@ export class CompanyComponent implements OnInit {
         this.forminit()
         this.addforminit()
       })
+
+
+
+
+      
     })
 
   }
 
-
+  countryChangeAdd(c:any){
+    console.log(c.target.value)
+    this.state_country.getStates({country:c.target.value}).subscribe((state:any)=>{
+      console.log(state)
+      this.AddState=state.result
+    })
+  }
 
   handleNameChange(e:any){
     console.log(e.target.value)
@@ -287,6 +300,6 @@ export class CompanyComponent implements OnInit {
       secondary_email:[this.Data?.secondary_email?this.Data?.secondary_email:'',Validators.pattern(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)],
       created_at:this.Data?.created_at?this.Data?.created_at:''
     })
-    console.log(this.companyForm)
+    // console.log(this.companyForm)
   }
 }

@@ -23,7 +23,7 @@ export class ProductsListComponent implements OnInit {
   constructor(private prd:ProductService,private upload:UploadAttachmentService,) { }
 
   ngOnInit(): void {
-    this.prd.getAllProduct().subscribe((data:any)=>{
+    this.prd.productmaster().subscribe((data:any)=>{
       console.log(data)
       this.productData=data.result
       this.gridView=data.result

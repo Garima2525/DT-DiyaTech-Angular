@@ -22,6 +22,20 @@ export class ProductService {
     return this.http.get(api_url,httpOptions)
   }
   
+
+  productmaster(){
+    let api_url=this.base_url+"productmaster"
+    const httpOptions={
+      headers:new HttpHeaders({
+        'content-type':'application/json;charset=UTF-8',
+        'apikey': this.api_key
+      }),
+    }
+    return this.http.get(api_url,httpOptions)
+  }
+
+
+
   getProductDataSearch(lim:any){
     let api_url=this.base_url+"getAllDataSearch"
     const httpOptions={
